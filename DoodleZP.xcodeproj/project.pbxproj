@@ -16,6 +16,8 @@
 		847DA7731E44976500F66B61 /* DoodleZPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7721E44976500F66B61 /* DoodleZPUITests.swift */; };
 		847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7801E4497F500F66B61 /* DoodleController.swift */; };
 		847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7821E449A7A00F66B61 /* DoodleView.swift */; };
+		847DA7861E44B60000F66B61 /* ToolsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7851E44B60000F66B61 /* ToolsPanel.swift */; };
+		847DA7891E44C3A800F66B61 /* ModeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7881E44C3A800F66B61 /* ModeHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		847DA7741E44976500F66B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847DA7801E4497F500F66B61 /* DoodleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoodleController.swift; sourceTree = "<group>"; };
 		847DA7821E449A7A00F66B61 /* DoodleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoodleView.swift; sourceTree = "<group>"; };
+		847DA7851E44B60000F66B61 /* ToolsPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsPanel.swift; sourceTree = "<group>"; };
+		847DA7881E44C3A800F66B61 /* ModeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				847DA7841E449BE000F66B61 /* TemporaryJail */,
-				847DA7801E4497F500F66B61 /* DoodleController.swift */,
-				847DA7821E449A7A00F66B61 /* DoodleView.swift */,
+				847DA7871E44B60E00F66B61 /* Doodle */,
 				847DA74F1E44976500F66B61 /* AppDelegate.swift */,
 				847DA7531E44976500F66B61 /* Main.storyboard */,
 			);
@@ -137,6 +140,17 @@
 				847DA7561E44976500F66B61 /* DoodleZP.xcdatamodeld */,
 			);
 			name = TemporaryJail;
+			sourceTree = "<group>";
+		};
+		847DA7871E44B60E00F66B61 /* Doodle */ = {
+			isa = PBXGroup;
+			children = (
+				847DA7801E4497F500F66B61 /* DoodleController.swift */,
+				847DA7851E44B60000F66B61 /* ToolsPanel.swift */,
+				847DA7881E44C3A800F66B61 /* ModeHandler.swift */,
+				847DA7821E449A7A00F66B61 /* DoodleView.swift */,
+			);
+			name = Doodle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +289,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */,
+				847DA7891E44C3A800F66B61 /* ModeHandler.swift in Sources */,
+				847DA7861E44B60000F66B61 /* ToolsPanel.swift in Sources */,
 				847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */,
 				847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */,
 				847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */,
@@ -524,6 +540,7 @@
 				847DA7791E44976500F66B61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		847DA77A1E44976500F66B61 /* Build configuration list for PBXNativeTarget "DoodleZPTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +549,7 @@
 				847DA77C1E44976500F66B61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		847DA77D1E44976500F66B61 /* Build configuration list for PBXNativeTarget "DoodleZPUITests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +558,7 @@
 				847DA77F1E44976500F66B61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
