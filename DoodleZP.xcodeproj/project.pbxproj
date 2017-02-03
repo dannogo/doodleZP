@@ -1,0 +1,545 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA74F1E44976500F66B61 /* AppDelegate.swift */; };
+		847DA7521E44976500F66B61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7511E44976500F66B61 /* ViewController.swift */; };
+		847DA7551E44976500F66B61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847DA7531E44976500F66B61 /* Main.storyboard */; };
+		847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7561E44976500F66B61 /* DoodleZP.xcdatamodeld */; };
+		847DA75A1E44976500F66B61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847DA7591E44976500F66B61 /* Assets.xcassets */; };
+		847DA75D1E44976500F66B61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847DA75B1E44976500F66B61 /* LaunchScreen.storyboard */; };
+		847DA7681E44976500F66B61 /* DoodleZPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7671E44976500F66B61 /* DoodleZPTests.swift */; };
+		847DA7731E44976500F66B61 /* DoodleZPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7721E44976500F66B61 /* DoodleZPUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		847DA7641E44976500F66B61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847DA7441E44976500F66B61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 847DA74B1E44976500F66B61;
+			remoteInfo = DoodleZP;
+		};
+		847DA76F1E44976500F66B61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847DA7441E44976500F66B61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 847DA74B1E44976500F66B61;
+			remoteInfo = DoodleZP;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		847DA74C1E44976500F66B61 /* DoodleZP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoodleZP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		847DA74F1E44976500F66B61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		847DA7511E44976500F66B61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		847DA7541E44976500F66B61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		847DA7571E44976500F66B61 /* DoodleZP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoodleZP.xcdatamodel; sourceTree = "<group>"; };
+		847DA7591E44976500F66B61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		847DA75C1E44976500F66B61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		847DA75E1E44976500F66B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		847DA7631E44976500F66B61 /* DoodleZPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoodleZPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		847DA7671E44976500F66B61 /* DoodleZPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleZPTests.swift; sourceTree = "<group>"; };
+		847DA7691E44976500F66B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		847DA76E1E44976500F66B61 /* DoodleZPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoodleZPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		847DA7721E44976500F66B61 /* DoodleZPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleZPUITests.swift; sourceTree = "<group>"; };
+		847DA7741E44976500F66B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		847DA7491E44976500F66B61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		847DA7601E44976500F66B61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		847DA76B1E44976500F66B61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		847DA7431E44976500F66B61 = {
+			isa = PBXGroup;
+			children = (
+				847DA74E1E44976500F66B61 /* DoodleZP */,
+				847DA7661E44976500F66B61 /* DoodleZPTests */,
+				847DA7711E44976500F66B61 /* DoodleZPUITests */,
+				847DA74D1E44976500F66B61 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		847DA74D1E44976500F66B61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				847DA74C1E44976500F66B61 /* DoodleZP.app */,
+				847DA7631E44976500F66B61 /* DoodleZPTests.xctest */,
+				847DA76E1E44976500F66B61 /* DoodleZPUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		847DA74E1E44976500F66B61 /* DoodleZP */ = {
+			isa = PBXGroup;
+			children = (
+				847DA74F1E44976500F66B61 /* AppDelegate.swift */,
+				847DA7511E44976500F66B61 /* ViewController.swift */,
+				847DA7531E44976500F66B61 /* Main.storyboard */,
+				847DA7591E44976500F66B61 /* Assets.xcassets */,
+				847DA75B1E44976500F66B61 /* LaunchScreen.storyboard */,
+				847DA75E1E44976500F66B61 /* Info.plist */,
+				847DA7561E44976500F66B61 /* DoodleZP.xcdatamodeld */,
+			);
+			path = DoodleZP;
+			sourceTree = "<group>";
+		};
+		847DA7661E44976500F66B61 /* DoodleZPTests */ = {
+			isa = PBXGroup;
+			children = (
+				847DA7671E44976500F66B61 /* DoodleZPTests.swift */,
+				847DA7691E44976500F66B61 /* Info.plist */,
+			);
+			path = DoodleZPTests;
+			sourceTree = "<group>";
+		};
+		847DA7711E44976500F66B61 /* DoodleZPUITests */ = {
+			isa = PBXGroup;
+			children = (
+				847DA7721E44976500F66B61 /* DoodleZPUITests.swift */,
+				847DA7741E44976500F66B61 /* Info.plist */,
+			);
+			path = DoodleZPUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		847DA74B1E44976500F66B61 /* DoodleZP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 847DA7771E44976500F66B61 /* Build configuration list for PBXNativeTarget "DoodleZP" */;
+			buildPhases = (
+				847DA7481E44976500F66B61 /* Sources */,
+				847DA7491E44976500F66B61 /* Frameworks */,
+				847DA74A1E44976500F66B61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DoodleZP;
+			productName = DoodleZP;
+			productReference = 847DA74C1E44976500F66B61 /* DoodleZP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		847DA7621E44976500F66B61 /* DoodleZPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 847DA77A1E44976500F66B61 /* Build configuration list for PBXNativeTarget "DoodleZPTests" */;
+			buildPhases = (
+				847DA75F1E44976500F66B61 /* Sources */,
+				847DA7601E44976500F66B61 /* Frameworks */,
+				847DA7611E44976500F66B61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				847DA7651E44976500F66B61 /* PBXTargetDependency */,
+			);
+			name = DoodleZPTests;
+			productName = DoodleZPTests;
+			productReference = 847DA7631E44976500F66B61 /* DoodleZPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		847DA76D1E44976500F66B61 /* DoodleZPUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 847DA77D1E44976500F66B61 /* Build configuration list for PBXNativeTarget "DoodleZPUITests" */;
+			buildPhases = (
+				847DA76A1E44976500F66B61 /* Sources */,
+				847DA76B1E44976500F66B61 /* Frameworks */,
+				847DA76C1E44976500F66B61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				847DA7701E44976500F66B61 /* PBXTargetDependency */,
+			);
+			name = DoodleZPUITests;
+			productName = DoodleZPUITests;
+			productReference = 847DA76E1E44976500F66B61 /* DoodleZPUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		847DA7441E44976500F66B61 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Oleh;
+				TargetAttributes = {
+					847DA74B1E44976500F66B61 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					847DA7621E44976500F66B61 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 847DA74B1E44976500F66B61;
+					};
+					847DA76D1E44976500F66B61 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 847DA74B1E44976500F66B61;
+					};
+				};
+			};
+			buildConfigurationList = 847DA7471E44976500F66B61 /* Build configuration list for PBXProject "DoodleZP" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 847DA7431E44976500F66B61;
+			productRefGroup = 847DA74D1E44976500F66B61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				847DA74B1E44976500F66B61 /* DoodleZP */,
+				847DA7621E44976500F66B61 /* DoodleZPTests */,
+				847DA76D1E44976500F66B61 /* DoodleZPUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		847DA74A1E44976500F66B61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847DA75D1E44976500F66B61 /* LaunchScreen.storyboard in Resources */,
+				847DA75A1E44976500F66B61 /* Assets.xcassets in Resources */,
+				847DA7551E44976500F66B61 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		847DA7611E44976500F66B61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		847DA76C1E44976500F66B61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		847DA7481E44976500F66B61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847DA7521E44976500F66B61 /* ViewController.swift in Sources */,
+				847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */,
+				847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		847DA75F1E44976500F66B61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847DA7681E44976500F66B61 /* DoodleZPTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		847DA76A1E44976500F66B61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847DA7731E44976500F66B61 /* DoodleZPUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		847DA7651E44976500F66B61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 847DA74B1E44976500F66B61 /* DoodleZP */;
+			targetProxy = 847DA7641E44976500F66B61 /* PBXContainerItemProxy */;
+		};
+		847DA7701E44976500F66B61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 847DA74B1E44976500F66B61 /* DoodleZP */;
+			targetProxy = 847DA76F1E44976500F66B61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		847DA7531E44976500F66B61 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				847DA7541E44976500F66B61 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		847DA75B1E44976500F66B61 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				847DA75C1E44976500F66B61 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		847DA7751E44976500F66B61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		847DA7761E44976500F66B61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		847DA7781E44976500F66B61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DoodleZP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cpu.oleh-liskovych.DoodleZP";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		847DA7791E44976500F66B61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DoodleZP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cpu.oleh-liskovych.DoodleZP";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		847DA77B1E44976500F66B61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DoodleZPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cpu.oleh-liskovych.DoodleZPTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoodleZP.app/DoodleZP";
+			};
+			name = Debug;
+		};
+		847DA77C1E44976500F66B61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DoodleZPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cpu.oleh-liskovych.DoodleZPTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoodleZP.app/DoodleZP";
+			};
+			name = Release;
+		};
+		847DA77E1E44976500F66B61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = DoodleZPUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cpu.oleh-liskovych.DoodleZPUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DoodleZP;
+			};
+			name = Debug;
+		};
+		847DA77F1E44976500F66B61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = DoodleZPUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cpu.oleh-liskovych.DoodleZPUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DoodleZP;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		847DA7471E44976500F66B61 /* Build configuration list for PBXProject "DoodleZP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847DA7751E44976500F66B61 /* Debug */,
+				847DA7761E44976500F66B61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		847DA7771E44976500F66B61 /* Build configuration list for PBXNativeTarget "DoodleZP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847DA7781E44976500F66B61 /* Debug */,
+				847DA7791E44976500F66B61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		847DA77A1E44976500F66B61 /* Build configuration list for PBXNativeTarget "DoodleZPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847DA77B1E44976500F66B61 /* Debug */,
+				847DA77C1E44976500F66B61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		847DA77D1E44976500F66B61 /* Build configuration list for PBXNativeTarget "DoodleZPUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847DA77E1E44976500F66B61 /* Debug */,
+				847DA77F1E44976500F66B61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		847DA7561E44976500F66B61 /* DoodleZP.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				847DA7571E44976500F66B61 /* DoodleZP.xcdatamodel */,
+			);
+			currentVersion = 847DA7571E44976500F66B61 /* DoodleZP.xcdatamodel */;
+			path = DoodleZP.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 847DA7441E44976500F66B61 /* Project object */;
+}
