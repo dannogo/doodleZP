@@ -18,6 +18,8 @@
 		847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7821E449A7A00F66B61 /* DoodleView.swift */; };
 		847DA7861E44B60000F66B61 /* ToolsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7851E44B60000F66B61 /* ToolsPanel.swift */; };
 		847DA7891E44C3A800F66B61 /* ModeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7881E44C3A800F66B61 /* ModeHandler.swift */; };
+		847DA7A91E45305F00F66B61 /* ToolsPanelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7A81E45305F00F66B61 /* ToolsPanelButton.swift */; };
+		847DA7AB1E45328000F66B61 /* ToolsPanelButtonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7AA1E45328000F66B61 /* ToolsPanelButtonStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		847DA7821E449A7A00F66B61 /* DoodleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoodleView.swift; sourceTree = "<group>"; };
 		847DA7851E44B60000F66B61 /* ToolsPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsPanel.swift; sourceTree = "<group>"; };
 		847DA7881E44C3A800F66B61 /* ModeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeHandler.swift; sourceTree = "<group>"; };
+		847DA7A81E45305F00F66B61 /* ToolsPanelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsPanelButton.swift; sourceTree = "<group>"; };
+		847DA7AA1E45328000F66B61 /* ToolsPanelButtonStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsPanelButtonStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,11 +150,21 @@
 			isa = PBXGroup;
 			children = (
 				847DA7801E4497F500F66B61 /* DoodleController.swift */,
-				847DA7851E44B60000F66B61 /* ToolsPanel.swift */,
+				847DA7AC1E45328D00F66B61 /* ToolsPanel files */,
 				847DA7881E44C3A800F66B61 /* ModeHandler.swift */,
 				847DA7821E449A7A00F66B61 /* DoodleView.swift */,
 			);
 			name = Doodle;
+			sourceTree = "<group>";
+		};
+		847DA7AC1E45328D00F66B61 /* ToolsPanel files */ = {
+			isa = PBXGroup;
+			children = (
+				847DA7851E44B60000F66B61 /* ToolsPanel.swift */,
+				847DA7A81E45305F00F66B61 /* ToolsPanelButton.swift */,
+				847DA7AA1E45328000F66B61 /* ToolsPanelButtonStore.swift */,
+			);
+			name = "ToolsPanel files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,8 +302,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847DA7AB1E45328000F66B61 /* ToolsPanelButtonStore.swift in Sources */,
 				847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */,
 				847DA7891E44C3A800F66B61 /* ModeHandler.swift in Sources */,
+				847DA7A91E45305F00F66B61 /* ToolsPanelButton.swift in Sources */,
 				847DA7861E44B60000F66B61 /* ToolsPanel.swift in Sources */,
 				847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */,
 				847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */,

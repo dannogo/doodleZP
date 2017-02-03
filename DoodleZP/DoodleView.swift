@@ -10,7 +10,20 @@ import UIKit
 
 @IBDesignable
 class DoodleView: UIView {
-
+    
+    func test() {
+        self.removeFromSuperview()
+    }
+    
+    
+    override func willRemoveSubview(_ subview: UIView) {
+        //
+    }
+    
+    override func didAddSubview(_ subview: UIView) {
+        //
+    }
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

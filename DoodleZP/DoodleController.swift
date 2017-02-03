@@ -10,10 +10,12 @@ import UIKit
 
 class DoodleController: UIViewController {
 
+    let toolsPanel: ToolsPanel = ToolsPanel(frame: CGRect.zero)
+    
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        toolsPanel.orientation = .portrait
         // Do any additional setup after loading the view.
     }
 
@@ -26,6 +28,8 @@ class DoodleController: UIViewController {
         coordinator.animate(alongsideTransition: {(UIViewControllerTransitionCoordinatorContext) -> Void in
             
             let orient = UIApplication.shared.statusBarOrientation
+            self.toolsPanel.orientation = orient
+            
             switch orient {
             case .portrait:
                 print("Portrait")

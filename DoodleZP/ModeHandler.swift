@@ -11,7 +11,7 @@ import Foundation
 class ModeHandler: NSObject {
     
     // MARK - Enums
-    enum DrawingMode {
+    enum GraphicMode {
         case vector, raster
     }
     

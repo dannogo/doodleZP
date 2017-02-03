@@ -8,20 +8,54 @@
 
 import UIKit
 
-//@IBDesignable
 class ToolsPanel: UIView {
 
-    @
-    
-    init(mode: ModeHandler.DrawingMode) {
-        super.init(frame: CGRect.zero)
+    var graphicMode: ModeHandler.GraphicMode? {
+        didSet {
+            // Redraw panel with other available options
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    // Possibly create buttonsStore to handle which buttons are available for different modes
+    // vector, raster, selected line/lines, picking points etc
+    let buttons = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    
+    // Possibly make separated UIView subclass for ToolsPanel buttons
+    struct ToolButton {
+        let hint: String
+        let icon: UIImage?
+        let action: () -> ()?
+        let state: ToolButtonState = .normal
+        
+        enum ToolButtonState {
+            case normal, pressed, inactive
+        }
     }
     
-    let buttons = [1,2,3,4,5,6,7,8,9]
+    var orientation: UIInterfaceOrientation = .portrait {
+        didSet {
+            // Redraw panel in new place
+            
+            
+            buildPanelViewHierarchy()
+            
+        }
+    }
+    
+    func buildPanelViewHierarchy() {
+        
+        let windowFrame = UIApplication.shared.delegate!.window!!.frame
+        let screenSideSize = orientation.isPortrait ? windowFrame.width : windowFrame.height
+        let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
+        print("\(buttonsInRow) size: \(buttonSize)")
+    }
+    
+    // Move calling this method somewhere else in order to execure it only once
+    func calculateButtonsParameters(screenSideSize: CGFloat) -> (buttonsInRow: Int, buttonSize: CGFloat) {
+        let buttonsInRow = (screenSideSize / 28).rounded()
+        let buttonSize = screenSideSize / buttonsInRow
+        return (Int(buttonsInRow), buttonSize)
+    }
     
     /*
     // Only override draw() if you perform custom drawing.
