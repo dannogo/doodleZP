@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA74F1E44976500F66B61 /* AppDelegate.swift */; };
-		847DA7521E44976500F66B61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7511E44976500F66B61 /* ViewController.swift */; };
 		847DA7551E44976500F66B61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847DA7531E44976500F66B61 /* Main.storyboard */; };
 		847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7561E44976500F66B61 /* DoodleZP.xcdatamodeld */; };
 		847DA75A1E44976500F66B61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847DA7591E44976500F66B61 /* Assets.xcassets */; };
 		847DA75D1E44976500F66B61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847DA75B1E44976500F66B61 /* LaunchScreen.storyboard */; };
 		847DA7681E44976500F66B61 /* DoodleZPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7671E44976500F66B61 /* DoodleZPTests.swift */; };
 		847DA7731E44976500F66B61 /* DoodleZPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7721E44976500F66B61 /* DoodleZPUITests.swift */; };
+		847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7801E4497F500F66B61 /* DoodleController.swift */; };
+		847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7821E449A7A00F66B61 /* DoodleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,6 @@
 /* Begin PBXFileReference section */
 		847DA74C1E44976500F66B61 /* DoodleZP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoodleZP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847DA74F1E44976500F66B61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		847DA7511E44976500F66B61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		847DA7541E44976500F66B61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		847DA7571E44976500F66B61 /* DoodleZP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoodleZP.xcdatamodel; sourceTree = "<group>"; };
 		847DA7591E44976500F66B61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +49,8 @@
 		847DA76E1E44976500F66B61 /* DoodleZPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoodleZPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		847DA7721E44976500F66B61 /* DoodleZPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleZPUITests.swift; sourceTree = "<group>"; };
 		847DA7741E44976500F66B61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		847DA7801E4497F500F66B61 /* DoodleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoodleController.swift; sourceTree = "<group>"; };
+		847DA7821E449A7A00F66B61 /* DoodleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoodleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +101,11 @@
 		847DA74E1E44976500F66B61 /* DoodleZP */ = {
 			isa = PBXGroup;
 			children = (
+				847DA7841E449BE000F66B61 /* TemporaryJail */,
+				847DA7801E4497F500F66B61 /* DoodleController.swift */,
+				847DA7821E449A7A00F66B61 /* DoodleView.swift */,
 				847DA74F1E44976500F66B61 /* AppDelegate.swift */,
-				847DA7511E44976500F66B61 /* ViewController.swift */,
 				847DA7531E44976500F66B61 /* Main.storyboard */,
-				847DA7591E44976500F66B61 /* Assets.xcassets */,
-				847DA75B1E44976500F66B61 /* LaunchScreen.storyboard */,
-				847DA75E1E44976500F66B61 /* Info.plist */,
-				847DA7561E44976500F66B61 /* DoodleZP.xcdatamodeld */,
 			);
 			path = DoodleZP;
 			sourceTree = "<group>";
@@ -126,6 +126,17 @@
 				847DA7741E44976500F66B61 /* Info.plist */,
 			);
 			path = DoodleZPUITests;
+			sourceTree = "<group>";
+		};
+		847DA7841E449BE000F66B61 /* TemporaryJail */ = {
+			isa = PBXGroup;
+			children = (
+				847DA7591E44976500F66B61 /* Assets.xcassets */,
+				847DA75B1E44976500F66B61 /* LaunchScreen.storyboard */,
+				847DA75E1E44976500F66B61 /* Info.plist */,
+				847DA7561E44976500F66B61 /* DoodleZP.xcdatamodeld */,
+			);
+			name = TemporaryJail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 				TargetAttributes = {
 					847DA74B1E44976500F66B61 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = QK9R7BPU56;
 						ProvisioningStyle = Automatic;
 					};
 					847DA7621E44976500F66B61 = {
@@ -262,8 +274,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847DA7521E44976500F66B61 /* ViewController.swift in Sources */,
 				847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */,
+				847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */,
+				847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */,
 				847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QK9R7BPU56;
 				INFOPLIST_FILE = DoodleZP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cpu.oleh-liskovych.DoodleZP";
@@ -428,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QK9R7BPU56;
 				INFOPLIST_FILE = DoodleZP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cpu.oleh-liskovych.DoodleZP";
