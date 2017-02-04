@@ -12,10 +12,13 @@ class ToolsPanelButtonStore {
     
     var allButtons = [ToolsPanelButton]()
     
-    func createDummyButton() -> ToolsPanelButton {
-//        let newButton = ToolsPanelButton(random: true) {
-//            
-//        }
+//    var modeOptions = 
+    
+    @discardableResult func createDummyButton() -> ToolsPanelButton {
+        let newButton = ToolsPanelButton(random: true)
+        allButtons.append(newButton)
+        
+        return newButton
     }
     
 }

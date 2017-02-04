@@ -11,9 +11,7 @@ import UIKit
 @IBDesignable
 class DoodleView: UIView {
     
-    func test() {
-        self.removeFromSuperview()
-    }
+    
     
     
     override func willRemoveSubview(_ subview: UIView) {

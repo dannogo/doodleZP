@@ -9,8 +9,55 @@
 import UIKit
 
 class DoodleController: UIViewController {
-
+    
+    /*
+     orientation - in Separated ViewController
+     
+     
+     Universal:
+     - back in history
+     - brush thickness with subpanel
+     - color with subpanel
+     - convert to raster with alert
+     - hand for regular panning active-inactive
+     - grid with subpanel
+     
+     
+     Vector:
+     - step45percent
+     - aligningToPoints
+     - aligningToGridNodes
+     - singleLinePicked
+     - multipleLinesPicked
+     - linePointsEditing
+     - regularPanning
+     - front, back, forward, backward  in singleLinePicked mode
+     
+     
+     Raster:
+     - set background image
+     - eraser
+     
+     
+     
+     While doing every action, record it as a chainLink
+     */
+    
     let toolsPanel: ToolsPanel = ToolsPanel(frame: CGRect.zero)
+    
+    // MARK - Enums
+    enum GraphicMode {
+        case vector, raster
+    }
+    
+    enum VectorModes {
+        case none, step45percent, aligningToPoints, aligningToGridNodes,
+            singleLinePicked, multipleLinesPicked, linePointsEditing, regularPanning
+    }
+    
+    enum RasterModes {
+        case none,
+    }
     
     // MARK: - Override Methods
     override func viewDidLoad() {
