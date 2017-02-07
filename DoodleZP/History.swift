@@ -10,9 +10,15 @@ import Foundation
 
 class History {
     
-    var currentIndex: Int? = nil
+    private var currentIndex: Int? = nil
+    private var history = [ChainLink]()
+    var historyMaxSize = 50
     
-    var history = [ChainLink]()
+    @discardableResult func handleOverflow() -> Int { // Returns number of removed chainlinks
+        
+        
+        return 0
+    }
     
     func appendChainLink(_ chainLink: ChainLink) {
         remove(after: currentIndex)
@@ -20,7 +26,7 @@ class History {
         currentIndex = currentIndex == nil ? 0 : currentIndex! + 1
     }
     
-    func remove(after curIndex: Int?) {
+    private func remove(after curIndex: Int?) {
         if let index = curIndex, index < (history.count - 1) {
             while index < (history.count - 1) {
                 let _ = history.popLast()
@@ -30,20 +36,22 @@ class History {
     
     func revert() -> ChainLink? {
         
-        guard currentIndex != nil else {
+        guard let index = currentIndex else {
             print("Unable to revert in: \(#file) method: \(#function)")
             return nil
         }
-        currentIndex! += 1
+        currentIndex! -= 1
+        return history[index]
     }
     
-    func advance() {
-        guard currentIndex != nil, history.count > 0,
+    func advance() -> ChainLink? {
+        guard let index = currentIndex, history.count > 0,
             (history.count - 1) > currentIndex! else {
             print("Unable to advance in: \(#file) method: \(#function)")
-            return
+            return nil
         }
         currentIndex! += 1
+        return history[index]
     }
     
 }

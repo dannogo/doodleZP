@@ -10,10 +10,18 @@ import Foundation
 
 class ChainLink {
     
-    enum ChangeType {
-        case newVectorLine, newRasterLine, deleteVectorLine, DeleteRasterLine,
-            erase, colorChange, thicknessChange, imageSet,
-            vectorLinePointLocationChange
+    init(transitions : [Transition]) {
+        self.transitions = transitions
     }
+    
+    var transitions: [Transition]
+    
+    enum ChangeType {
+        case newVector, newRaster, deleteVector, DeleteRaster,
+            erase, colorChange, thicknessChange, imageSet,
+            vectorePointLocationChange
+    }
+    
+    
     
 }

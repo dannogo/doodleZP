@@ -21,6 +21,11 @@
 		847DA7AB1E45328000F66B61 /* ToolsPanelButtonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7AA1E45328000F66B61 /* ToolsPanelButtonStore.swift */; };
 		847DA7AE1E455E2B00F66B61 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7AD1E455E2B00F66B61 /* History.swift */; };
 		847DA7B01E455E4600F66B61 /* ChainLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7AF1E455E4600F66B61 /* ChainLink.swift */; };
+		84ADFCFA1E49F14100C91215 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFCF91E49F14100C91215 /* Element.swift */; };
+		84ADFCFC1E49F38500C91215 /* ElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFCFB1E49F38500C91215 /* ElementType.swift */; };
+		84ADFCFF1E49F4F600C91215 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFCFE1E49F4F600C91215 /* Vector.swift */; };
+		84ADFD011E49F7CD00C91215 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFD001E49F7CD00C91215 /* Line.swift */; };
+		84ADFD031E4A033F00C91215 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFD021E4A033F00C91215 /* Transition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		847DA7AA1E45328000F66B61 /* ToolsPanelButtonStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsPanelButtonStore.swift; sourceTree = "<group>"; };
 		847DA7AD1E455E2B00F66B61 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		847DA7AF1E455E4600F66B61 /* ChainLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainLink.swift; sourceTree = "<group>"; };
+		84ADFCF91E49F14100C91215 /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		84ADFCFB1E49F38500C91215 /* ElementType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementType.swift; sourceTree = "<group>"; };
+		84ADFCFE1E49F4F600C91215 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		84ADFD001E49F7CD00C91215 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		84ADFD021E4A033F00C91215 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				847DA7801E4497F500F66B61 /* DoodleController.swift */,
+				84ADFCFD1E49F4D700C91215 /* Elements */,
 				847DA7B11E455E5200F66B61 /* History */,
 				847DA7AC1E45328D00F66B61 /* ToolsPanel files */,
 				847DA7821E449A7A00F66B61 /* DoodleView.swift */,
@@ -174,8 +185,20 @@
 			children = (
 				847DA7AD1E455E2B00F66B61 /* History.swift */,
 				847DA7AF1E455E4600F66B61 /* ChainLink.swift */,
+				84ADFD021E4A033F00C91215 /* Transition.swift */,
 			);
 			name = History;
+			sourceTree = "<group>";
+		};
+		84ADFCFD1E49F4D700C91215 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				84ADFCF91E49F14100C91215 /* Element.swift */,
+				84ADFD001E49F7CD00C91215 /* Line.swift */,
+				84ADFCFB1E49F38500C91215 /* ElementType.swift */,
+				84ADFCFE1E49F4F600C91215 /* Vector.swift */,
+			);
+			name = Elements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,14 +336,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84ADFD031E4A033F00C91215 /* Transition.swift in Sources */,
 				847DA7AB1E45328000F66B61 /* ToolsPanelButtonStore.swift in Sources */,
 				847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */,
 				847DA7B01E455E4600F66B61 /* ChainLink.swift in Sources */,
 				847DA7AE1E455E2B00F66B61 /* History.swift in Sources */,
+				84ADFCFA1E49F14100C91215 /* Element.swift in Sources */,
 				847DA7A91E45305F00F66B61 /* ToolsPanelButton.swift in Sources */,
 				847DA7861E44B60000F66B61 /* ToolsPanel.swift in Sources */,
+				84ADFD011E49F7CD00C91215 /* Line.swift in Sources */,
+				84ADFCFC1E49F38500C91215 /* ElementType.swift in Sources */,
 				847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */,
 				847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */,
+				84ADFCFF1E49F4F600C91215 /* Vector.swift in Sources */,
 				847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

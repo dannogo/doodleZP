@@ -55,9 +55,9 @@ class DoodleController: UIViewController {
             singleLinePicked, multipleLinesPicked, linePointsEditing, regularPanning
     }
     
-    enum RasterModes {
-        case none,
-    }
+//    enum RasterModes {
+//        case none,
+//    }
     
     // MARK: - Override Methods
     override func viewDidLoad() {
