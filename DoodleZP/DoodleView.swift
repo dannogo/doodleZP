@@ -13,14 +13,18 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     var currentStrokes = [NSValue:Element]()
     var finishedStrokes = [Element]()
-    var selectedStrokesIndexes: [Int] = []
-    var selectedPoint: Point? // not sure
-    
-    @IBInspectable var currentLineColor: UIColor = UIColor.red {
+    var selectedStrokesIndexes: [Int] = [] {
         didSet {
-            setNeedsDisplay()
+            if selectedStrokesIndexes.isEmpty {
+                let menu = UIMenuController.shared
+                menu.setMenuVisible(false, animated: true)
+            }
         }
     }
+    var selectedPoint: Point? // not sure
+    
+    var temporaryColor: UIColor = UIColor.blue
+    var temporaryThickness: CGFloat = 8
     
     var moveRecognizer: UIPanGestureRecognizer!
     
@@ -35,6 +39,11 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         moveRecognizer.delegate = self
         moveRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(moveRecognizer)
+    }
+    
+    // MARK: - Delegate Methods
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     // MARK: - GestureRecognizer actions
@@ -62,12 +71,6 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     }
     
     func deleteStrokes(_ sender: UIMenuController) {
-//        if let index = selectedStrokeIndex {
-//            finishedStrokes.remove(at: index)
-//            selectedStrokeIndex = nil
-//            
-//            setNeedsDisplay()
-//        }
         
         for index in selectedStrokesIndexes.sorted(by: >) {
             finishedStrokes.remove(at: index)
@@ -78,6 +81,27 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     func moveLine(_ gestureRecognizer: UIPanGestureRecognizer) {
         
+        guard !selectedStrokesIndexes.isEmpty else {
+            return
+        }
+        
+        if gestureRecognizer.state == .changed {
+            let translation = gestureRecognizer.translation(in: self)
+            for index in selectedStrokesIndexes {
+                if let shape = finishedStrokes[index] as? Vector {
+                    for line in shape.lines {
+                        line.start.point.x += translation.x
+                        line.start.point.y += translation.y
+                        line.end.point.x += translation.x
+                        line.end.point.y += translation.y
+                    }
+                }
+                
+                gestureRecognizer.setTranslation(CGPoint.zero, in: self)
+                
+                setNeedsDisplay()
+            }
+        }
         
     }
     
@@ -148,18 +172,62 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
                     }
                 }
             }
-            
-//            if let index = selectedStrokeIndex {
-//                UIColor(netHex: 0x5DDFFF).setStroke()
-//                let selectedStroke = finishedStrokes[index]
-//                if let shape = selectedStroke as? Vector {
-//                    for line in shape.lines {
-//                        strokeLine(line)
-//                    }
-//                }
-//            }
         }
     }
     
-
+    // MARK: - Touches events
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let newShape = Vector()
+            newShape.createLine(start: Point(location), end: Point(location), color: temporaryColor, thickness: temporaryThickness)
+            
+            let key = NSValue(nonretainedObject: touch)
+            currentStrokes[key] = newShape
+        }
+        setNeedsDisplay()
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        for touch in touches {
+            let key = NSValue(nonretainedObject: touch)
+            if let shape = currentStrokes[key] as? Vector {
+                shape.lines.last?.end.point = touch.location(in: self)
+            }
+        }
+        setNeedsDisplay()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let key = NSValue(nonretainedObject: touch)
+            if let shape = currentStrokes[key] as? Vector {
+                shape.lines.last?.end.point = touch.location(in: self)
+                
+                finishedStrokes.append(shape)
+                currentStrokes.removeValue(forKey: key)
+            }
+        }
+        setNeedsDisplay()
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        currentStrokes.removeAll()
+        setNeedsDisplay()
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

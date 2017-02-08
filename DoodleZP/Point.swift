@@ -15,7 +15,7 @@ class Point: Element {
         self.point = point
     }
     
-    var lines: [NSValue]?
+    var lines: [NSValue?] = []
     var point: CGPoint
     
 }
