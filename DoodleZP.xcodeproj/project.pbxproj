@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84619E281E4B48E000AE4465 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84619E271E4B48E000AE4465 /* Utils.swift */; };
 		847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA74F1E44976500F66B61 /* AppDelegate.swift */; };
 		847DA7551E44976500F66B61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847DA7531E44976500F66B61 /* Main.storyboard */; };
 		847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7561E44976500F66B61 /* DoodleZP.xcdatamodeld */; };
@@ -22,7 +23,6 @@
 		847DA7AE1E455E2B00F66B61 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7AD1E455E2B00F66B61 /* History.swift */; };
 		847DA7B01E455E4600F66B61 /* ChainLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA7AF1E455E4600F66B61 /* ChainLink.swift */; };
 		84ADFCFA1E49F14100C91215 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFCF91E49F14100C91215 /* Element.swift */; };
-		84ADFCFC1E49F38500C91215 /* ElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFCFB1E49F38500C91215 /* ElementType.swift */; };
 		84ADFCFF1E49F4F600C91215 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFCFE1E49F4F600C91215 /* Vector.swift */; };
 		84ADFD011E49F7CD00C91215 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFD001E49F7CD00C91215 /* Line.swift */; };
 		84ADFD031E4A033F00C91215 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFD021E4A033F00C91215 /* Transition.swift */; };
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84619E271E4B48E000AE4465 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		847DA74C1E44976500F66B61 /* DoodleZP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoodleZP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847DA74F1E44976500F66B61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847DA7541E44976500F66B61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		847DA7AD1E455E2B00F66B61 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		847DA7AF1E455E4600F66B61 /* ChainLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainLink.swift; sourceTree = "<group>"; };
 		84ADFCF91E49F14100C91215 /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
-		84ADFCFB1E49F38500C91215 /* ElementType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementType.swift; sourceTree = "<group>"; };
 		84ADFCFE1E49F4F600C91215 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		84ADFD001E49F7CD00C91215 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		84ADFD021E4A033F00C91215 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
@@ -126,6 +126,7 @@
 				847DA7841E449BE000F66B61 /* TemporaryJail */,
 				847DA7871E44B60E00F66B61 /* Doodle */,
 				847DA74F1E44976500F66B61 /* AppDelegate.swift */,
+				84619E271E4B48E000AE4465 /* Utils.swift */,
 				847DA7531E44976500F66B61 /* Main.storyboard */,
 			);
 			path = DoodleZP;
@@ -198,7 +199,6 @@
 				84ADFCF91E49F14100C91215 /* Element.swift */,
 				84ADFD001E49F7CD00C91215 /* Line.swift */,
 				84ADFD041E4A068F00C91215 /* Point.swift */,
-				84ADFCFB1E49F38500C91215 /* ElementType.swift */,
 				84ADFCFE1E49F4F600C91215 /* Vector.swift */,
 			);
 			name = Elements;
@@ -344,11 +344,11 @@
 				847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */,
 				847DA7B01E455E4600F66B61 /* ChainLink.swift in Sources */,
 				847DA7AE1E455E2B00F66B61 /* History.swift in Sources */,
+				84619E281E4B48E000AE4465 /* Utils.swift in Sources */,
 				84ADFCFA1E49F14100C91215 /* Element.swift in Sources */,
 				847DA7A91E45305F00F66B61 /* ToolsPanelButton.swift in Sources */,
 				847DA7861E44B60000F66B61 /* ToolsPanel.swift in Sources */,
 				84ADFD011E49F7CD00C91215 /* Line.swift in Sources */,
-				84ADFCFC1E49F38500C91215 /* ElementType.swift in Sources */,
 				847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */,
 				84ADFD051E4A068F00C91215 /* Point.swift in Sources */,
 				847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */,

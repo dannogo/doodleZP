@@ -9,12 +9,6 @@
 import UIKit
 
 class ToolsPanel: UIView {
-
-    var graphicMode: ModeHandler.GraphicMode? {
-        didSet {
-            // Redraw panel with other available options
-        }
-    }
     
     // Possibly create buttonsStore to handle which buttons are available for different modes
     // vector, raster, selected line/lines, picking points etc
