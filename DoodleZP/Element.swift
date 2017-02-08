@@ -10,5 +10,5 @@ import Foundation
 
 protocol Element {
     
-    var type: ElementType { get }
+//    var type: ElementType { get }
 }

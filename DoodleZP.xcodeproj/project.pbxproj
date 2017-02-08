@@ -26,6 +26,7 @@
 		84ADFCFF1E49F4F600C91215 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFCFE1E49F4F600C91215 /* Vector.swift */; };
 		84ADFD011E49F7CD00C91215 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFD001E49F7CD00C91215 /* Line.swift */; };
 		84ADFD031E4A033F00C91215 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFD021E4A033F00C91215 /* Transition.swift */; };
+		84ADFD051E4A068F00C91215 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADFD041E4A068F00C91215 /* Point.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		84ADFCFE1E49F4F600C91215 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		84ADFD001E49F7CD00C91215 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		84ADFD021E4A033F00C91215 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		84ADFD041E4A068F00C91215 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			children = (
 				84ADFCF91E49F14100C91215 /* Element.swift */,
 				84ADFD001E49F7CD00C91215 /* Line.swift */,
+				84ADFD041E4A068F00C91215 /* Point.swift */,
 				84ADFCFB1E49F38500C91215 /* ElementType.swift */,
 				84ADFCFE1E49F4F600C91215 /* Vector.swift */,
 			);
@@ -347,6 +350,7 @@
 				84ADFD011E49F7CD00C91215 /* Line.swift in Sources */,
 				84ADFCFC1E49F38500C91215 /* ElementType.swift in Sources */,
 				847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */,
+				84ADFD051E4A068F00C91215 /* Point.swift in Sources */,
 				847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */,
 				84ADFCFF1E49F4F600C91215 /* Vector.swift in Sources */,
 				847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */,

@@ -9,10 +9,18 @@
 import Foundation
 import UIKit
 
-struct Line {
-    var start: CGPoint
-    var end: CGPoint
+class Line {
     
+    init(start: Point, end: Point, color: UIColor, thickness: CGFloat) {
+        self.start = start
+        self.end = end
+        self.color = color
+        self.thickness = thickness
+    }
+    
+    var start: Point
+    var end: Point
     var color: UIColor
     var thickness: CGFloat
+    
 }

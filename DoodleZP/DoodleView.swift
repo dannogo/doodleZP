@@ -11,7 +11,15 @@ import UIKit
 @IBDesignable
 class DoodleView: UIView {
     
+    var currentElements = [NSValue:Element]()
+    var finishedElements = [Element]()
+    var selectedElementIndex: Int?
     
+    required init?(coder aDecored: NSCoder) {
+        super.init(coder: aDecored)
+        
+        
+    }
     
     
     override func willRemoveSubview(_ subview: UIView) {

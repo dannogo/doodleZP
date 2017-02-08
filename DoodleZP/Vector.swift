@@ -10,9 +10,7 @@ import Foundation
 
 class Vector: Element {
     
-    var type: ElementType = .vector
     let id = UUID()
-    
     var lines: [Line] = []
     
 }

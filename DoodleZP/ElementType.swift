@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum ElementType {
-    case vector
-    case raster
-}
+//enum ElementType {
+//    case vector
+//    case raster
+//    case point
+//}
