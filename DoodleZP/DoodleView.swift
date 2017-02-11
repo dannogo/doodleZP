@@ -154,29 +154,31 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
                     strokeLine(line)
                 }
             }
+        }
+        
+        for (_, element) in currentStrokes {
+            if let vector = element as? Vector, let line = vector.lines.last {
+                line.color.withAlphaComponent(0.5).setStroke()
+                strokeLine(line)
+            }
             
-            for (_, element) in currentStrokes {
-                if let vector = element as? Vector, let line = vector.lines.last {
-                    
-                    line.color.withAlphaComponent(0.7).setStroke()
+        }
+        
+        for index in selectedStrokesIndexes {
+            UIColor(netHex: 0x5DDFFF).setStroke()
+            let selectedStroke = finishedStrokes[index]
+            if let shape = selectedStroke as? Vector {
+                for line in shape.lines {
                     strokeLine(line)
                 }
             }
-            
-            for index in selectedStrokesIndexes {
-                UIColor(netHex: 0x5DDFFF).setStroke()
-                let selectedStroke = finishedStrokes[index]
-                if let shape = selectedStroke as? Vector {
-                    for line in shape.lines {
-                        strokeLine(line)
-                    }
-                }
-            }
         }
+        
     }
     
     // MARK: - Touches events
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         for touch in touches {
             let location = touch.location(in: self)
             let newShape = Vector()

@@ -12,7 +12,7 @@ class ToolsPanel: UIView {
     
     // Possibly create buttonsStore to handle which buttons are available for different modes
     // vector, raster, selected line/lines, picking points etc
-    let buttons = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    var buttons = [ToolsPanelButton]()
     
     // Possibly make separated UIView subclass for ToolsPanel buttons
     struct ToolButton {
@@ -42,6 +42,19 @@ class ToolsPanel: UIView {
         let screenSideSize = orientation.isPortrait ? windowFrame.width : windowFrame.height
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
         print("\(buttonsInRow) size: \(buttonSize)")
+        
+        for _ in 0 ..< 10 {
+            buttons.append(ToolsPanelButton(random: true))
+        }
+        
+        let stackView = UIStackView(arrangedSubviews: buttons)
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 5
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(stackView)
+        
     }
     
     // Move calling this method somewhere else in order to execure it only once
