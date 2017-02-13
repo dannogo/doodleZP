@@ -12,9 +12,9 @@ class ToolsPanelButtonStore {
     
     var allButtons = [ToolsPanelButton]()
     
-    enum State {
-        DrawingStroke, PickingStrokes, EditingPoints
-    }
+//    enum State {
+//        DrawingStroke, PickingStrokes, EditingPoints
+//    }
     
 //    var modeOptions = 
     

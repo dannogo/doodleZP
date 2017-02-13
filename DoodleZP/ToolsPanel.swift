@@ -14,24 +14,26 @@ class ToolsPanel: UIView {
     // vector, raster, selected line/lines, picking points etc
     var buttons = [ToolsPanelButton]()
     
-    // Possibly make separated UIView subclass for ToolsPanel buttons
-    struct ToolButton {
-        let hint: String
-        let icon: UIImage?
-        let action: () -> ()?
-        let state: ToolButtonState = .normal
-        
-        enum ToolButtonState {
-            case normal, pressed, inactive
-        }
-    }
+    
+    
+//    // Possibly make separated UIView subclass for ToolsPanel buttons
+//    struct ToolButton {
+//        let hint: String
+//        let icon: UIImage?
+//        let action: () -> ()?
+//        let state: ToolButtonState = .normal
+//        
+//        enum ToolButtonState {
+//            case normal, pressed, inactive
+//        }
+//    }
     
     var orientation: UIInterfaceOrientation = .portrait {
         didSet {
             // Redraw panel in new place
             
             
-            buildPanelViewHierarchy()
+//            buildPanelViewHierarchy()
             
         }
     }
@@ -54,7 +56,7 @@ class ToolsPanel: UIView {
         stackView.spacing = 5
         stackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(stackView)
-        
+        self.sizeToFit()
     }
     
     // Move calling this method somewhere else in order to execure it only once

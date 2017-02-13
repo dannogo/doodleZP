@@ -43,7 +43,9 @@ class DoodleController: UIViewController {
      While doing every action, record it as a chainLink
      */
     
-    let toolsPanel: ToolsPanel = ToolsPanel(frame: CGRect.zero)
+
+    let toolsPanel: ToolsPanel = ToolsPanel(frame: CGRect(x: 20, y: 20, width: 150, height: 150))
+    
     
     // MARK - Enums
     enum GraphicMode {
@@ -62,7 +64,9 @@ class DoodleController: UIViewController {
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
+        toolsPanel.backgroundColor = UIColor.gray
         // Do any additional setup after loading the view.
     }
 
