@@ -44,7 +44,8 @@ class DoodleController: UIViewController {
      */
     
 
-    let toolsPanel: ToolsPanel = ToolsPanel(frame: CGRect(x: 20, y: 20, width: 150, height: 150))
+//    let toolsPanel: ToolsPanel = ToolsPanel(frame: CGRect(x: 20, y: 20, width: 150, height: 150))
+    let toolsPanel: ToolsPanel = ToolsPanel()
     
     
     // MARK - Enums
@@ -68,6 +69,7 @@ class DoodleController: UIViewController {
         toolsPanel.orientation = .portrait
         toolsPanel.backgroundColor = UIColor.gray
         // Do any additional setup after loading the view.
+        toolsPanel.layer.backgroundColor = UIColor.red.cgColor
     }
 
     override func didReceiveMemoryWarning() {

@@ -14,20 +14,6 @@ class ToolsPanel: UIView {
     // vector, raster, selected line/lines, picking points etc
     var buttons = [ToolsPanelButton]()
     
-    
-    
-//    // Possibly make separated UIView subclass for ToolsPanel buttons
-//    struct ToolButton {
-//        let hint: String
-//        let icon: UIImage?
-//        let action: () -> ()?
-//        let state: ToolButtonState = .normal
-//        
-//        enum ToolButtonState {
-//            case normal, pressed, inactive
-//        }
-//    }
-    
     var orientation: UIInterfaceOrientation = .portrait {
         didSet {
             // Redraw panel in new place
@@ -38,6 +24,36 @@ class ToolsPanel: UIView {
         }
     }
     
+    override func willMove(toSuperview newSuperview: UIView?) {
+        buildPanelViewHierarchy()
+        
+    }
+    
+    override func didMoveToWindow() {
+        resizeToFitSubviews()
+        self.layer.backgroundColor = UIColor.red.cgColor
+    }
+    
+    private func resizeToFitSubviews() {
+        var width: CGFloat = 0
+        var height: CGFloat = 0
+        var originX: CGFloat = 0
+        var originY: CGFloat = 0
+        
+        for subview in self.subviews {
+            originX = min(subview.frame.origin.x, originX)
+            originY = min(subview.frame.origin.y, originY)
+            let subWidth = subview.frame.origin.x + subview.frame.size.width
+            let subHeight = subview.frame.origin.y + subview.frame.size.height
+            width = max(subWidth, width)
+            height = max(subHeight, height)
+            
+        }
+        
+        self.frame = CGRect(x: originX, y: originY, width: width, height: height)
+        
+    }
+    
     func buildPanelViewHierarchy() {
         
         let windowFrame = UIApplication.shared.delegate!.window!!.frame
@@ -46,7 +62,10 @@ class ToolsPanel: UIView {
         print("\(buttonsInRow) size: \(buttonSize)")
         
         for _ in 0 ..< 10 {
-            buttons.append(ToolsPanelButton(random: true))
+            let btn = ToolsPanelButton(random: true)
+            btn.layer.borderWidth = 0.5
+            btn.layer.borderColor = UIColor.green.cgColor
+            buttons.append(btn)
         }
         
         let stackView = UIStackView(arrangedSubviews: buttons)
@@ -57,6 +76,8 @@ class ToolsPanel: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(stackView)
         self.sizeToFit()
+        setNeedsLayout()
+        
     }
     
     // Move calling this method somewhere else in order to execure it only once
