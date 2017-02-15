@@ -65,6 +65,7 @@ class DoodleController: UIViewController {
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
         toolsPanel.backgroundColor = UIColor.gray
