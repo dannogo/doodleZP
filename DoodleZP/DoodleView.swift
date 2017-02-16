@@ -28,9 +28,21 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     var moveRecognizer: UIPanGestureRecognizer!
     
+    init() {
+        super.init(frame: CGRect.zero)
+        applyGestureRecognizers()
+        
+        self.backgroundColor = UIColor.yellow
+    }
+    
     required init?(coder aDecored: NSCoder) {
         super.init(coder: aDecored)
+        applyGestureRecognizers()
         
+        self.backgroundColor = UIColor.yellow
+    }
+    
+    func applyGestureRecognizers() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(DoodleView.tap(_:)))
         tapRecognizer.delaysTouchesBegan = true
         addGestureRecognizer(tapRecognizer)
@@ -40,6 +52,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         moveRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(moveRecognizer)
     }
+    
     
     // MARK: - Delegate Methods
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {

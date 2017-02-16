@@ -126,6 +126,7 @@
 				847DA7841E449BE000F66B61 /* TemporaryJail */,
 				847DA7871E44B60E00F66B61 /* Doodle */,
 				847DA74F1E44976500F66B61 /* AppDelegate.swift */,
+				847DA7821E449A7A00F66B61 /* DoodleView.swift */,
 				84619E271E4B48E000AE4465 /* Utils.swift */,
 				847DA7531E44976500F66B61 /* Main.storyboard */,
 			);
@@ -168,7 +169,6 @@
 				84ADFCFD1E49F4D700C91215 /* Elements */,
 				847DA7B11E455E5200F66B61 /* History */,
 				847DA7AC1E45328D00F66B61 /* ToolsPanel files */,
-				847DA7821E449A7A00F66B61 /* DoodleView.swift */,
 			);
 			name = Doodle;
 			sourceTree = "<group>";

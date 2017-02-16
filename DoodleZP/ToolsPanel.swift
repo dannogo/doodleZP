@@ -20,6 +20,7 @@ class ToolsPanel: UIView {
         stack.alignment = .fill
         stack.spacing = 2
         stack.translatesAutoresizingMaskIntoConstraints = false
+        print("stack.isUserInteractionEnabled: \(stack.isUserInteractionEnabled)")
         return stack
     }()
     
@@ -33,6 +34,11 @@ class ToolsPanel: UIView {
         }
     }
     
+    // MARK: - Overriden Methods
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
     override func willMove(toSuperview newSuperview: UIView?) {
         buildPanelViewHierarchy()
         resizeToFitSubviews()
@@ -41,7 +47,8 @@ class ToolsPanel: UIView {
     }
     
     override func didMoveToSuperview() {
-        self.frame.origin.y = self.superview!.frame.height - self.frame.height
+//        self.frame.origin.y = self.superview!.frame.height - self.frame.height
+        print("toolspanel.isUserInteractionEnabled: \(self.isUserInteractionEnabled)")
     }
     
     // Try to make it with constraints
@@ -65,35 +72,51 @@ class ToolsPanel: UIView {
         
     }
     
+    func btnTap () {
+        print("btn Tap")
+    }
+    
     func buildPanelViewHierarchy() {
         
         self.addSubview(mainStack)
-        
+    
         let windowFrame = UIApplication.shared.delegate!.window!!.frame
         let screenSideSize = orientation.isPortrait ? windowFrame.width : windowFrame.height
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
         print("\(buttonsInRow) size: \(buttonSize)")
         
-        for _ in 0 ..< 14 {
+        for _ in 0 ..< 21 {
             let btn = ToolsPanelButton(random: true)
+            btn.setTitle(btn.hint, for: .normal)
+//            let size = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
+//            btn.frame.size.height = buttonSize
+//            btn.frame.size.width = buttonSize
+//            btn.frame = size
+            btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
             btn.layer.borderWidth = 1.0
             btn.layer.borderColor = UIColor.blue.cgColor
+            btn.layer.backgroundColor = UIColor.gray.cgColor
             buttons.append(btn)
         }
         
         let rows = splitButtonsArray(givenArray: buttons, buttonsInRow: buttonsInRow)
         
-        for row in rows {
+        
+        for row in rows.reversed() {
             let stackView = UIStackView(arrangedSubviews: row)
             stackView.axis = .horizontal
-            stackView.distribution = .fillEqually
-            stackView.alignment = .fill
+            stackView.distribution = .fill
+            stackView.alignment = .leading
             stackView.spacing = 2
             stackView.translatesAutoresizingMaskIntoConstraints = false
-            self.mainStack.addSubview(stackView)
+//            self.mainStack.addArrangedSubview(stackView)
+            self.mainStack.insertArrangedSubview(stackView, at: 0)
+            print("mainStack.isUserInteractionEnabled: \(mainStack.isUserInteractionEnabled)")
+            
         }
         
-        
+        print("rows.count: \(mainStack.arrangedSubviews.count)")
+        print("elements in first row: \((mainStack.arrangedSubviews.first as! UIStackView).arrangedSubviews.count)")
 //        self.sizeToFit()
         setNeedsLayout()
         layoutIfNeeded()
@@ -108,16 +131,19 @@ class ToolsPanel: UIView {
         for rowIndex in 1...rowsNumber {
             
             var newRow = [ToolsPanelButton]()
-            
             let startPosition = (rowIndex-1) * buttonsInRow
             let endPosition = rowIndex * buttonsInRow
-            print("row: \(rowIndex)")
+//            print("row: \(rowIndex)")
             
             for elementIndex in startPosition..<endPosition {
-                print("elementIndex: \(elementIndex)")
+//                print("elementIndex: \(elementIndex)")
                 
                 guard elementIndex < givenArray.count else {
-                    break
+                    let btn = ToolsPanelButton(random: true)
+                    btn.layer.borderWidth = 1.0
+                    btn.layer.borderColor = UIColor.gray.cgColor
+                    newRow.append(btn)
+                    continue
                 }
                 
                 newRow.append(givenArray[elementIndex])

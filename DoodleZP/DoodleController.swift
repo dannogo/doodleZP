@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class DoodleController: UIViewController {
     
     /*
@@ -42,11 +44,10 @@ class DoodleController: UIViewController {
      
      While doing every action, record it as a chainLink
      */
-    
 
-//    let toolsPanel: ToolsPanel = ToolsPanel(frame: CGRect(x: 20, y: 20, width: 150, height: 150))
-    let toolsPanel: ToolsPanel = ToolsPanel()
     
+    let toolsPanel: ToolsPanel = ToolsPanel()
+    var doodleView = DoodleView()
     
     // MARK - Enums
     enum GraphicMode {
@@ -58,13 +59,25 @@ class DoodleController: UIViewController {
             singleLinePicked, multipleLinesPicked, linePointsEditing, regularPanning
     }
     
-//    enum RasterModes {
-//        case none,
-//    }
+    func btnTap() {
+        print("tap")
+    }
     
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let btn = ToolsPanelButton(random: true)
+        btn.setTitle("HUY!", for: .normal)
+        let size = CGRect(x: 200, y: 300, width: 50, height: 50)
+        //            btn.frame.size.height = buttonSize
+        //            btn.frame.size.width = buttonSize
+        btn.frame = size
+        btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
+        btn.layer.borderWidth = 1.0
+        btn.layer.borderColor = UIColor.blue.cgColor
+        btn.layer.backgroundColor = UIColor.gray.cgColor
+        self.view.addSubview(btn)
         
         self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
