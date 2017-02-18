@@ -76,7 +76,46 @@ class ToolsPanel: UIView {
         print("btn Tap")
     }
     
+    private func getPositionConstraintsForButtonInRow(for button: ToolsPanelButton,
+        in row: UIView, with margin: CGFloat)
+        -> (leading: NSLayoutConstraint, top: NSLayoutConstraint) {
+            let leadingConstraint = button.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: margin)
+            let topConstraint = button.topAnchor.constraint(equalTo: row.topAnchor, constant: margin)
+            return (leadingConstraint, topConstraint)
+    }
+    
+    private func setConstraints (for button: ToolsPanelButton,
+            in row: UIView, sideLength: CGFloat, margin: CGFloat = 0) {
+        let  widthConstraint = NSLayoutConstraint(item: button,
+                attribute: NSLayoutAttribute.width,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: nil,
+                attribute: NSLayoutAttribute.notAnAttribute,
+                multiplier: 1,
+                constant: sideLength)
+        let heightConstant = NSLayoutConstraint(item: button,
+                attribute: NSLayoutAttribute.width,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: nil,
+                attribute: NSLayoutAttribute.notAnAttribute,
+                multiplier: 1,
+                constant: sideLength)
+        
+        button.addConstraint(widthConstraint)
+        button.addConstraint(heightConstant)
+        
+        let positionConstraints = getPositionConstraintsForButtonInRow(for: button, in: row, with: margin)
+        
+        button.addConstraint(positionConstraints.leading)
+        button.addConstraint(positionConstraints.top)
+        
+        positionConstraints.leading.isActive = true
+        positionConstraints.top.isActive = true
+        
+    }
+    
     func buildPanelViewHierarchy() {
+        
         
         self.addSubview(mainStack)
     
@@ -89,8 +128,8 @@ class ToolsPanel: UIView {
             let btn = ToolsPanelButton(random: true)
             btn.setTitle(btn.hint, for: .normal)
 //            let size = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
-//            btn.frame.size.height = buttonSize
-//            btn.frame.size.width = buttonSize
+            btn.bounds.size.height = buttonSize
+            btn.bounds.size.width = buttonSize
 //            btn.frame = size
             btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
             btn.layer.borderWidth = 1.0
@@ -103,6 +142,14 @@ class ToolsPanel: UIView {
         
         
         for row in rows.reversed() {
+            
+            let rowContainer = UIView(frame: CGRect.zero)
+            for item in row {
+                rowContainer.addSubview(item)
+                item.setC
+                
+            }
+            
             let stackView = UIStackView(arrangedSubviews: row)
             stackView.axis = .horizontal
             stackView.distribution = .fill
