@@ -28,6 +28,7 @@ class ToolsPanelButton: UIButton {
         } else {
             self.init(frame: CGRect.zero, hint: "")
         }
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,14 +39,14 @@ class ToolsPanelButton: UIButton {
     // MARK: - Constraints Methods
     private func getPositionConstraintsForButtonInRow(with margin: CGFloat)
         -> (leading: NSLayoutConstraint, top: NSLayoutConstraint) {
-            let viewToAttachTo: UIView
+            let anchorToAttachTo: NSLayoutXAxisAnchor
             if self.superview!.subviews.count == 0{
-                viewToAttachTo = self.superview!
+                anchorToAttachTo = self.superview!.leadingAnchor
             } else {
-                viewToAttachTo = self.superview!.subviews[self.superview!.subviews.count - 1]
+                anchorToAttachTo = self.superview!.subviews[self.superview!.subviews.count - 1].trailingAnchor
             }
             
-            let leadingConstraint = self.leadingAnchor.constraint(equalTo: viewToAttachTo.leadingAnchor, constant: margin)
+            let leadingConstraint = self.leadingAnchor.constraint(equalTo: anchorToAttachTo, constant: margin)
             let topConstraint = self.topAnchor.constraint(equalTo: self.superview!.topAnchor, constant: margin)
             return (leadingConstraint, topConstraint)
     }
@@ -59,7 +60,7 @@ class ToolsPanelButton: UIButton {
                 multiplier: 1,
                 constant: sideLength)
         let heightConstant = NSLayoutConstraint(item: self,
-                attribute: NSLayoutAttribute.width,
+                attribute: NSLayoutAttribute.height,
                 relatedBy: NSLayoutRelation.equal,
                 toItem: nil,
                 attribute: NSLayoutAttribute.notAnAttribute,

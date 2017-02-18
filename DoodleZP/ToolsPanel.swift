@@ -13,17 +13,6 @@ class ToolsPanel: UIView {
     // Possibly create buttonsStore to handle which buttons are available for different modes
     // vector, raster, selected line/lines, picking points etc
     var buttons = [ToolsPanelButton]()
-    let mainStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.alignment = .fill
-        stack.spacing = 2
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        print("stack.isUserInteractionEnabled: \(stack.isUserInteractionEnabled)")
-        return stack
-    }()
-    
     
     var orientation: UIInterfaceOrientation = .portrait {
         didSet {
@@ -40,7 +29,6 @@ class ToolsPanel: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        
 //        resizeToFitSubviews()
 //        self.layer.backgroundColor = UIColor.yellow.cgColor
         
@@ -79,14 +67,16 @@ class ToolsPanel: UIView {
     func buildPanelViewHierarchy() {
         
         
-        self.addSubview(mainStack)
+//        self.addSubview(mainStack)
+//        let panelLeadingConstraint = self.s
+        
     
         let windowFrame = UIApplication.shared.delegate!.window!!.frame
         let screenSideSize = orientation.isPortrait ? windowFrame.width : windowFrame.height
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
         print("\(buttonsInRow) size: \(buttonSize)")
         
-        for _ in 0 ..< 8 {
+        for _ in 0 ..< 24 {
             let btn = ToolsPanelButton(random: true)
             btn.setTitle(btn.hint, for: .normal)
 //            let size = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
@@ -102,14 +92,19 @@ class ToolsPanel: UIView {
         
         let rows = splitButtonsArray(givenArray: buttons, buttonsInRow: buttonsInRow)
         
+        self.backgroundColor = UIColor.green
         
-        for row in rows.reversed() {
+        for row in rows {
             
             let rowContainer = UIView(frame: CGRect(x: 0, y: 0, width: screenSideSize, height: buttonSize * 3))
+            self.addSubview(rowContainer)
+            
+            let leadingConstraint = rowContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+//            let topConstraint = row
             
             
             rowContainer.bounds.size.width = screenSideSize
-            rowContainer.bounds.size.height = buttonSize * 3
+            rowContainer.bounds.size.height = buttonSize
             rowContainer.backgroundColor = UIColor.red
             
             for item in row {
@@ -118,15 +113,16 @@ class ToolsPanel: UIView {
                 
             }
             
-            self.mainStack.insertArrangedSubview(rowContainer, at: 0)
+//            self.mainStack.insertArrangedSubview(rowContainer, at: 0)
+//            self.addSubview(rowContainer)
             
         }
         
-        print("rows.count: \(mainStack.arrangedSubviews.count)")
-        print("elements in first row: \(mainStack.arrangedSubviews.first?.subviews.count)")
+        print("rows.count: \(self.subviews.count)")
+        print("elements in first row: \(self.subviews.first?.subviews.count)")
 //        self.sizeToFit()
         setNeedsLayout()
-//        layoutIfNeeded()
+        layoutIfNeeded()
     }
     
     func splitButtonsArray(givenArray: [ToolsPanelButton], buttonsInRow: Int) -> [[ToolsPanelButton]] {
