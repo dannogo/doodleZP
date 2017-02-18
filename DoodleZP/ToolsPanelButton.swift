@@ -34,24 +34,31 @@ class ToolsPanelButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func getPositionConstraintsForButtonInRow(for button: ToolsPanelButton,
-                                                      in row: UIView, with margin: CGFloat)
+    
+    // MARK: - Constraints Methods
+    private func getPositionConstraintsForButtonInRow(with margin: CGFloat)
         -> (leading: NSLayoutConstraint, top: NSLayoutConstraint) {
-            let leadingConstraint = button.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: margin)
-            let topConstraint = button.topAnchor.constraint(equalTo: row.topAnchor, constant: margin)
+            let viewToAttachTo: UIView
+            if self.superview!.subviews.count == 0{
+                viewToAttachTo = self.superview!
+            } else {
+                viewToAttachTo = self.superview!.subviews[self.superview!.subviews.count - 1]
+            }
+            
+            let leadingConstraint = self.leadingAnchor.constraint(equalTo: viewToAttachTo.leadingAnchor, constant: margin)
+            let topConstraint = self.topAnchor.constraint(equalTo: self.superview!.topAnchor, constant: margin)
             return (leadingConstraint, topConstraint)
     }
     
-    private func setConstraints (for button: ToolsPanelButton,
-                                 in row: UIView, sideLength: CGFloat, margin: CGFloat = 0) {
-        let  widthConstraint = NSLayoutConstraint(item: button,
+    internal func setConstraints (sideLength: CGFloat, margin: CGFloat = 0) {
+        let  widthConstraint = NSLayoutConstraint(item: self,
                 attribute: NSLayoutAttribute.width,
                 relatedBy: NSLayoutRelation.equal,
                 toItem: nil,
                 attribute: NSLayoutAttribute.notAnAttribute,
                 multiplier: 1,
                 constant: sideLength)
-        let heightConstant = NSLayoutConstraint(item: button,
+        let heightConstant = NSLayoutConstraint(item: self,
                 attribute: NSLayoutAttribute.width,
                 relatedBy: NSLayoutRelation.equal,
                 toItem: nil,
@@ -59,16 +66,19 @@ class ToolsPanelButton: UIButton {
                 multiplier: 1,
                 constant: sideLength)
         
-        button.addConstraint(widthConstraint)
-        button.addConstraint(heightConstant)
+        self.addConstraint(widthConstraint)
+        self.addConstraint(heightConstant)
         
-        let positionConstraints = getPositionConstraintsForButtonInRow(for: button, in: row, with: margin)
+        widthConstraint.isActive = true  // not sure
+        heightConstant.isActive = true  // not sure
         
-        button.addConstraint(positionConstraints.leading)
-        button.addConstraint(positionConstraints.top)
-        
+        let positionConstraints = getPositionConstraintsForButtonInRow(with: margin)
+//
+        self.addConstraint(positionConstraints.leading)
+//        self.addConstraint(positionConstraints.top)
+//
         positionConstraints.leading.isActive = true
-        positionConstraints.top.isActive = true
+//        positionConstraints.top.isActive = true
         
     }
 

@@ -40,15 +40,15 @@ class ToolsPanel: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        buildPanelViewHierarchy()
-        resizeToFitSubviews()
-        self.layer.backgroundColor = UIColor.yellow.cgColor
+        
+//        resizeToFitSubviews()
+//        self.layer.backgroundColor = UIColor.yellow.cgColor
         
     }
     
     override func didMoveToSuperview() {
 //        self.frame.origin.y = self.superview!.frame.height - self.frame.height
-        print("toolspanel.isUserInteractionEnabled: \(self.isUserInteractionEnabled)")
+        buildPanelViewHierarchy()
     }
     
     // Try to make it with constraints
@@ -76,44 +76,6 @@ class ToolsPanel: UIView {
         print("btn Tap")
     }
     
-    private func getPositionConstraintsForButtonInRow(for button: ToolsPanelButton,
-        in row: UIView, with margin: CGFloat)
-        -> (leading: NSLayoutConstraint, top: NSLayoutConstraint) {
-            let leadingConstraint = button.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: margin)
-            let topConstraint = button.topAnchor.constraint(equalTo: row.topAnchor, constant: margin)
-            return (leadingConstraint, topConstraint)
-    }
-    
-    private func setConstraints (for button: ToolsPanelButton,
-            in row: UIView, sideLength: CGFloat, margin: CGFloat = 0) {
-        let  widthConstraint = NSLayoutConstraint(item: button,
-                attribute: NSLayoutAttribute.width,
-                relatedBy: NSLayoutRelation.equal,
-                toItem: nil,
-                attribute: NSLayoutAttribute.notAnAttribute,
-                multiplier: 1,
-                constant: sideLength)
-        let heightConstant = NSLayoutConstraint(item: button,
-                attribute: NSLayoutAttribute.width,
-                relatedBy: NSLayoutRelation.equal,
-                toItem: nil,
-                attribute: NSLayoutAttribute.notAnAttribute,
-                multiplier: 1,
-                constant: sideLength)
-        
-        button.addConstraint(widthConstraint)
-        button.addConstraint(heightConstant)
-        
-        let positionConstraints = getPositionConstraintsForButtonInRow(for: button, in: row, with: margin)
-        
-        button.addConstraint(positionConstraints.leading)
-        button.addConstraint(positionConstraints.top)
-        
-        positionConstraints.leading.isActive = true
-        positionConstraints.top.isActive = true
-        
-    }
-    
     func buildPanelViewHierarchy() {
         
         
@@ -124,7 +86,7 @@ class ToolsPanel: UIView {
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
         print("\(buttonsInRow) size: \(buttonSize)")
         
-        for _ in 0 ..< 21 {
+        for _ in 0 ..< 8 {
             let btn = ToolsPanelButton(random: true)
             btn.setTitle(btn.hint, for: .normal)
 //            let size = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
@@ -143,30 +105,28 @@ class ToolsPanel: UIView {
         
         for row in rows.reversed() {
             
-            let rowContainer = UIView(frame: CGRect.zero)
+            let rowContainer = UIView(frame: CGRect(x: 0, y: 0, width: screenSideSize, height: buttonSize * 3))
+            
+            
+            rowContainer.bounds.size.width = screenSideSize
+            rowContainer.bounds.size.height = buttonSize * 3
+            rowContainer.backgroundColor = UIColor.red
+            
             for item in row {
                 rowContainer.addSubview(item)
-                item.setC
+                item.setConstraints(sideLength: buttonSize)
                 
             }
             
-            let stackView = UIStackView(arrangedSubviews: row)
-            stackView.axis = .horizontal
-            stackView.distribution = .fill
-            stackView.alignment = .leading
-            stackView.spacing = 2
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-//            self.mainStack.addArrangedSubview(stackView)
-            self.mainStack.insertArrangedSubview(stackView, at: 0)
-            print("mainStack.isUserInteractionEnabled: \(mainStack.isUserInteractionEnabled)")
+            self.mainStack.insertArrangedSubview(rowContainer, at: 0)
             
         }
         
         print("rows.count: \(mainStack.arrangedSubviews.count)")
-        print("elements in first row: \((mainStack.arrangedSubviews.first as! UIStackView).arrangedSubviews.count)")
+        print("elements in first row: \(mainStack.arrangedSubviews.first?.subviews.count)")
 //        self.sizeToFit()
         setNeedsLayout()
-        layoutIfNeeded()
+//        layoutIfNeeded()
     }
     
     func splitButtonsArray(givenArray: [ToolsPanelButton], buttonsInRow: Int) -> [[ToolsPanelButton]] {
