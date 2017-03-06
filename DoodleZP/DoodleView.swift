@@ -32,6 +32,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         super.init(frame: CGRect.zero)
         applyGestureRecognizers()
         
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor.yellow
     }
     

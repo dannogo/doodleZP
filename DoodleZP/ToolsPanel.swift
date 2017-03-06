@@ -17,7 +17,6 @@ class ToolsPanel: UIView {
     var orientation: UIInterfaceOrientation = .portrait {
         didSet {
             // Redraw panel in new place
-            
 //            buildPanelViewHierarchy()
             
         }
@@ -28,48 +27,24 @@ class ToolsPanel: UIView {
         return true
     }
     
-    override func willMove(toSuperview newSuperview: UIView?) {
-//        resizeToFitSubviews()
-//        self.layer.backgroundColor = UIColor.yellow.cgColor
-        
-    }
-    
     override func didMoveToSuperview() {
-//        self.frame.origin.y = self.superview!.frame.height - self.frame.height
+        self.backgroundColor = UIColor.green
+        NSLayoutConstraint.activate([
+            self.leadingAnchor.constraint(equalTo: self.superview!.leadingAnchor),
+            self.trailingAnchor.constraint(equalTo: self.superview!.trailingAnchor),
+            self.bottomAnchor.constraint(equalTo: self.superview!.bottomAnchor),
+//            self.heightAnchor.constraint(equalToConstant: 200)
+            ])
+        
         buildPanelViewHierarchy()
     }
     
-    // Try to make it with constraints
-    private func resizeToFitSubviews() {
-        var width: CGFloat = 0
-        var height: CGFloat = 0
-        var originX: CGFloat = 0
-        var originY: CGFloat = 0
-        
-        for subview in self.subviews {
-            originX = min(subview.frame.origin.x, originX)
-            originY = min(subview.frame.origin.y, originY)
-            let subWidth = subview.frame.origin.x + subview.frame.size.width
-            let subHeight = subview.frame.origin.y + subview.frame.size.height
-            width = max(subWidth, width)
-            height = max(subHeight, height)
-            
-        }
-        
-        self.frame = CGRect(x: originX, y: originY, width: width, height: height)
-        
-    }
     
     func btnTap () {
         print("btn Tap")
     }
     
     func buildPanelViewHierarchy() {
-        
-        
-//        self.addSubview(mainStack)
-//        let panelLeadingConstraint = self.s
-        
     
         let windowFrame = UIApplication.shared.delegate!.window!!.frame
         let screenSideSize = orientation.isPortrait ? windowFrame.width : windowFrame.height
@@ -79,10 +54,6 @@ class ToolsPanel: UIView {
         for _ in 0 ..< 24 {
             let btn = ToolsPanelButton(random: true)
             btn.setTitle(btn.hint, for: .normal)
-//            let size = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
-            btn.bounds.size.height = buttonSize
-            btn.bounds.size.width = buttonSize
-//            btn.frame = size
             btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
             btn.layer.borderWidth = 1.0
             btn.layer.borderColor = UIColor.blue.cgColor
@@ -94,28 +65,57 @@ class ToolsPanel: UIView {
         
         self.backgroundColor = UIColor.green
         
-        for row in rows {
-            
-            let rowContainer = UIView(frame: CGRect(x: 0, y: 0, width: screenSideSize, height: buttonSize * 3))
+        var rowContainer: UIView
+        
+        for (i, row) in rows.enumerated() {
+        
+            rowContainer = UIView()
+            rowContainer.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(rowContainer)
             
-            let leadingConstraint = rowContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor)
-//            let topConstraint = row
+            let colo: UIColor
             
+            var topAnchorConstraint: NSLayoutConstraint
+            switch i {
+            case 0:
+                colo = UIColor.cyan
+            case 1:
+                colo = UIColor.blue
+            case 2:
+                colo = UIColor.brown
+            case 3:
+                colo = UIColor.red
+            default:
+                colo = UIColor.gray
+            }
+            rowContainer.backgroundColor = colo
             
-            rowContainer.bounds.size.width = screenSideSize
-            rowContainer.bounds.size.height = buttonSize
-            rowContainer.backgroundColor = UIColor.red
+            if i == 0 {
+                topAnchorConstraint = rowContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            } else {
+                topAnchorConstraint = rowContainer.bottomAnchor.constraint(equalTo: self.subviews[i-1].topAnchor)
+            }
             
+            NSLayoutConstraint.activate([
+                topAnchorConstraint,
+                rowContainer.leadingAnchor.constraint(equalTo: self.superview!.leadingAnchor),
+                rowContainer.trailingAnchor.constraint(equalTo: self.superview!.trailingAnchor),
+                rowContainer.heightAnchor.constraint(equalToConstant: buttonSize)
+            ])
+                
+                
             for item in row {
                 rowContainer.addSubview(item)
+                item.translatesAutoresizingMaskIntoConstraints = false
                 item.setConstraints(sideLength: buttonSize)
                 
             }
             
-//            self.mainStack.insertArrangedSubview(rowContainer, at: 0)
-//            self.addSubview(rowContainer)
-            
+            if i == rows.count-1 {
+                NSLayoutConstraint.activate([
+                    self.topAnchor.constraint(equalTo: rowContainer.topAnchor)
+                    ])
+            }
         }
         
         print("rows.count: \(self.subviews.count)")
@@ -123,6 +123,15 @@ class ToolsPanel: UIView {
 //        self.sizeToFit()
         setNeedsLayout()
         layoutIfNeeded()
+    }
+    
+    func getRandomColor() -> UIColor{
+        //Generate between 0 to 1
+        let red:CGFloat = CGFloat(drand48())
+        let green:CGFloat = CGFloat(drand48())
+        let blue:CGFloat = CGFloat(drand48())
+        
+        return UIColor(red:red, green: green, blue: blue, alpha: 1.0)
     }
     
     func splitButtonsArray(givenArray: [ToolsPanelButton], buttonsInRow: Int) -> [[ToolsPanelButton]] {
@@ -136,10 +145,8 @@ class ToolsPanel: UIView {
             var newRow = [ToolsPanelButton]()
             let startPosition = (rowIndex-1) * buttonsInRow
             let endPosition = rowIndex * buttonsInRow
-//            print("row: \(rowIndex)")
             
             for elementIndex in startPosition..<endPosition {
-//                print("elementIndex: \(elementIndex)")
                 
                 guard elementIndex < givenArray.count else {
                     let btn = ToolsPanelButton(random: true)
@@ -171,5 +178,28 @@ class ToolsPanel: UIView {
         // Drawing code
     }
     */
+    
+    // Not in use
+    // Try to make it with constraints
+    private func resizeToFitSubviews() {
+        var width: CGFloat = 0
+        var height: CGFloat = 0
+        var originX: CGFloat = 0
+        var originY: CGFloat = 0
+        
+        for subview in self.subviews {
+            originX = min(subview.frame.origin.x, originX)
+            originY = min(subview.frame.origin.y, originY)
+            let subWidth = subview.frame.origin.x + subview.frame.size.width
+            let subHeight = subview.frame.origin.y + subview.frame.size.height
+            width = max(subWidth, width)
+            height = max(subHeight, height)
+            
+        }
+        
+        self.frame = CGRect(x: originX, y: originY, width: width, height: height)
+        
+    }
+
 
 }

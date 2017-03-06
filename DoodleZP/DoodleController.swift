@@ -45,8 +45,7 @@ class DoodleController: UIViewController {
      While doing every action, record it as a chainLink
      */
 
-    
-    var toolsPanel: ToolsPanel = ToolsPanel(frame: CGRect(x: 40, y: 40, width: 300, height: 200))
+    var toolsPanel: ToolsPanel = ToolsPanel()
     
     var doodleView = DoodleView()
     
@@ -63,20 +62,16 @@ class DoodleController: UIViewController {
     func btnTap() {
         print("tap")
     }
-    
+
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        toolsPanel = ToolsPanel(frame: CGRect(x: 40, y: 40, width: 300, height: 200))
+        toolsPanel = ToolsPanel()
         toolsPanel.translatesAutoresizingMaskIntoConstraints = false
         
         let btn = ToolsPanelButton(random: true)
         btn.setTitle("HUY!", for: .normal)
-        let size = CGRect(x: 200, y: 300, width: 50, height: 50)
-        //            btn.frame.size.height = buttonSize
-        //            btn.frame.size.width = buttonSize
-        btn.frame = size
         btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
         btn.layer.borderWidth = 1.0
         btn.layer.borderColor = UIColor.blue.cgColor
@@ -87,40 +82,12 @@ class DoodleController: UIViewController {
         toolsPanel.orientation = .portrait
         toolsPanel.backgroundColor = UIColor.green
         
-        //    TRY
-//        let leadingConstraint = toolsPanel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-//        let bottomConstraint = toolsPanel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-//        
-//        toolsPanel.addConstraint(leadingConstraint)
-//        toolsPanel.addConstraint(bottomConstraint)
-//        leadingConstraint.isActive = true
-//        bottomConstraint.isActive = true
-        
-        let  widthConstraint = NSLayoutConstraint(item: toolsPanel,
-                attribute: NSLayoutAttribute.width,
-                relatedBy: NSLayoutRelation.equal,
-                toItem: nil,
-                attribute: NSLayoutAttribute.notAnAttribute,
-                multiplier: 1,
-                constant: 100)
-        let heightConstant = NSLayoutConstraint(item: toolsPanel,
-                attribute: NSLayoutAttribute.height,
-                relatedBy: NSLayoutRelation.equal,
-                toItem: nil,
-                attribute: NSLayoutAttribute.notAnAttribute,
-                multiplier: 1,
-                constant: 100)
-        
-        toolsPanel.addConstraint(widthConstraint)
-        toolsPanel.addConstraint(heightConstant)
-        
-        widthConstraint.isActive = true
-        heightConstant.isActive = true
-        
-        //    TRY
-        
-        // Do any additional setup after loading the view.
-//        toolsPanel.layer.backgroundColor = UIColor.red.cgColor
+        NSLayoutConstraint.activate([
+            btn.widthAnchor.constraint(equalToConstant: 100),
+            btn.heightAnchor.constraint(equalToConstant: 120),
+            btn.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            btn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50)
+            ])
     }
 
     override func didReceiveMemoryWarning() {
