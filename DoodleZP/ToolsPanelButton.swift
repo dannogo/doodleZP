@@ -23,8 +23,8 @@ class ToolsPanelButton: UIButton {
     
     convenience init(random: Bool) {
         if random {
-            ToolsPanelButton.dummyCount += 1
             self.init(frame: CGRect.zero, hint: String(ToolsPanelButton.dummyCount))
+            ToolsPanelButton.dummyCount += 1
         } else {
             self.init(frame: CGRect.zero, hint: "")
         }
@@ -74,12 +74,46 @@ class ToolsPanelButton: UIButton {
         heightConstant.isActive = true  // not sure
         
         let positionConstraints = getPositionConstraintsForButtonInRow(with: margin)
-//
+
         self.addConstraint(positionConstraints.leading)
 //        self.addConstraint(positionConstraints.top)
-//
+
         positionConstraints.leading.isActive = true
 //        positionConstraints.top.isActive = true
+        
+//        var leadingConstraint: NSLayoutConstraint
+//        if self.superview!.subviews.count == 0 {
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.leadingAnchor)
+//        } else {
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.subviews[self.superview!.subviews.count - 1].trailingAnchor)
+//        }
+        
+        print("button number: \(self.superview!.subviews.count)")
+//        switch self.superview!.subviews.count {
+//        case 0:
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.leadingAnchor)
+//        case 1:
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.subviews[0].trailingAnchor)
+//        case 2:
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.subviews[1].trailingAnchor)
+//        case 3:
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.subviews[2].trailingAnchor)
+//        case 4:
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.subviews[3].trailingAnchor)
+//        case 5:
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.subviews[4].trailingAnchor)
+//        case 6:
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.subviews[5].trailingAnchor)
+//        default:
+//            leadingConstraint = self.leadingAnchor.constraint(equalTo: self.superview!.trailingAnchor)
+//        }
+        self.translatesAutoresizingMaskIntoConstraints = false // delete later
+        
+        
+        NSLayoutConstraint.activate([
+//            leadingConstraint,
+            self.topAnchor.constraint(equalTo: self.superview!.topAnchor)
+            ])
         
     }
 

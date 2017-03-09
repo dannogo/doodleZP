@@ -51,44 +51,26 @@ class ToolsPanel: UIView {
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
         print("\(buttonsInRow) size: \(buttonSize)")
         
-        for _ in 0 ..< 24 {
+        for _ in 0 ..< 30 {
             let btn = ToolsPanelButton(random: true)
             btn.setTitle(btn.hint, for: .normal)
             btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
-            btn.layer.borderWidth = 1.0
-            btn.layer.borderColor = UIColor.blue.cgColor
-            btn.layer.backgroundColor = UIColor.gray.cgColor
+            btn.layer.borderWidth = 0.5
+            btn.layer.borderColor = UIColor.gray.cgColor
+            btn.layer.backgroundColor = UIColor.cyan.cgColor
             buttons.append(btn)
         }
         
         let rows = splitButtonsArray(givenArray: buttons, buttonsInRow: buttonsInRow)
-        
-        self.backgroundColor = UIColor.green
-        
         var rowContainer: UIView
         
-        for (i, row) in rows.enumerated() {
+        for (i, row) in rows.reversed().enumerated() {
         
             rowContainer = UIView()
             rowContainer.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(rowContainer)
             
-            let colo: UIColor
-            
             var topAnchorConstraint: NSLayoutConstraint
-            switch i {
-            case 0:
-                colo = UIColor.cyan
-            case 1:
-                colo = UIColor.blue
-            case 2:
-                colo = UIColor.brown
-            case 3:
-                colo = UIColor.red
-            default:
-                colo = UIColor.gray
-            }
-            rowContainer.backgroundColor = colo
             
             if i == 0 {
                 topAnchorConstraint = rowContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor)
@@ -104,10 +86,23 @@ class ToolsPanel: UIView {
             ])
                 
                 
-            for item in row {
+            for (index, item) in row.enumerated() {
                 rowContainer.addSubview(item)
-                item.translatesAutoresizingMaskIntoConstraints = false
-                item.setConstraints(sideLength: buttonSize)
+                
+                var leadingConstraint: NSLayoutConstraint
+                
+                if index == 0 {
+                    leadingConstraint = item.leadingAnchor.constraint(equalTo: rowContainer.leadingAnchor)
+                } else {
+                    leadingConstraint = item.leadingAnchor.constraint(equalTo: rowContainer.subviews[index-1].trailingAnchor)
+                }
+                
+                NSLayoutConstraint.activate([
+                    item.widthAnchor.constraint(equalToConstant: buttonSize),
+                    item.heightAnchor.constraint(equalToConstant: buttonSize),
+                    item.topAnchor.constraint(equalTo: rowContainer.topAnchor),
+                    leadingConstraint
+                    ])
                 
             }
             
