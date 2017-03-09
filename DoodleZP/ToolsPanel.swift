@@ -13,6 +13,7 @@ class ToolsPanel: UIView {
     // Possibly create buttonsStore to handle which buttons are available for different modes
     // vector, raster, selected line/lines, picking points etc
     var buttons = [ToolsPanelButton]()
+    static var isShown = true
     
     var orientation: UIInterfaceOrientation = .portrait {
         didSet {
@@ -28,7 +29,6 @@ class ToolsPanel: UIView {
     }
     
     override func didMoveToSuperview() {
-        self.backgroundColor = UIColor.green
         NSLayoutConstraint.activate([
             self.leadingAnchor.constraint(equalTo: self.superview!.leadingAnchor),
             self.trailingAnchor.constraint(equalTo: self.superview!.trailingAnchor),
@@ -44,6 +44,34 @@ class ToolsPanel: UIView {
         print("btn Tap")
     }
     
+    func toggleToolsPanel() {
+        ToolsPanel.isShown ? hideToolsPanel() : showToolsPanel()
+    }
+    
+    private func showToolsPanel() {
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 1.0
+            ToolsPanel.isShown = true
+            let transition = CGAffineTransform(translationX: 0, y: 0)
+            self.transform = transition
+        }
+        print(#function)
+    }
+    
+    private func hideToolsPanel() {
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 0
+            ToolsPanel.isShown = false
+            let height = self.bounds.size.height
+            let transition = CGAffineTransform(translationX: 0, y: height)
+            self.transform = transition
+        }
+        print(#function)
+//        UIView.animate(withDuration: 1.0, animations: {() -> Void in
+//            self.alpha = 0
+//        })
+    }
+    
     func buildPanelViewHierarchy() {
     
         let windowFrame = UIApplication.shared.delegate!.window!!.frame
@@ -55,7 +83,7 @@ class ToolsPanel: UIView {
             let btn = ToolsPanelButton(random: true)
             btn.setTitle(btn.hint, for: .normal)
             btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
-            btn.layer.borderWidth = 0.5
+            btn.layer.borderWidth = 0.25
             btn.layer.borderColor = UIColor.gray.cgColor
             btn.layer.backgroundColor = UIColor.cyan.cgColor
             buttons.append(btn)
@@ -144,10 +172,8 @@ class ToolsPanel: UIView {
             for elementIndex in startPosition..<endPosition {
                 
                 guard elementIndex < givenArray.count else {
-                    let btn = ToolsPanelButton(random: true)
-                    btn.layer.borderWidth = 1.0
-                    btn.layer.borderColor = UIColor.gray.cgColor
-                    newRow.append(btn)
+//                    let btn = ToolsPanelButton(random: true)
+//                    newRow.append(btn)
                     continue
                 }
                 

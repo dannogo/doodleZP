@@ -46,8 +46,9 @@ class DoodleController: UIViewController {
      */
 
     var toolsPanel: ToolsPanel = ToolsPanel()
-    
     var doodleView = DoodleView()
+    static var toolbarIsShown = true
+    
     
     // MARK - Enums
     enum GraphicMode {
@@ -60,8 +61,10 @@ class DoodleController: UIViewController {
     }
     
     func btnTap() {
-        print("tap")
+        toolsPanel.toggleToolsPanel()
     }
+    
+        
 
     // MARK: - Override Methods
     override func viewDidLoad() {
@@ -69,6 +72,8 @@ class DoodleController: UIViewController {
         
         toolsPanel = ToolsPanel()
         toolsPanel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(toolsPanel)
+        toolsPanel.orientation = .portrait
         
         let btn = ToolsPanelButton(random: true)
         btn.setTitle("HUY!", for: .normal)
@@ -77,14 +82,9 @@ class DoodleController: UIViewController {
         btn.layer.borderColor = UIColor.blue.cgColor
         btn.layer.backgroundColor = UIColor.gray.cgColor
         self.view.addSubview(btn)
-        
-        self.view.addSubview(toolsPanel)
-        toolsPanel.orientation = .portrait
-        toolsPanel.backgroundColor = UIColor.green
-        
         NSLayoutConstraint.activate([
-            btn.widthAnchor.constraint(equalToConstant: 100),
-            btn.heightAnchor.constraint(equalToConstant: 120),
+            btn.widthAnchor.constraint(equalToConstant: 50),
+            btn.heightAnchor.constraint(equalToConstant: 50),
             btn.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             btn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50)
             ])
