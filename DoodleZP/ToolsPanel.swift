@@ -40,8 +40,8 @@ class ToolsPanel: UIView {
     }
     
     
-    func btnTap () {
-        print("btn Tap")
+    func btnTap (_ sender: ToolsPanelButton) {
+        print("hint: \(sender.hint)")
     }
     
     func toggleToolsPanel() {
@@ -49,8 +49,7 @@ class ToolsPanel: UIView {
     }
     
     private func showToolsPanel() {
-        UIView.animate(withDuration: 0.5) {
-            self.alpha = 1.0
+        UIView.animate(withDuration: 0.3) {
             ToolsPanel.isShown = true
             let transition = CGAffineTransform(translationX: 0, y: 0)
             self.transform = transition
@@ -59,17 +58,13 @@ class ToolsPanel: UIView {
     }
     
     private func hideToolsPanel() {
-        UIView.animate(withDuration: 0.5) {
-            self.alpha = 0
+        UIView.animate(withDuration: 0.3) {
             ToolsPanel.isShown = false
             let height = self.bounds.size.height
             let transition = CGAffineTransform(translationX: 0, y: height)
             self.transform = transition
         }
         print(#function)
-//        UIView.animate(withDuration: 1.0, animations: {() -> Void in
-//            self.alpha = 0
-//        })
     }
     
     func buildPanelViewHierarchy() {

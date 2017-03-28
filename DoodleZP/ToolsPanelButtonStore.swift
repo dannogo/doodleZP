@@ -18,11 +18,20 @@ class ToolsPanelButtonStore {
     
 //    var modeOptions = 
     
-    @discardableResult func createDummyButton() -> ToolsPanelButton {
-        let newButton = ToolsPanelButton(random: true)
-        allButtons.append(newButton)
-        
-        return newButton
+//    @discardableResult func createDummyButton() -> ToolsPanelButton {
+//        let newButton = ToolsPanelButton(random: true)
+//        allButtons.append(newButton)
+//        
+//        return newButton
+//    }
+    
+    
+    private func getUndoRedo(){
+//        let undo = ToolsPanelButton(
     }
+    
+    func getAvailableOptions() {
+        
+        }
     
 }
