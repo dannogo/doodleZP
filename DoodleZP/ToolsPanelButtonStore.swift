@@ -26,12 +26,20 @@ class ToolsPanelButtonStore {
 //    }
     
     
-    private func getUndoRedo(){
-//        let undo = ToolsPanelButton(
+    enum State {
+        case anyAction
     }
     
-    func getAvailableOptions() {
-        
+    private func getUndoRedo() -> [ToolsPanelButton]{
+        return [
+            ToolsPanelButton(frame: CGRect.zero, type: ToolsPanelButton.ActionType.undo),
+            ToolsPanelButton(frame: CGRect.zero, type: ToolsPanelButton.ActionType.redo)
+        ]
+    }
+    
+    func getAvailableOptions(state: State) {
+            allButtons.append(contentsOf: getUndoRedo())
+            
         }
     
 }
