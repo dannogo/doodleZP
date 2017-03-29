@@ -20,16 +20,6 @@ class ToolsPanelButtonStore {
 //        DrawingStroke, PickingStrokes, EditingPoints
 //    }
     
-//    var modeOptions = 
-    
-//    @discardableResult func createDummyButton() -> ToolsPanelButton {
-//        let newButton = ToolsPanelButton(random: true)
-//        allButtons.append(newButton)
-//        
-//        return newButton
-//    }
-    
-    
     enum State {
         case anyAction
     }

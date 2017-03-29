@@ -74,16 +74,6 @@ class ToolsPanel: UIView {
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
         print("\(buttonsInRow) size: \(buttonSize)")
         
-//        for _ in 0 ..< 30 {
-//            let btn = ToolsPanelButton(random: true)
-//            btn.setTitle(btn.hint, for: .normal)
-//            btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
-//            btn.layer.borderWidth = 0.25
-//            btn.layer.borderColor = UIColor.gray.cgColor
-//            btn.layer.backgroundColor = UIColor.cyan.cgColor
-//            buttons.append(btn)
-//        }
-        
         let store = ToolsPanelButtonStore.sharedInstance
         buttons = store.getAvailableOptions(state: .anyAction)
         

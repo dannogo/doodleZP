@@ -19,12 +19,6 @@ class ToolsPanelButton: UIButton {
         case placeholder, undo, redo
     }
     
-    //    @available(*, deprecated)
-    //    init(frame: CGRect, hint: String) {
-    //        self.hint = hint
-    //        super.init(frame: frame)
-    //    }
-    
     init(frame: CGRect, type: ActionType) {
         self.type = type
         super.init(frame: frame)
@@ -38,7 +32,7 @@ class ToolsPanelButton: UIButton {
         case .redo: hint = "Redo"
         default: break
         }
-//        icon = type == ActionType.placeholder ? nil : UIImage(contentsOfFile: type.rawValue)
+        
         icon = type == ActionType.placeholder ? nil : UIImage(named: type.rawValue)
         self.setImage(icon, for: .normal)
         
@@ -49,20 +43,9 @@ class ToolsPanelButton: UIButton {
     
     static var dummyCount = 0
     
-    //    convenience init(random: Bool) {
-    //        if random {
-    //            self.init(frame: CGRect.zero, hint: String(ToolsPanelButton.dummyCount))
-    //            ToolsPanelButton.dummyCount += 1
-    //        } else {
-    //            self.init(frame: CGRect.zero, hint: "")
-    //        }
-    //        self.translatesAutoresizingMaskIntoConstraints = false
-    //    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     // MARK: - Constraints Methods
     private func getPositionConstraintsForButtonInRow(with margin: CGFloat)
