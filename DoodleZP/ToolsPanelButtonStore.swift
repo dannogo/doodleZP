@@ -10,6 +10,10 @@ import UIKit
 
 class ToolsPanelButtonStore {
     
+    private init() {}
+    
+    static let sharedInstance: ToolsPanelButtonStore = ToolsPanelButtonStore()
+    
     var allButtons = [ToolsPanelButton]()
     
 //    enum State {
@@ -32,14 +36,15 @@ class ToolsPanelButtonStore {
     
     private func getUndoRedo() -> [ToolsPanelButton]{
         return [
-            ToolsPanelButton(frame: CGRect.zero, type: ToolsPanelButton.ActionType.undo),
-            ToolsPanelButton(frame: CGRect.zero, type: ToolsPanelButton.ActionType.redo)
+            ToolsPanelButton(frame: CGRect.zero, type: .undo),
+            ToolsPanelButton(frame: CGRect.zero, type: .redo)
         ]
     }
     
-    func getAvailableOptions(state: State) {
+    func getAvailableOptions(state: State) -> [ToolsPanelButton] {
             allButtons.append(contentsOf: getUndoRedo())
-            
+        
+            return allButtons
         }
     
 }

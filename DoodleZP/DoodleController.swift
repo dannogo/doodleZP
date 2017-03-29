@@ -74,20 +74,6 @@ class DoodleController: UIViewController {
         toolsPanel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
-        
-        let btn = ToolsPanelButton(random: true)
-        btn.setTitle("HUY!", for: .normal)
-        btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
-        btn.layer.borderWidth = 1.0
-        btn.layer.borderColor = UIColor.blue.cgColor
-        btn.layer.backgroundColor = UIColor.gray.cgColor
-        self.view.addSubview(btn)
-        NSLayoutConstraint.activate([
-            btn.widthAnchor.constraint(equalToConstant: 50),
-            btn.heightAnchor.constraint(equalToConstant: 50),
-            btn.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            btn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50)
-            ])
     }
 
     override func didReceiveMemoryWarning() {

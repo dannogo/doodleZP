@@ -74,18 +74,28 @@ class ToolsPanel: UIView {
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
         print("\(buttonsInRow) size: \(buttonSize)")
         
-        for _ in 0 ..< 30 {
-            let btn = ToolsPanelButton(random: true)
-            btn.setTitle(btn.hint, for: .normal)
+//        for _ in 0 ..< 30 {
+//            let btn = ToolsPanelButton(random: true)
+//            btn.setTitle(btn.hint, for: .normal)
+//            btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
+//            btn.layer.borderWidth = 0.25
+//            btn.layer.borderColor = UIColor.gray.cgColor
+//            btn.layer.backgroundColor = UIColor.cyan.cgColor
+//            buttons.append(btn)
+//        }
+        
+        let store = ToolsPanelButtonStore.sharedInstance
+        buttons = store.getAvailableOptions(state: .anyAction)
+        
+        for btn in buttons {
             btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
-            btn.layer.borderWidth = 0.25
-            btn.layer.borderColor = UIColor.gray.cgColor
-            btn.layer.backgroundColor = UIColor.cyan.cgColor
-            buttons.append(btn)
+//            buttons.append(btn)
         }
         
         let rows = splitButtonsArray(givenArray: buttons, buttonsInRow: buttonsInRow)
         var rowContainer: UIView
+        
+        print("rows: \(rows.count)")
         
         for (i, row) in rows.reversed().enumerated() {
         
@@ -129,6 +139,8 @@ class ToolsPanel: UIView {
                 
             }
             
+            print("buttons: \(buttons.count)")
+            
             if i == rows.count-1 {
                 NSLayoutConstraint.activate([
                     self.topAnchor.constraint(equalTo: rowContainer.topAnchor)
@@ -158,6 +170,10 @@ class ToolsPanel: UIView {
         let rowsNumber = Int(ceil(Double(givenArray.count) / Double(buttonsInRow)))
         
         print("rows: \(rowsNumber)")
+        
+        guard rowsNumber > 0 else {
+            return result
+        }
         for rowIndex in 1...rowsNumber {
             
             var newRow = [ToolsPanelButton]()
