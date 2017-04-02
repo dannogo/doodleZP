@@ -42,6 +42,16 @@ class ToolsPanel: UIView {
     
     func btnTap (_ sender: ToolsPanelButton) {
         print("hint: \(sender.hint)")
+        let doodleView = self.superview as! DoodleView
+        let history = History.sharedInstance
+        switch sender.type {
+        case .undo:
+//            Ch history.revert()
+        case .redo:
+            break
+        default:
+            print("btnTap default")
+        }
     }
     
     func toggleToolsPanel() {

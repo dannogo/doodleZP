@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 class DoodleView: UIView, UIGestureRecognizerDelegate {
     
+    let history = History.sharedInstance
+    
     var currentStrokes = [NSValue:Element]()
     var finishedStrokes = [Element]()
     var selectedStrokesIndexes: [Int] = [] {
@@ -41,6 +43,14 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         applyGestureRecognizers()
         
         self.backgroundColor = UIColor.yellow
+    }
+    
+    func historyStepping(backward: Bool) {
+        if backward {
+            let chainLink = history.revert()
+            
+            
+        }
     }
     
     func applyGestureRecognizers() {
@@ -222,6 +232,10 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
                 shape.lines.last?.end.point = touch.location(in: self)
                 
                 finishedStrokes.append(shape)
+                // TODO: Add chainlink here
+                let transition = Transition(fromState: [nil], toState: [shape])
+                let chainLink = ChainLink(transitions: [transition])
+                history.append(chainLink: chainLink)
                 currentStrokes.removeValue(forKey: key)
             }
         }

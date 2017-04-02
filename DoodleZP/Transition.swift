@@ -9,6 +9,6 @@
 import Foundation
 
 struct Transition {
-    let fromState: [Element]
-    let toState: [Element]
+    let fromState: [Element?]
+    let toState: [Element?]
 }

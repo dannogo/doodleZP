@@ -46,7 +46,6 @@ class DoodleController: UIViewController {
      */
 
     var toolsPanel: ToolsPanel = ToolsPanel()
-    var doodleView = DoodleView()
     static var toolbarIsShown = true
     
     
@@ -70,7 +69,7 @@ class DoodleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        toolsPanel = ToolsPanel()
+//        toolsPanel = ToolsPanel()
         toolsPanel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
