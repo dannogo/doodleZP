@@ -10,16 +10,19 @@ import Foundation
 
 class ChainLink {
     
-    init(transitions : [Transition]) {
+    init(changeType: ChangeType, transitions : [Transition]) {
+        self.changeType = changeType
         self.transitions = transitions
     }
     
-    var transitions: [Transition]
+    let transitions: [Transition]
+    let changeType: ChangeType
+    
     
     enum ChangeType {
-        case newVector, newRaster, deleteVector, DeleteRaster,
-            erase, colorChange, thicknessChange, imageSet,
-            vectorePointLocationChange
+        case vectorNew, vectorMerge, vectorSeparation, vectorDelete, vectorPointLocationChange,
+        newRaster, DeleteRaster, erase,
+        colorChange, thicknessChange, imageSet
     }
     
     
