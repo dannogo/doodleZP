@@ -11,4 +11,5 @@ import Foundation
 protocol Element {
     
 //    var type: ElementType { get }
+    var id: UUID {get}
 }

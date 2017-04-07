@@ -40,7 +40,7 @@ class History {
     
     func revert() -> ChainLink? {
         
-        guard let index = currentIndex else {
+        guard let index = currentIndex, index >= 0 else {
             print("Unable to revert in: \(#file) method: \(#function)")
             return nil
         }

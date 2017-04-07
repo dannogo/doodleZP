@@ -11,6 +11,8 @@ import UIKit
 
 class Point: Element {
     
+    let id = UUID()
+    
     init(_ point: CGPoint) {
         self.point = point
     }

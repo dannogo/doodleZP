@@ -12,7 +12,7 @@ import UIKit
 class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     let history = History.sharedInstance
-    let historyHandler: HistoryHandler
+    var historyHandler: HistoryHandler?
     
     var currentStrokes = [NSValue:Element]()
     var finishedStrokes = [Element]()
@@ -33,7 +33,6 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     init() {
         super.init(frame: CGRect.zero)
-        historyHandler = HistoryHandler(doodleView: self)
         applyGestureRecognizers()
         
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -48,26 +47,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     func historyStep(backward: Bool) {
         if backward {
-            if let chainLink = history.revert() {
-                switch chainLink.changeType {
-                case .newVector:
-                    for element in finishedStrokes {
-                        if let vector = element as? Vector{
-                            for transition in chainLink.transitions {
-                                for toStateElement in transition.toState {
-                                    if let {
-                                        <#code#>
-                                    }
-                                }
-                            }
-                        }
-                    }
-                default:
-                    break
-                }
-            }
-            
-            
+            historyHandler?.step(backward: true)
         }
     }
     
@@ -252,7 +232,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
                 finishedStrokes.append(shape)
                 // TODO: Add chainlink here
                 let transition = Transition(fromState: [nil], toState: [shape])
-                let chainLink = ChainLink(changeType: .newVector, transitions: [transition])
+                let chainLink = ChainLink(changeType: .vectorNew, transitions: [transition])
                 history.append(chainLink: chainLink)
                 currentStrokes.removeValue(forKey: key)
             }

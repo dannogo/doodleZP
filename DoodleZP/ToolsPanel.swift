@@ -10,7 +10,7 @@ import UIKit
 
 class ToolsPanel: UIView {
     
-    // Possibly create buttonsStore to handle which buttons are available for different modes
+    // Possibly create buttonsStore to handle which buttons are available for different vares
     // vector, raster, selected line/lines, picking points etc
     var buttons = [ToolsPanelButton]()
     static var isShown = true
@@ -43,15 +43,18 @@ class ToolsPanel: UIView {
     func btnTap (_ sender: ToolsPanelButton) {
         print("hint: \(sender.hint)")
         let doodleView = self.superview as! DoodleView
-        let history = History.sharedInstance
+        if doodleView.historyHandler == nil {
+            doodleView.historyHandler = HistoryHandler(doodleView: doodleView)
+        }
         switch sender.type {
         case .undo:
-//            Ch history.revert()
+            doodleView.historyStep(backward: true)
         case .redo:
             break
         default:
             print("btnTap default")
         }
+        doodleView.setNeedsDisplay()
     }
     
     func toggleToolsPanel() {
