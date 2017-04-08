@@ -39,7 +39,7 @@ class History {
     }
     
     func revert() -> ChainLink? {
-        
+        print("history current index: \(currentIndex!), count: \(history.count)")
         guard let index = currentIndex, index >= 0 else {
             print("Unable to revert in: \(#file) method: \(#function)")
             return nil

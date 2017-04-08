@@ -17,8 +17,11 @@ class HistoryHandler {
         self.doodleView = doodleView
     }
     
-    func handleVectorChangeHistoryStep(backward: Bool) {
-        var biggestLayerIndex = 0
+    func vectorChange(stateToDismiss: [Element?], stateToApply: [Element?]) {
+        
+    }
+    
+    func handleHistoryStep(backward: Bool) {
         var stateToDismiss: [Element?]
         var stateToApply: [Element?]
         let chainLink = (backward) ? history.revert() : history.advance()
@@ -34,27 +37,35 @@ class HistoryHandler {
                         stateToApply = transition.toState
                     }
                     
-                    for elementToDismiss in stateToDismiss {
-                        if let elementToDismissUnwrapped = elementToDismiss, elementToDismissUnwrapped.id == element.id {
-                            doodleView.finishedStrokes.remove(at: index)
+                    switch chainLink!.changeType {
+                    case .vectorChange:
+                        for elementToDismiss in stateToDismiss {
+                            if let elementToDismissUnwrapped = elementToDismiss, elementToDismissUnwrapped.id == element.id {
+                                doodleView.finishedStrokes.remove(at: index)
+                            }
                         }
-                    }
-                    for elementToApply in stateToApply {
-                        if let elementToApplyUnwrapped = elementToApply {
-                            doodleView.finishedStrokes.insert(elementToApplyUnwrapped, at: elementToApplyUnwrapped.layerIndex!)
+                        for elementToApply in stateToApply {
+                            if let elementToApplyUnwrapped = elementToApply {
+                                doodleView.finishedStrokes.insert(elementToApplyUnwrapped, at: elementToApplyUnwrapped.layerIndex!)
+                            }
                         }
+                    default:
+                        break
                     }
+                    
+                    
                 }
             }
         }
     }
     
+    @available(*, deprecated)
     func step(backward: Bool){
+        
         if backward {
             if let chainLink = history.revert() {
                 switch chainLink.changeType {
                 case .vectorChange:
-                    
                     break
                 case .vectorNew:
                     for (index, element) in doodleView.finishedStrokes.enumerated() {

@@ -46,7 +46,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     }
     
     func historyStep(backward: Bool) {
-        historyHandler?.step(backward: backward)
+        historyHandler?.handleHistoryStep(backward: backward)
     }
     
     func applyGestureRecognizers() {
@@ -231,7 +231,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
                 finishedStrokes.append(shape)
                 // TODO: Add chainlink here
                 let transition = Transition(fromState: [nil], toState: [shape])
-                let chainLink = ChainLink(changeType: .vectorNew, transitions: [transition])
+                let chainLink = ChainLink(changeType: .vectorChange, transitions: [transition])
                 history.append(chainLink: chainLink)
                 currentStrokes.removeValue(forKey: key)
             }
