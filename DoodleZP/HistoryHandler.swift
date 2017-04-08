@@ -9,7 +9,7 @@
 import UIKit
 
 class HistoryHandler {
-
+    
     weak var doodleView: DoodleView!
     let history = History.sharedInstance
     
@@ -17,14 +17,20 @@ class HistoryHandler {
         self.doodleView = doodleView
     }
     
-    func vectorNewRevert() {
-        
+    func handleVectorChangeHistoryStep(backward: Bool) {
+        var biggestIndex = 0
+        for (index, element) in doodleView.finishedStrokes.enumerated() {
+            
+        }
     }
     
     func step(backward: Bool){
         if backward {
             if let chainLink = history.revert() {
                 switch chainLink.changeType {
+                case .vectorChange:
+                    
+                    break
                 case .vectorNew:
                     for (index, element) in doodleView.finishedStrokes.enumerated() {
                         if element is Vector {
@@ -48,8 +54,10 @@ class HistoryHandler {
                 default:
                     break
                 }
-
+                
             }
+        } else {
+            
         }
     }
 }

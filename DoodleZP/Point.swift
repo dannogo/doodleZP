@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Point: Element {
+class Point {
     
     let id = UUID()
     

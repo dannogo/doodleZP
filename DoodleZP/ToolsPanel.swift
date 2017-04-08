@@ -50,6 +50,7 @@ class ToolsPanel: UIView {
         case .undo:
             doodleView.historyStep(backward: true)
         case .redo:
+            doodleView.historyStep(backward: false)
             break
         default:
             print("btnTap default")

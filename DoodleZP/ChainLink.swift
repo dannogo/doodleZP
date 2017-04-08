@@ -20,7 +20,7 @@ class ChainLink {
     
     
     enum ChangeType {
-        case vectorNew, vectorMerge, vectorSeparation, vectorDelete, vectorPointLocationChange,
+        case vectorChange, vectorNew, vectorMerge, vectorSeparation, vectorDelete, vectorPointLocationChange,
         newRaster, DeleteRaster, erase,
         colorChange, thicknessChange, imageSet
     }

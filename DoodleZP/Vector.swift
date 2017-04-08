@@ -12,6 +12,8 @@ import UIKit
 class Vector: Element {
     
     let id = UUID()
+    var layerIndex: Int?
+    
     var lines: [Line] = []
     
     @discardableResult func createLine(start: Point, end: Point, color: UIColor, thickness: CGFloat) -> Line {

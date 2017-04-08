@@ -12,4 +12,5 @@ protocol Element {
     
 //    var type: ElementType { get }
     var id: UUID {get}
+    var layerIndex: Int? {get set}
 }
