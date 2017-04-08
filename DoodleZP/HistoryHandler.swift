@@ -18,9 +18,34 @@ class HistoryHandler {
     }
     
     func handleVectorChangeHistoryStep(backward: Bool) {
-        var biggestIndex = 0
-        for (index, element) in doodleView.finishedStrokes.enumerated() {
-            
+        var biggestLayerIndex = 0
+        var stateToDismiss: [Element?]
+        var stateToApply: [Element?]
+        let chainLink = (backward) ? history.revert() : history.advance()
+        
+        if chainLink != nil {
+            for (index, element) in doodleView.finishedStrokes.enumerated() {
+                for transition in chainLink!.transitions {
+                    if backward {
+                        stateToDismiss = transition.toState
+                        stateToApply = transition.fromState
+                    } else {
+                        stateToDismiss = transition.fromState
+                        stateToApply = transition.toState
+                    }
+                    
+                    for elementToDismiss in stateToDismiss {
+                        if let elementToDismissUnwrapped = elementToDismiss, elementToDismissUnwrapped.id == element.id {
+                            doodleView.finishedStrokes.remove(at: index)
+                        }
+                    }
+                    for elementToApply in stateToApply {
+                        if let elementToApplyUnwrapped = elementToApply {
+                            doodleView.finishedStrokes.insert(elementToApplyUnwrapped, at: elementToApplyUnwrapped.layerIndex!)
+                        }
+                    }
+                }
+            }
         }
     }
     
