@@ -46,7 +46,8 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     }
     
     func historyStep(backward: Bool) {
-        historyHandler?.handleHistoryStep(backward: backward)
+//        historyHandler?.handleHistoryStep(backward: backward)
+        historyHandler?.step(backward: backward)
     }
     
     func applyGestureRecognizers() {
@@ -227,6 +228,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
             if let shape = currentStrokes[key] as? Vector {
                 shape.lines.last?.end.point = touch.location(in: self)
                 shape.layerIndex = finishedStrokes.count
+                print("new line id: \(shape.id)")
                 
                 finishedStrokes.append(shape)
                 // TODO: Add chainlink here
