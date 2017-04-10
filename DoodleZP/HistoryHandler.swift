@@ -40,6 +40,7 @@ class HistoryHandler {
                         if let elementToDismissUnwrapped = elementToDismiss {
                             for (index, element) in doodleView.finishedStrokes.enumerated() {
                                 if elementToDismissUnwrapped.id == element.id {
+                                    print("finishedLines \(index), element.id: \(element.id)")
                                     doodleView.finishedStrokes.remove(at: index)
                                 }
                             }

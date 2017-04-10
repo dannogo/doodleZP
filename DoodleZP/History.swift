@@ -51,12 +51,12 @@ class History {
             currentIndex! -= 1
         }
         
-        print("history current index: \(currentIndex!), count: \(history.count)")
         guard let index = currentIndex, index >= 0 else {
             print("Unable to revert in: \(#file) method: \(#function)")
             return nil
         }
         currentIndex! -= 1
+        print("revert current index: \(currentIndex!), count: \(history.count)")
         lastAction = .revert
         return history[index]
     }
@@ -67,15 +67,13 @@ class History {
             currentIndex! += 1
         }
         
-        print("history current index: \(currentIndex!), count: \(history.count)")
-        
         guard let index = currentIndex, history.count > 0,
             history.count > currentIndex! else {
-                currentIndex! = history.count - 1
                 print("Unable to advance in: \(#file) method: \(#function)")
                 return nil
         }
         currentIndex! += 1
+        print("advance current index: \(currentIndex!), count: \(history.count)")
         lastAction = .advance
         return history[index]
     }
