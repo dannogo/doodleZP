@@ -34,7 +34,6 @@ class History {
         history.append(chainLink)
         currentIndex = currentIndex == nil ? 0 : currentIndex! + 1
         lastAction = .none
-        print("count after append: \(history.count)")
     }
     
     private func remove(after curIndex: Int?) {
@@ -51,12 +50,15 @@ class History {
             currentIndex! -= 1
         }
         
-        guard let index = currentIndex, index >= 0 else {
+        guard var index = currentIndex, index >= 0 else {
             print("Unable to revert in: \(#file) method: \(#function)")
             return nil
         }
         currentIndex! -= 1
-//        print("revert current index: \(currentIndex!), count: \(history.count)")
+        // spike bug fixing
+        if index == history.count {
+            index -= 1
+        }
         lastAction = .revert
         return history[index]
     }
@@ -78,7 +80,6 @@ class History {
                 return nil
         }
         currentIndex! += 1
-//        print("advance current index: \(currentIndex!), count: \(history.count)")
         lastAction = .advance
         return history[index]
     }
