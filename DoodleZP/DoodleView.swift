@@ -93,10 +93,16 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     func deleteStrokes(_ sender: UIMenuController) {
         
+        var transitions = [Transition]()
+        
         for index in selectedStrokesIndexes.sorted(by: >) {
-            finishedStrokes.remove(at: index)
+            let removedStroke = finishedStrokes.remove(at: index)
+            let transition = Transition(fromState: [removedStroke], toState: [nil])
+            transitions.append(transition)
             selectedStrokesIndexes.removeAll()
         }
+        let chainLink = ChainLink(changeType: .delete, transitions: transitions)
+        history.append(chainLink: chainLink)
         setNeedsDisplay()
     }
     
