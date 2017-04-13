@@ -56,7 +56,7 @@ class History {
             return nil
         }
         currentIndex! -= 1
-        print("revert current index: \(currentIndex!), count: \(history.count)")
+//        print("revert current index: \(currentIndex!), count: \(history.count)")
         lastAction = .revert
         return history[index]
     }
@@ -67,13 +67,18 @@ class History {
             currentIndex! += 1
         }
         
+        guard lastAction != .none else {
+            print("No action to redo")
+            return nil
+        }
+        
         guard let index = currentIndex, history.count > 0,
             history.count > currentIndex! else {
                 print("Unable to advance in: \(#file) method: \(#function)")
                 return nil
         }
         currentIndex! += 1
-        print("advance current index: \(currentIndex!), count: \(history.count)")
+//        print("advance current index: \(currentIndex!), count: \(history.count)")
         lastAction = .advance
         return history[index]
     }
