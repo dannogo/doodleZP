@@ -19,7 +19,8 @@ class ToolsPanelButton: UIButton {
         case placeholder, undo, redo
     }
     
-    init(frame: CGRect, type: ActionType) {
+    
+    init(frame: CGRect, type: ActionType, statet: UIControlState = .normal) {
         self.type = type
         super.init(frame: frame)
         setIconHint(type: type)
