@@ -55,6 +55,10 @@ class ToolsPanel: UIView {
         default:
             print("btnTap default")
         }
+
+        if History.sharedInstance.ableToAdvance {
+//            buttons.
+        }
         doodleView.setNeedsDisplay()
     }
     
@@ -153,7 +157,7 @@ class ToolsPanel: UIView {
         }
         
         print("rows.count: \(self.subviews.count)")
-        print("elements in first row: \(self.subviews.first?.subviews.count)")
+        print("elements in first row: \(self.subviews.first!.subviews.count)")
 //        self.sizeToFit()
         setNeedsLayout()
         layoutIfNeeded()

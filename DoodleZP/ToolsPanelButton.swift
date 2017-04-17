@@ -20,14 +20,22 @@ class ToolsPanelButton: UIButton {
     }
     
     
-    init(frame: CGRect, type: ActionType, statet: UIControlState = .normal) {
+    init(frame: CGRect, type: ActionType, state: UIControlState = .normal) {
         self.type = type
         super.init(frame: frame)
-        setIconHint(type: type)
+        switch state {
+        case UIControlState.disabled:
+            self.isEnabled = false
+        case UIControlState.selected:
+            self.isSelected = true
+        default:
+            break
+        }
+        setAppearance(type: type)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func setIconHint(type: ActionType) {
+    private func setAppearance(type: ActionType) {
         switch type {
         case .undo: hint = "Undo"
         case .redo: hint = "Redo"
@@ -39,7 +47,12 @@ class ToolsPanelButton: UIButton {
         
         self.layer.borderWidth = 0.25
         self.layer.borderColor = UIColor.gray.cgColor
-        self.layer.backgroundColor = UIColor.cyan.cgColor
+        if self.isSelected {
+            self.layer.backgroundColor = UIColor.selectedState().cgColor
+        } else {
+            self.layer.backgroundColor = UIColor.normalState().cgColor
+        }
+        
     }
     
     static var dummyCount = 0

@@ -12,6 +12,21 @@ class History {
     
     private init() {}
     
+    var ableToAdvance: Bool {
+        if history.count == 0, (currentIndex == 0 && lastAction == .revert) {
+            return false
+        }
+        return true
+    }
+    
+    var ableToRevert: Bool {
+        if history.count == 0, ((currentIndex == history.count - 1) && lastAction != .advance) {
+            return false
+        }
+        return true
+    }
+    
+    
     static let sharedInstance: History = History()
     var lastAction = LastAction.none
     
