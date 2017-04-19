@@ -14,7 +14,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     let history = History.sharedInstance
     var historyHandler: HistoryHandler?
     var preventNewLine = false
-    
+    var transitions = [Transition]()
     
     var currentStrokes = [NSValue:Element]()
     var finishedStrokes = [Element]()
@@ -103,8 +103,6 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     func deleteStrokes(_ sender: UIMenuController) {
         
-        var transitions = [Transition]()
-        
         for index in selectedStrokesIndexes.sorted(by: >) {
             let removedStroke = finishedStrokes.remove(at: index)
             let transition = Transition(fromState: [removedStroke], toState: [nil])
@@ -113,6 +111,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         }
         let chainLink = ChainLink(changeType: .delete, transitions: transitions)
         history.append(chainLink: chainLink)
+        transitions.removeAll()
         setNeedsDisplay()
     }
     
@@ -121,8 +120,6 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         guard !selectedStrokesIndexes.isEmpty else {
             return
         }
-        
-        var transitions = [Transition]()
         
         switch gestureRecognizer.state {
         case .began:
@@ -155,8 +152,9 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
                 transitionIndex += 1
             }
             
-            let chainLink  = ChainLink(changeType: .stokeMove, transitions: transitions)
+            let chainLink  = ChainLink(changeType: .strokeMove, transitions: transitions)
             history.append(chainLink: chainLink)
+            transitions.removeAll()
             
         default:
             break
