@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3502D2961EA79AD200350727 /* NotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3502D2951EA79AD200350727 /* NotificationCenterKeys.swift */; };
 		841997961E9169B600D3B435 /* HistoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841997951E9169B600D3B435 /* HistoryHandler.swift */; };
 		84619E281E4B48E000AE4465 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84619E271E4B48E000AE4465 /* Utils.swift */; };
 		847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA74F1E44976500F66B61 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3502D2951EA79AD200350727 /* NotificationCenterKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterKeys.swift; sourceTree = "<group>"; };
 		841997951E9169B600D3B435 /* HistoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryHandler.swift; sourceTree = "<group>"; };
 		84619E271E4B48E000AE4465 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		847DA74C1E44976500F66B61 /* DoodleZP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoodleZP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 				847DA7851E44B60000F66B61 /* ToolsPanel.swift */,
 				847DA7A81E45305F00F66B61 /* ToolsPanelButton.swift */,
 				847DA7AA1E45328000F66B61 /* ToolsPanelButtonStore.swift */,
+				3502D2951EA79AD200350727 /* NotificationCenterKeys.swift */,
 			);
 			name = "ToolsPanel files";
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */,
 				84ADFCFF1E49F4F600C91215 /* Vector.swift in Sources */,
 				847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */,
+				3502D2961EA79AD200350727 /* NotificationCenterKeys.swift in Sources */,
 				841997961E9169B600D3B435 /* HistoryHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

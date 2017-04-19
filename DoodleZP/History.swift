@@ -12,20 +12,37 @@ class History {
     
     private init() {}
     
-    var ableToAdvance: Bool {
+    @available(*, deprecated)
+    var isAbleToAdvance: Bool {
         if history.count == 0 || currentIndex == history.count || lastAction == .none {
             return false
         }
         return true
     }
     
-    var ableToRevert: Bool {
+    @available(*, deprecated)
+    var isAbleToRevert: Bool {
         if history.count == 0 || currentIndex == -1 {
             return false
         }
         return true
     }
     
+    func ableToAdvance() {
+        var notificationKey = NotificationCenterKeys.historyForwardButtonStateEnabled
+        if history.count == 0 || currentIndex == history.count || lastAction == .none {
+            notificationKey = NotificationCenterKeys.historyForwardButtonStateDisabled
+        }
+        NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self)
+    }
+    
+    func ableToRevert() {
+        var notificationKey = NotificationCenterKeys.historyBackButtonStateEnabled
+        if history.count == 0 || currentIndex == -1 {
+            notificationKey = NotificationCenterKeys.historyBackButtonStateDisabled
+        }
+        NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self)
+    }
     
     static let sharedInstance: History = History()
     var lastAction = LastAction.none
@@ -49,6 +66,8 @@ class History {
         history.append(chainLink)
         currentIndex = currentIndex == nil ? 0 : currentIndex! + 1
         lastAction = .none
+        ableToAdvance()
+        ableToRevert()
     }
     
     private func remove(after curIndex: Int?) {
@@ -75,6 +94,8 @@ class History {
             index -= 1
         }
         lastAction = .revert
+        ableToAdvance()
+        ableToRevert()
         return history[index]
     }
     
@@ -96,6 +117,8 @@ class History {
         }
         currentIndex! += 1
         lastAction = .advance
+        ableToAdvance()
+        ableToRevert()
         return history[index]
     }
     
