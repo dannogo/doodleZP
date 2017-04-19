@@ -56,10 +56,19 @@ class ToolsPanel: UIView {
             print("btnTap default")
         }
 
-        if History.sharedInstance.ableToAdvance {
-//            buttons.
-        }
+        historyButtonsStateSetup()
+        
         doodleView.setNeedsDisplay()
+    }
+    
+    func historyButtonsStateSetup() {
+        for button in buttons {
+            if button.type == .undo {
+                button.isEnabled = History.sharedInstance.ableToRevert ? true : false
+            } else if button.type == .redo {
+                button.isEnabled = History.sharedInstance.ableToAdvance ? true : false
+            }
+        }
     }
     
     func toggleToolsPanel() {

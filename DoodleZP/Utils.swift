@@ -12,11 +12,15 @@ import UIKit
 extension UIColor {
     
     static func normalState() -> UIColor{
-        return UIColorFromRGB(0xffffff)
+        return UIColorFromRGB(0xe6f2ff)
     }
     
     static func selectedState() -> UIColor{
-        return UIColorFromRGB(0xe6f2ff)
+        return UIColorFromRGB(0xcce5ff)
+    }
+    
+    static func selectedStroke() -> UIColor {
+        return UIColorFromRGB(0x5DDFFF)
     }
     
     @available(*, deprecated)

@@ -26,8 +26,8 @@ class ToolsPanelButtonStore {
     
     private func getUndoRedo() -> [ToolsPanelButton]{
         return [
-            ToolsPanelButton(frame: CGRect.zero, type: .undo),
-            ToolsPanelButton(frame: CGRect.zero, type: .redo)
+            ToolsPanelButton(frame: CGRect.zero, type: .undo, state: .disabled),
+            ToolsPanelButton(frame: CGRect.zero, type: .redo, state: .disabled)
         ]
     }
     

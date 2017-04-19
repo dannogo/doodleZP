@@ -13,14 +13,14 @@ class History {
     private init() {}
     
     var ableToAdvance: Bool {
-        if history.count == 0, (currentIndex == 0 && lastAction == .revert) {
+        if history.count == 0 || currentIndex == history.count || lastAction == .none {
             return false
         }
         return true
     }
     
     var ableToRevert: Bool {
-        if history.count == 0, ((currentIndex == history.count - 1) && lastAction != .advance) {
+        if history.count == 0 || currentIndex == -1 {
             return false
         }
         return true

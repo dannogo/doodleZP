@@ -42,12 +42,15 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         super.init(coder: aDecored)
         applyGestureRecognizers()
         
-        self.backgroundColor = UIColor.yellow
+//        self.backgroundColor = UIColor.yellow
     }
     
     func historyStep(backward: Bool) {
-//        historyHandler?.handleHistoryStep(backward: backward)
+        //        historyHandler?.handleHistoryStep(backward: backward)
         historyHandler?.step(backward: backward)
+        
+        
+        
     }
     
     func applyGestureRecognizers() {
@@ -192,7 +195,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         }
         
         for index in selectedStrokesIndexes {
-            UIColor(netHex: 0x5DDFFF).setStroke()
+            UIColor.selectedStroke().setStroke()
             let selectedStroke = finishedStrokes[index]
             if let shape = selectedStroke as? Vector {
                 for line in shape.lines {
