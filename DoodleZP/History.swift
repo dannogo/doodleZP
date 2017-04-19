@@ -12,22 +12,6 @@ class History {
     
     private init() {}
     
-    @available(*, deprecated)
-    var isAbleToAdvance: Bool {
-        if history.count == 0 || currentIndex == history.count || lastAction == .none {
-            return false
-        }
-        return true
-    }
-    
-    @available(*, deprecated)
-    var isAbleToRevert: Bool {
-        if history.count == 0 || currentIndex == -1 {
-            return false
-        }
-        return true
-    }
-    
     func ableToAdvance() {
         var notificationKey = NotificationCenterKeys.historyForwardButtonStateEnabled
         if history.count == 0 || currentIndex == history.count || lastAction == .none {

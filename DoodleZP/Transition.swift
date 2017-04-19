@@ -10,5 +10,5 @@ import Foundation
 
 struct Transition {
     let fromState: [Element?]
-    let toState: [Element?]
+    var toState: [Element?]
 }

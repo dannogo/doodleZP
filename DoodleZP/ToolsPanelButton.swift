@@ -36,24 +36,24 @@ class ToolsPanelButton: UIButton {
     }
     
     private func setAppearance(type: ActionType) {
-        var enableKey: String?
-        var disableKey: String?
+        var enableKeyOptional: String?
+        var disableKeyOptional: String?
         
         switch type {
         case .undo:
             hint = "Undo"
-            enableKey = NotificationCenterKeys.historyBackButtonStateEnabled
-            disableKey = NotificationCenterKeys.historyBackButtonStateDisabled
+            enableKeyOptional = NotificationCenterKeys.historyBackButtonStateEnabled
+            disableKeyOptional = NotificationCenterKeys.historyBackButtonStateDisabled
         case .redo:
             hint = "Redo"
-            enableKey = NotificationCenterKeys.historyForwardButtonStateEnabled
-            disableKey = NotificationCenterKeys.historyForwardButtonStateDisabled
+            enableKeyOptional = NotificationCenterKeys.historyForwardButtonStateEnabled
+            disableKeyOptional = NotificationCenterKeys.historyForwardButtonStateDisabled
         default: break
         }
         
-        if let enable = enableKey, let disable = disableKey {
-            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setEnabledState), name: NSNotification.Name(rawValue: enable), object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setDisabledState), name: NSNotification.Name(rawValue: disable), object: nil)
+        if let enableKey = enableKeyOptional, let disableKey = disableKeyOptional {
+            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setEnabledState), name: NSNotification.Name(rawValue: enableKey), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setDisabledState), name: NSNotification.Name(rawValue: disableKey), object: nil)
         }
         
         icon = type == ActionType.placeholder ? nil : UIImage(named: type.rawValue)

@@ -13,6 +13,8 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     let history = History.sharedInstance
     var historyHandler: HistoryHandler?
+    var preventNewLine = false
+    
     
     var currentStrokes = [NSValue:Element]()
     var finishedStrokes = [Element]()
@@ -21,6 +23,9 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
             if selectedStrokesIndexes.isEmpty {
                 let menu = UIMenuController.shared
                 menu.setMenuVisible(false, animated: true)
+                preventNewLine = false
+            } else {
+                preventNewLine = true
             }
         }
     }
@@ -75,6 +80,8 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         let point = gestureRecognizer.location(in: self)
         if let index = indexOfShape(at: point) {
             selectedStrokesIndexes.append(index)
+        } else {
+            selectedStrokesIndexes.removeAll()
         }
         
         let menu = UIMenuController.shared
@@ -115,7 +122,16 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
             return
         }
         
-        if gestureRecognizer.state == .changed {
+        var transitions = [Transition]()
+        
+        switch gestureRecognizer.state {
+        case .began:
+            for index in selectedStrokesIndexes.sorted(by: >) {
+                let originalStroke = finishedStrokes[index]
+                let transition = Transition(fromState: [originalStroke], toState: [nil])
+                transitions.append(transition)
+            }
+        case .changed:
             let translation = gestureRecognizer.translation(in: self)
             for index in selectedStrokesIndexes {
                 if let shape = finishedStrokes[index] as? Vector {
@@ -131,6 +147,19 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
                 
                 setNeedsDisplay()
             }
+        case .ended:
+            var transitionIndex = 0
+            for index in selectedStrokesIndexes.sorted(by: >) {
+                let movedStroke = finishedStrokes[index]
+                transitions[transitionIndex].toState = [movedStroke]
+                transitionIndex += 1
+            }
+            
+            let chainLink  = ChainLink(changeType: .stokeMove, transitions: transitions)
+            history.append(chainLink: chainLink)
+            
+        default:
+            break
         }
         
     }
@@ -208,6 +237,10 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - Touches events
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        guard !preventNewLine else {
+            return
+        }
         
         for touch in touches {
             let location = touch.location(in: self)
