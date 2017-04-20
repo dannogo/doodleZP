@@ -9,15 +9,21 @@
 import Foundation
 import UIKit
 
-class Point {
-    
-    let id = UUID()
-    
-    init(_ point: CGPoint) {
-        self.point = point
-    }
-    
+class Point: NSObject, NSCopying {
+    // Create id in initializer parameter      !
+    let id: UUID
     var lines: [NSValue?] = []
     var point: CGPoint
+    
+    init(_ point: CGPoint, id: UUID) {
+        self.point = point
+        self.id = id
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Point(self.point, id: self.id)
+        copy.lines = lines
+        return copy
+    }
     
 }

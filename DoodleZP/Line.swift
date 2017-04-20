@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Line {
+class Line: NSObject, NSCopying {
     
     var shape: Vector
     var start: Point
@@ -23,7 +23,17 @@ class Line {
         self.end = end
         self.color = color
         self.thickness = thickness
+//        associateLineWithPoints()
+    }
+    
+    convenience init(sender shape: Vector, start: Point, end: Point, color: UIColor, thickness: CGFloat, anyNumber: Int) {
+        self.init(sender: shape, start: start, end: end, color: color, thickness: thickness)
         associateLineWithPoints()
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Line(sender: self.shape, start: self.start, end: self.end, color: self.color, thickness: self.thickness, anyNumber: 0)
+        return copy
     }
     
     func associateLineWithPoints() {
