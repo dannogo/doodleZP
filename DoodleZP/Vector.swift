@@ -31,7 +31,7 @@ class Vector: NSObject, Element, NSCopying {
     
     @discardableResult func createLine(id: UUID, start: Point, end: Point, color: UIColor, thickness: CGFloat) -> Line {
         self.id = id
-        let line = Line(sender: self, start: start, end: end, color: color, thickness: thickness)
+        let line = Line(sender: self, start: start, end: end, color: color, thickness: thickness, anyNumber: 0)
         lines.append(line)
         return line
     }

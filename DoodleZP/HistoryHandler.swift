@@ -53,7 +53,14 @@ class HistoryHandler {
                         if let elementToApplyUnwrapped = elementToApply {
                             let stroke = elementToApplyUnwrapped as! Vector
                             print("insert start: \(stroke.lines[0].start.point.x):\(stroke.lines[0].start.point.y), end: \(stroke.lines[0].end.point.x):\(stroke.lines[0].end.point.y)")
-                            doodleView.finishedStrokes.insert(elementToApplyUnwrapped, at: elementToApplyUnwrapped.layerIndex!)
+                            let index: Int
+                            if elementToApplyUnwrapped.layerIndex! > doodleView.finishedStrokes.count {
+                                index = doodleView.finishedStrokes.count
+                            } else {
+                                index = elementToApplyUnwrapped.layerIndex!
+                            }
+                            
+                            doodleView.finishedStrokes.insert(elementToApplyUnwrapped, at: index)
                         }
                     }
 //                case .strokeMove:

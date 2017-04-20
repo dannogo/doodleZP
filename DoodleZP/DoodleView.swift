@@ -124,7 +124,15 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         switch gestureRecognizer.state {
         case .began:
             for index in selectedStrokesIndexes.sorted(by: >) {
-                let originalStroke = finishedStrokes[index]
+//                let originalStroke = finishedStrokes[index]
+                let strokeToCopy = finishedStrokes[index]
+                let originalStroke: Element
+                if ((strokeToCopy as? Vector) != nil) {
+                    originalStroke = (strokeToCopy as! Vector).copy() as! Element
+                    print("original Stroke start: \((originalStroke as! Vector).lines[0].start.point.x):\((originalStroke as! Vector).lines[0].start.point.y), end: \((originalStroke as! Vector).lines[0].end.point.x):\((originalStroke as! Vector).lines[0].end.point.y)")
+                } else {
+                    originalStroke = finishedStrokes[index] // Just for now. Replace with copies of other non Vector Elements
+                }
                 let transition = Transition(fromState: [originalStroke], toState: [nil])
                 transitions.append(transition)
             }
@@ -242,8 +250,8 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         
         for touch in touches {
             let location = touch.location(in: self)
-            let newShape = Vector()
-            newShape.createLine(start: Point(location), end: Point(location), color: temporaryColor, thickness: temporaryThickness)
+            let newShape = Vector(id: UUID())
+            newShape.createLine(id: UUID(), start: Point(location, id: UUID()), end: Point(location, id: UUID()), color: temporaryColor, thickness: temporaryThickness)
             
             let key = NSValue(nonretainedObject: touch)
             currentStrokes[key] = newShape
