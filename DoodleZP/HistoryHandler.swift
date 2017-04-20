@@ -42,7 +42,7 @@ class HistoryHandler {
                             for (index, element) in doodleView.finishedStrokes.enumerated() {
                                 if elementToDismissUnwrapped.id == element.id {
                                     let stroke = doodleView.finishedStrokes[index] as! Vector
-                                    print("remove start: \(stroke.lines[0].start.point.x):\(stroke.lines[0].start.point.y), end: \(stroke.lines[0].end.point.x):\(stroke.lines[0].end.point.y)")
+                                    print("remove address: \(Unmanaged.passRetained(stroke).toOpaque()) start: \(stroke.lines[0].start.point.x):\(stroke.lines[0].start.point.y), end: \(stroke.lines[0].end.point.x):\(stroke.lines[0].end.point.y)")
                                     doodleView.finishedStrokes.remove(at: index)
                                 }
                             }
@@ -52,7 +52,7 @@ class HistoryHandler {
                     for elementToApply in stateToApply {
                         if let elementToApplyUnwrapped = elementToApply {
                             let stroke = elementToApplyUnwrapped as! Vector
-                            print("insert start: \(stroke.lines[0].start.point.x):\(stroke.lines[0].start.point.y), end: \(stroke.lines[0].end.point.x):\(stroke.lines[0].end.point.y)")
+                            print("insert address: \(Unmanaged.passRetained(stroke).toOpaque()) start: \(stroke.lines[0].start.point.x):\(stroke.lines[0].start.point.y), end: \(stroke.lines[0].end.point.x):\(stroke.lines[0].end.point.y)")
                             let index: Int
                             if elementToApplyUnwrapped.layerIndex! > doodleView.finishedStrokes.count {
                                 index = doodleView.finishedStrokes.count

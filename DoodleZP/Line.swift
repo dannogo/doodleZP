@@ -32,7 +32,7 @@ class Line: NSObject, NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = Line(sender: self.shape, start: self.start, end: self.end, color: self.color, thickness: self.thickness, anyNumber: 0)
+        let copy = Line(sender: self.shape, start: self.start.copy() as! Point, end: self.end.copy() as! Point, color: self.color, thickness: self.thickness, anyNumber: 0)
         return copy
     }
     

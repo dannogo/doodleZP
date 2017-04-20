@@ -24,7 +24,9 @@ class Vector: NSObject, Element, NSCopying {
         let copy = Vector(id: self.id)
         copy.layerIndex = self.layerIndex
         for line in self.lines {
-            copy.lines.append(line.copy() as! Line)
+            let lineCopy = line.copy() as! Line
+            lineCopy.shape = self
+            copy.lines.append(lineCopy)
         }
         return copy
     }

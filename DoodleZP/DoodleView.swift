@@ -125,15 +125,15 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         case .began:
             for index in selectedStrokesIndexes.sorted(by: >) {
 //                let originalStroke = finishedStrokes[index]
-                let strokeToCopy = finishedStrokes[index]
-                let originalStroke: Element
-                if ((strokeToCopy as? Vector) != nil) {
-                    originalStroke = (strokeToCopy as! Vector).copy() as! Element
-                    print("original Stroke start: \((originalStroke as! Vector).lines[0].start.point.x):\((originalStroke as! Vector).lines[0].start.point.y), end: \((originalStroke as! Vector).lines[0].end.point.x):\((originalStroke as! Vector).lines[0].end.point.y)")
+                let originalStroke = finishedStrokes[index]
+                let strokeCopy: Element
+                if ((originalStroke as? Vector) != nil) {
+                    strokeCopy = (originalStroke as! Vector).copy() as! Element
+                    print("strokeCopy  address: \(Unmanaged.passRetained(strokeCopy as! Vector).toOpaque()) start: \((strokeCopy as! Vector).lines[0].start.point.x):\((strokeCopy as! Vector).lines[0].start.point.y), end: \((strokeCopy as! Vector).lines[0].end.point.x):\((strokeCopy as! Vector).lines[0].end.point.y)")
                 } else {
-                    originalStroke = finishedStrokes[index] // Just for now. Replace with copies of other non Vector Elements
+                    strokeCopy = finishedStrokes[index] // Just for now. Replace with copies of other non Vector Elements
                 }
-                let transition = Transition(fromState: [originalStroke], toState: [nil])
+                let transition = Transition(fromState: [strokeCopy], toState: [nil])
                 transitions.append(transition)
             }
         case .changed:
