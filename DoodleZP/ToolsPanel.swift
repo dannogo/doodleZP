@@ -41,6 +41,7 @@ class ToolsPanel: UIView {
     
     
     func btnTap (_ sender: ToolsPanelButton) {
+        
         let doodleView = self.superview as! DoodleView
         if doodleView.historyHandler == nil {
             doodleView.historyHandler = HistoryHandler(doodleView: doodleView)
@@ -218,6 +219,7 @@ class ToolsPanel: UIView {
     
     // Not in use
     // Try to make it with constraints
+    @available(*, deprecated)
     private func resizeToFitSubviews() {
         var width: CGFloat = 0
         var height: CGFloat = 0

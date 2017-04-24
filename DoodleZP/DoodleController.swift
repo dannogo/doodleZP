@@ -62,17 +62,18 @@ class DoodleController: UIViewController {
     func btnTap() {
         toolsPanel.toggleToolsPanel()
     }
-    
-        
 
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        toolsPanel = ToolsPanel()
         toolsPanel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
+        
+        let showHideToolsPanelButton = ShowHideToolsPanelButton()
+        showHideToolsPanelButton.setup(with: toolsPanel)
+        self.view.addSubview(showHideToolsPanelButton)
+        
     }
 
     override func didReceiveMemoryWarning() {
