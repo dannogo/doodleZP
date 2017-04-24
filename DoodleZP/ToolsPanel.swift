@@ -41,11 +41,11 @@ class ToolsPanel: UIView {
     
     
     func btnTap (_ sender: ToolsPanelButton) {
-//        print("hint: \(sender.hint)")
         let doodleView = self.superview as! DoodleView
         if doodleView.historyHandler == nil {
             doodleView.historyHandler = HistoryHandler(doodleView: doodleView)
         }
+        doodleView.selectedStrokesIndexes.removeAll()
         switch sender.type {
         case .undo:
             doodleView.historyStep(backward: true)

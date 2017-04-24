@@ -9,7 +9,7 @@
 import UIKit
 
 // TODO: cancel selection on line tapped second type
-// handle strokeMove revert
+// dismiss selection on revert
 
 class NotificationCenterKeys{
     static let historyBackButtonStateEnabled = "com.doodleZP.historyBackButtonStateEnabled"
