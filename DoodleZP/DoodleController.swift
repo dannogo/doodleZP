@@ -70,9 +70,9 @@ class DoodleController: UIViewController {
         self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
         
-        let showHideToolsPanelButton = ShowHideToolsPanelButton()
-        showHideToolsPanelButton.setup(with: toolsPanel)
-        self.view.addSubview(showHideToolsPanelButton)
+//        let showHideToolsPanelButton = ShowHideToolsPanelButton()
+//        showHideToolsPanelButton.setup(with: toolsPanel)
+//        self.view.addSubview(showHideToolsPanelButton)
         
     }
 

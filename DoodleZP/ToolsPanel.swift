@@ -14,6 +14,7 @@ class ToolsPanel: UIView {
     // vector, raster, selected line/lines, picking points etc
     var buttons = [ToolsPanelButton]()
     static var isShown = true
+    var showHideToolsPanelButton: ShowHideToolsPanelButton?
     
     var orientation: UIInterfaceOrientation = .portrait {
         didSet {
@@ -36,9 +37,23 @@ class ToolsPanel: UIView {
 //            self.heightAnchor.constraint(equalToConstant: 200)
             ])
         
+        let doodleView = self.superview as! DoodleView
+        showHideToolsPanelButton = ShowHideToolsPanelButton()
+        showHideToolsPanelButton!.setup(with: self)
+        doodleView.addSubview(showHideToolsPanelButton!)
+        showHideToolsPanelButton!.addTarget(self, action: #selector(self.showHideBtnTap), for: .touchUpInside)
         buildPanelViewHierarchy()
     }
     
+    func showHideBtnTap (_ sender: ShowHideToolsPanelButton) {
+        if ToolsPanel.isShown {
+            hideToolsPanel()
+            sender.setImage(UIImage(named: "show_tools_panel"), for: .normal)
+        } else {
+            showToolsPanel()
+            sender.setImage(UIImage(named: "hide_tools_panel"), for: .normal)
+        }
+    }
     
     func btnTap (_ sender: ToolsPanelButton) {
         
@@ -69,8 +84,9 @@ class ToolsPanel: UIView {
             ToolsPanel.isShown = true
             let transition = CGAffineTransform(translationX: 0, y: 0)
             self.transform = transition
+            self.showHideToolsPanelButton?.transform = transition
         }
-        print(#function)
+        
     }
     
     private func hideToolsPanel() {
@@ -79,6 +95,7 @@ class ToolsPanel: UIView {
             let height = self.bounds.size.height
             let transition = CGAffineTransform(translationX: 0, y: height)
             self.transform = transition
+            self.showHideToolsPanelButton?.transform = transition
         }
         print(#function)
     }
