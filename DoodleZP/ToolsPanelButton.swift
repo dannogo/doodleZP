@@ -16,7 +16,7 @@ class ToolsPanelButton: UIButton {
     let action: (() -> ())? = nil
     
     enum ActionType: String {
-        case placeholder, undo, redo
+        case placeholder, undo, redo, vector, raster
     }
     
     
@@ -48,7 +48,18 @@ class ToolsPanelButton: UIButton {
             hint = "Redo"
             enableKeyOptional = NotificationCenterKeys.historyForwardButtonStateEnabled
             disableKeyOptional = NotificationCenterKeys.historyForwardButtonStateDisabled
-        default: break
+        case .vector:
+            hint = "Draw Vector Line"
+            enableKeyOptional = NotificationCenterKeys.vectorButtonEnabled
+            disableKeyOptional = NotificationCenterKeys.vectorButtonDisabled
+            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setSelectedState), name: NSNotification.Name(rawValue: NotificationCenterKeys.vectorButtonSelected), object: nil)
+        case .raster:
+            hint = "Draw Raster Line"
+            enableKeyOptional = NotificationCenterKeys.rasterButtonEnabled
+            disableKeyOptional = NotificationCenterKeys.rasterButtonDisabled
+            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setSelectedState), name: NSNotification.Name(rawValue: NotificationCenterKeys.rasterButtonSelected), object: nil)
+        default:
+            break
         }
         
         if let enableKey = enableKeyOptional, let disableKey = disableKeyOptional {
@@ -130,6 +141,10 @@ class ToolsPanelButton: UIButton {
     
     func setDisabledState() {
         self.isEnabled = false
+    }
+    
+    func setSelectedState() {
+        self.isSelected = true
     }
     
     /*

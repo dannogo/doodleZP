@@ -8,11 +8,19 @@
 
 import UIKit
 
-// TODO: cancel selection on line tapped second type
+// TODO:
+// add button for vector drawing in selected state
 
 class NotificationCenterKeys{
     static let historyBackButtonStateEnabled = "com.doodleZP.historyBackButtonStateEnabled"
     static let historyBackButtonStateDisabled = "com.doodleZP.historyBackButtonStateDisabled"
     static let historyForwardButtonStateEnabled = "com.doodleZP.historyForwardButtonStateEnabled"
     static let historyForwardButtonStateDisabled = "com.doodleZP.historyForwardButtonStateDisabled"
+    
+    static let vectorButtonSelected = "com.doodleZP.vectorButtonSelected"
+    static let vectorButtonEnabled = "com.doodleZP.vectorButtonEnabled"
+    static let vectorButtonDisabled = "com.doodleZP.vectorButtonDisabled"
+    static let rasterButtonSelected = "com.doodleZP.rasterButtonSelected"
+    static let rasterButtonEnabled = "com.doodleZP.rasterButtonEnabled"
+    static let rasterButtonDisabled = "com.doodleZP.rasterButtonDisabled"
 }

@@ -97,7 +97,6 @@ class ToolsPanel: UIView {
             self.transform = transition
             self.showHideToolsPanelButton?.transform = transition
         }
-        print(#function)
     }
     
     func buildPanelViewHierarchy() {
