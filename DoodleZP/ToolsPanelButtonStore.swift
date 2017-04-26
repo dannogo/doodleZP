@@ -24,17 +24,18 @@ class ToolsPanelButtonStore {
         case anyAction
     }
     
-    private func getUndoRedo() -> [ToolsPanelButton]{
+    private func getCommonButtons() -> [ToolsPanelButton]{
         return [
             ToolsPanelButton(frame: CGRect.zero, type: .undo, state: .disabled),
-            ToolsPanelButton(frame: CGRect.zero, type: .redo, state: .disabled)
+            ToolsPanelButton(frame: CGRect.zero, type: .redo, state: .disabled),
+            ToolsPanelButton(frame: CGRect.zero, type: .trash, state: .disabled),
+            ToolsPanelButton(frame: CGRect.zero, type: .vector, state: .selected),
+            ToolsPanelButton(frame: CGRect.zero, type: .raster, state: .normal)
         ]
     }
     
     func getAvailableOptions(state: State) -> [ToolsPanelButton] {
-            allButtons.append(contentsOf: getUndoRedo())
-            allButtons.append(ToolsPanelButton(frame: CGRect.zero, type: .vector, state: .selected))
-            allButtons.append(ToolsPanelButton(frame: CGRect.zero, type: .raster, state: .normal))
+            allButtons.append(contentsOf: getCommonButtons())
         
             return allButtons
         }

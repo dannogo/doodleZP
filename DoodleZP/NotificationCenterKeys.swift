@@ -17,6 +17,9 @@ class NotificationCenterKeys{
     static let historyForwardButtonStateEnabled = "com.doodleZP.historyForwardButtonStateEnabled"
     static let historyForwardButtonStateDisabled = "com.doodleZP.historyForwardButtonStateDisabled"
     
+    static let trashButtonStateEnabled = "com.doodleZP.trashCanvasStateEnabled"
+    static let trashButtonStateDisabled = "com.doodleZP.trashCanvasStateDisabled"
+    
     static let vectorButtonSelected = "com.doodleZP.vectorButtonSelected"
     static let vectorButtonDeselected = "com.doodleZP.vectorButtonDeselected"
     static let vectorButtonEnabled = "com.doodleZP.vectorButtonEnabled"

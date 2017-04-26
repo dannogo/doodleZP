@@ -59,9 +59,9 @@ class DoodleController: UIViewController {
             singleLinePicked, multipleLinesPicked, linePointsEditing, regularPanning
     }
     
-    func btnTap() {
-        toolsPanel.toggleToolsPanel()
-    }
+//    func btnTap() {
+//        toolsPanel.toggleToolsPanel()
+//    }
 
     // MARK: - Override Methods
     override func viewDidLoad() {
@@ -69,10 +69,6 @@ class DoodleController: UIViewController {
         toolsPanel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
-        
-//        let showHideToolsPanelButton = ShowHideToolsPanelButton()
-//        showHideToolsPanelButton.setup(with: toolsPanel)
-//        self.view.addSubview(showHideToolsPanelButton)
         
     }
 

@@ -17,6 +17,10 @@ class HistoryHandler {
         self.doodleView = doodleView
     }
     
+    func clearCanvasAndHistory() {
+        history.clearAll()
+        doodleView.finishedStrokes.removeAll()
+    }
     
     func step(backward: Bool) {
         var stateToDismiss: [Element?]
@@ -41,8 +45,8 @@ class HistoryHandler {
                         if let elementToDismissUnwrapped = elementToDismiss {
                             for (index, element) in doodleView.finishedStrokes.enumerated() {
                                 if elementToDismissUnwrapped.id == element.id {
-                                    let stroke = doodleView.finishedStrokes[index] as! Vector
-                                    print("remove address: \(Unmanaged.passRetained(stroke).toOpaque()) start: \(stroke.lines[0].start.point.x):\(stroke.lines[0].start.point.y), end: \(stroke.lines[0].end.point.x):\(stroke.lines[0].end.point.y)")
+//                                    let stroke = doodleView.finishedStrokes[index] as! Vector
+//                                    print("remove address: \(Unmanaged.passRetained(stroke).toOpaque()) start: \(stroke.lines[0].start.point.x):\(stroke.lines[0].start.point.y), end: \(stroke.lines[0].end.point.x):\(stroke.lines[0].end.point.y)")
                                     doodleView.finishedStrokes.remove(at: index)
                                 }
                             }

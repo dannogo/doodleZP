@@ -67,6 +67,24 @@ class ToolsPanel: UIView {
             doodleView.historyStep(backward: true)
         case .redo:
             doodleView.historyStep(backward: false)
+        case .trash:
+//            doodleView.historyHandler!.clearCanvasAndHistory()
+            
+//            let alertController = UIAlertController(title: "Hey AppCoda", message: "What do you want to do?", preferredStyle: .alert)
+//            let callActionHandler = { (action:UIAlertAction!) -> Void in
+//                let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
+//                alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                self.parentViewController!.present(alertMessage, animated: true, completion: nil)
+//            }
+//            let callAction = UIAlertAction(title: "Call", style: .default, handler: callActionHandler)
+//            alertController.addAction(callAction)
+            
+            
+            // LOCALIZE STRINGS
+//            let alert = UIAlertController(title: <#T##String?#>, message: <#T##String?#>, preferredStyle: <#T##UIAlertControllerStyle#>)
+            
+            print("trash")
+            
         case .vector:
             NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.vectorButtonSelected), object: self)
             NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.rasterButtonDeselected), object: self)

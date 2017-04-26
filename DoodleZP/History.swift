@@ -36,7 +36,18 @@ class History {
     }
     
     private var currentIndex: Int? = nil
-    private var history = [ChainLink]()
+    private var history = [ChainLink]() {
+        didSet {
+            print("history count didSet: \(history.count)")
+            var trashNotificationKey = NotificationCenterKeys.trashButtonStateEnabled
+            if history.count == 0 {
+                trashNotificationKey = NotificationCenterKeys.trashButtonStateDisabled
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.historyBackButtonStateDisabled), object: self)
+                currentIndex = 0
+            }
+            NotificationCenter.default.post(name: Notification.Name(rawValue: trashNotificationKey), object: self)
+        }
+    }
     private var historyMaxSize = 50
     
     @discardableResult private func handleOverflow() -> Int { // Returns number of removed chainlinks
@@ -62,13 +73,18 @@ class History {
         }
     }
     
+    func clearAll() {
+        history.removeAll()
+//        NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.historyBackButtonStateDisabled), object: self)
+    }
+    
     func revert() -> ChainLink? {
         
         if lastAction == .advance {
             currentIndex! -= 1
         }
         
-        guard var index = currentIndex, index >= 0 else {
+        guard history.count > 0, var index = currentIndex, index >= 0 else {
             print("Unable to revert in: \(#file) method: \(#function)")
             return nil
         }

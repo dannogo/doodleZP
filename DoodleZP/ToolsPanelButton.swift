@@ -16,7 +16,7 @@ class ToolsPanelButton: UIButton {
     let action: (() -> ())? = nil
     
     enum ActionType: String {
-        case placeholder, undo, redo, vector, raster
+        case placeholder, undo, redo, trash, vector, raster
     }
     
     
@@ -50,6 +50,10 @@ class ToolsPanelButton: UIButton {
             hint = "Redo"
             enableKeyOptional = NotificationCenterKeys.historyForwardButtonStateEnabled
             disableKeyOptional = NotificationCenterKeys.historyForwardButtonStateDisabled
+        case .trash:
+            hint = "Clear Canvas and History"
+            enableKeyOptional = NotificationCenterKeys.trashButtonStateEnabled
+            disableKeyOptional = NotificationCenterKeys.trashButtonStateDisabled
         case .vector:
             hint = "Draw Vector Line"
             enableKeyOptional = NotificationCenterKeys.vectorButtonEnabled
