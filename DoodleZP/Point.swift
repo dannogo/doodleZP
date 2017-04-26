@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Point: NSObject, NSCopying {
-    // Create id in initializer parameter      !
+    
     let id: UUID
     var lines: [NSValue?] = []
     var point: CGPoint

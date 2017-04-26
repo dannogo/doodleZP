@@ -9,7 +9,6 @@
 import UIKit
 
 // TODO: cancel selection on line tapped second type
-// show/hide toolspanel
 
 class NotificationCenterKeys{
     static let historyBackButtonStateEnabled = "com.doodleZP.historyBackButtonStateEnabled"

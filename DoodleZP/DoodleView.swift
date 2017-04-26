@@ -79,7 +79,13 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     func tap(_ gestureRecognizer: UIGestureRecognizer) {
         let point = gestureRecognizer.location(in: self)
         if let index = indexOfShape(at: point) {
-            selectedStrokesIndexes.append(index)
+            if selectedStrokesIndexes.contains(index) {
+                if let indexOfIndex = selectedStrokesIndexes.index(of: index) {
+                    selectedStrokesIndexes.remove(at: indexOfIndex)
+                }
+            } else {
+                selectedStrokesIndexes.append(index)
+            }
         } else {
             selectedStrokesIndexes.removeAll()
         }
