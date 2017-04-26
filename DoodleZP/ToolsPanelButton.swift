@@ -38,6 +38,8 @@ class ToolsPanelButton: UIButton {
     private func setAppearance(type: ActionType) {
         var enableKeyOptional: String?
         var disableKeyOptional: String?
+        var selectedKeyOptional: String?
+        var deselectedKeyOptional: String?
         
         switch type {
         case .undo:
@@ -52,12 +54,14 @@ class ToolsPanelButton: UIButton {
             hint = "Draw Vector Line"
             enableKeyOptional = NotificationCenterKeys.vectorButtonEnabled
             disableKeyOptional = NotificationCenterKeys.vectorButtonDisabled
-            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setSelectedState), name: NSNotification.Name(rawValue: NotificationCenterKeys.vectorButtonSelected), object: nil)
+            selectedKeyOptional = NotificationCenterKeys.vectorButtonSelected
+            deselectedKeyOptional = NotificationCenterKeys.vectorButtonDeselected
         case .raster:
             hint = "Draw Raster Line"
             enableKeyOptional = NotificationCenterKeys.rasterButtonEnabled
             disableKeyOptional = NotificationCenterKeys.rasterButtonDisabled
-            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setSelectedState), name: NSNotification.Name(rawValue: NotificationCenterKeys.rasterButtonSelected), object: nil)
+            selectedKeyOptional = NotificationCenterKeys.rasterButtonSelected
+            deselectedKeyOptional = NotificationCenterKeys.rasterButtonDeselected
         default:
             break
         }
@@ -65,6 +69,11 @@ class ToolsPanelButton: UIButton {
         if let enableKey = enableKeyOptional, let disableKey = disableKeyOptional {
             NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setEnabledState), name: NSNotification.Name(rawValue: enableKey), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setDisabledState), name: NSNotification.Name(rawValue: disableKey), object: nil)
+        }
+        
+        if let selectedKey = selectedKeyOptional, let deselectedKey = deselectedKeyOptional {
+            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setSelectedState), name: NSNotification.Name(rawValue: selectedKey), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(ToolsPanelButton.setDeselectedState), name: NSNotification.Name(rawValue: deselectedKey), object: nil)
         }
         
         icon = type == ActionType.placeholder ? nil : UIImage(named: type.rawValue)
@@ -78,6 +87,14 @@ class ToolsPanelButton: UIButton {
             self.layer.backgroundColor = UIColor.normalState().cgColor
         }
         
+        
+        
+    }
+    
+    override var isSelected: Bool {
+        willSet {
+            self.layer.backgroundColor = newValue ? UIColor.selectedState().cgColor : UIColor.normalState().cgColor
+        }
     }
     
     static var dummyCount = 0
@@ -145,6 +162,10 @@ class ToolsPanelButton: UIButton {
     
     func setSelectedState() {
         self.isSelected = true
+    }
+    
+    func setDeselectedState() {
+        self.isSelected = false
     }
     
     /*

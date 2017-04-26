@@ -67,7 +67,12 @@ class ToolsPanel: UIView {
             doodleView.historyStep(backward: true)
         case .redo:
             doodleView.historyStep(backward: false)
-            break
+        case .vector:
+            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.vectorButtonSelected), object: self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.rasterButtonDeselected), object: self)
+        case .raster:
+            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.rasterButtonSelected), object: self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.vectorButtonDeselected), object: self)
         default:
             print("btnTap default")
         }

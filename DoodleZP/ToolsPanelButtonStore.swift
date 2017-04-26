@@ -35,6 +35,7 @@ class ToolsPanelButtonStore {
             allButtons.append(contentsOf: getUndoRedo())
             allButtons.append(ToolsPanelButton(frame: CGRect.zero, type: .vector, state: .selected))
             allButtons.append(ToolsPanelButton(frame: CGRect.zero, type: .raster, state: .normal))
+        
             return allButtons
         }
     
