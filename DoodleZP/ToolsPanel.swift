@@ -68,22 +68,22 @@ class ToolsPanel: UIView {
         case .redo:
             doodleView.historyStep(backward: false)
         case .trash:
-//            doodleView.historyHandler!.clearCanvasAndHistory()
             
-//            let alertController = UIAlertController(title: "Hey AppCoda", message: "What do you want to do?", preferredStyle: .alert)
-//            let callActionHandler = { (action:UIAlertAction!) -> Void in
-//                let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
-//                alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                self.parentViewController!.present(alertMessage, animated: true, completion: nil)
-//            }
-//            let callAction = UIAlertAction(title: "Call", style: .default, handler: callActionHandler)
-//            alertController.addAction(callAction)
+            let title = NSLocalizedString("Clear Canvas and History?", comment: "Clear Canvas and History Alert Title")
+            let message = NSLocalizedString("Do you really want to clear all changes?", comment: "Clear Canvas and History Alert Message")
+            let confirmString = NSLocalizedString("Confirm", comment: "Confirm button text")
+            let cancelString = NSLocalizedString("Cancel", comment: "Cancel button text")
             
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let clearAll = UIAlertAction(title: confirmString, style: .destructive) { _ in
+                doodleView.historyHandler!.clearCanvasAndHistory()
+                doodleView.setNeedsDisplay()
+            }
+            let cancel = UIAlertAction(title: cancelString, style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            alert.addAction(clearAll)
             
-            // LOCALIZE STRINGS
-//            let alert = UIAlertController(title: <#T##String?#>, message: <#T##String?#>, preferredStyle: <#T##UIAlertControllerStyle#>)
-            
-            print("trash")
+            self.parentViewController!.present(alert, animated: true, completion: nil)
             
         case .vector:
             NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.vectorButtonSelected), object: self)
