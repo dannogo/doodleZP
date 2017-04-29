@@ -13,17 +13,17 @@ class History {
     private init() {}
     
     func ableToAdvance() {
-        var notificationKey = NotificationCenterKeys.historyForwardButtonStateEnabled
+        var notificationKey = ToolsPanelButton.ActionType.redo.rawValue + NotificationCenterKeys.enabled
         if history.count == 0 || currentIndex == history.count || lastAction == .none {
-            notificationKey = NotificationCenterKeys.historyForwardButtonStateDisabled
+            notificationKey = ToolsPanelButton.ActionType.redo.rawValue + NotificationCenterKeys.disabled
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self)
     }
     
     func ableToRevert() {
-        var notificationKey = NotificationCenterKeys.historyBackButtonStateEnabled
+        var notificationKey = ToolsPanelButton.ActionType.undo.rawValue + NotificationCenterKeys.enabled
         if history.count == 0 || currentIndex == -1 {
-            notificationKey = NotificationCenterKeys.historyBackButtonStateDisabled
+            notificationKey = ToolsPanelButton.ActionType.undo.rawValue + NotificationCenterKeys.disabled
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self)
     }
@@ -39,10 +39,10 @@ class History {
     private var history = [ChainLink]() {
         didSet {
             print("history count didSet: \(history.count)")
-            var trashNotificationKey = NotificationCenterKeys.trashButtonStateEnabled
+            var trashNotificationKey = ToolsPanelButton.ActionType.trash.rawValue + NotificationCenterKeys.enabled
             if history.count == 0 {
-                trashNotificationKey = NotificationCenterKeys.trashButtonStateDisabled
-                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.historyBackButtonStateDisabled), object: self)
+                trashNotificationKey = ToolsPanelButton.ActionType.trash.rawValue + NotificationCenterKeys.disabled
+                NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.undo.rawValue + NotificationCenterKeys.disabled), object: self)
                 currentIndex = 0
             }
             NotificationCenter.default.post(name: Notification.Name(rawValue: trashNotificationKey), object: self)

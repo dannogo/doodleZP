@@ -86,11 +86,11 @@ class ToolsPanel: UIView {
             self.parentViewController!.present(alert, animated: true, completion: nil)
             
         case .vector:
-            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.vectorButtonSelected), object: self)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.rasterButtonDeselected), object: self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.vector.rawValue + NotificationCenterKeys.selected), object: self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.raster.rawValue + NotificationCenterKeys.deselected), object: self)
         case .raster:
-            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.rasterButtonSelected), object: self)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationCenterKeys.vectorButtonDeselected), object: self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.raster.rawValue + NotificationCenterKeys.selected), object: self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.vector.rawValue + NotificationCenterKeys.deselected), object: self)
         default:
             print("btnTap default")
         }
