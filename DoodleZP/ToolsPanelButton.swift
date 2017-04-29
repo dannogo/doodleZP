@@ -14,9 +14,10 @@ class ToolsPanelButton: UIButton {
     let type: ActionType
     var icon: UIImage? = nil
     let action: (() -> ())? = nil
+    var animateAppear: Bool = false
     
     enum ActionType: String {
-        case placeholder, undo, redo, trash, vector, raster, pasteImage
+        case placeholder, undo, redo, trash, vector, raster, pasteImage, eraser
     }
     
     
@@ -68,6 +69,7 @@ class ToolsPanelButton: UIButton {
             deselectedKeyOptional = NotificationCenterKeys.rasterButtonDeselected
         case .pasteImage:
             hint = NSLocalizedString("Paste Image", comment: "Paste Image hint")
+            case .eraser
         default:
             break
         }

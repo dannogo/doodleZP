@@ -40,4 +40,19 @@ class ToolsPanelButtonStore {
             return allButtons
         }
     
+    func getVectorOptions() -> [ToolsPanelButton] {
+        
+        return [ToolsPanelButton]()
+    }
+    
+    func getRasterOptions() -> [ToolsPanelButton] {
+        
+        return [ToolsPanelButton]()
+    }
+    
+    func updateAvailableOptions() -> [ToolsPanelButton] {
+        
+        
+        return [ToolsPanelButton]()
+    }
 }
