@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3502D2961EA79AD200350727 /* NotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3502D2951EA79AD200350727 /* NotificationCenterKeys.swift */; };
 		354E2FFF1EAE1AE600156512 /* ShowHideToolsPanelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E2FFE1EAE1AE600156512 /* ShowHideToolsPanelButton.swift */; };
+		354E30021EB4A00A00156512 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 354E30041EB4A00A00156512 /* Localizable.strings */; };
 		841997961E9169B600D3B435 /* HistoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841997951E9169B600D3B435 /* HistoryHandler.swift */; };
 		84619E281E4B48E000AE4465 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84619E271E4B48E000AE4465 /* Utils.swift */; };
 		847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA74F1E44976500F66B61 /* AppDelegate.swift */; };
@@ -52,6 +53,10 @@
 /* Begin PBXFileReference section */
 		3502D2951EA79AD200350727 /* NotificationCenterKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterKeys.swift; sourceTree = "<group>"; };
 		354E2FFE1EAE1AE600156512 /* ShowHideToolsPanelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHideToolsPanelButton.swift; sourceTree = "<group>"; };
+		354E30031EB4A00A00156512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		354E30061EB4A0F500156512 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		354E30071EB4A0F500156512 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		354E30081EB4A16400156512 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		841997951E9169B600D3B435 /* HistoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryHandler.swift; sourceTree = "<group>"; };
 		84619E271E4B48E000AE4465 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		847DA74C1E44976500F66B61 /* DoodleZP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoodleZP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +190,7 @@
 			children = (
 				847DA7851E44B60000F66B61 /* ToolsPanel.swift */,
 				847DA7A81E45305F00F66B61 /* ToolsPanelButton.swift */,
+				354E30041EB4A00A00156512 /* Localizable.strings */,
 				847DA7AA1E45328000F66B61 /* ToolsPanelButtonStore.swift */,
 				354E2FFE1EAE1AE600156512 /* ShowHideToolsPanelButton.swift */,
 			);
@@ -303,6 +309,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 847DA7431E44976500F66B61;
 			productRefGroup = 847DA74D1E44976500F66B61 /* Products */;
@@ -322,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				847DA75D1E44976500F66B61 /* LaunchScreen.storyboard in Resources */,
+				354E30021EB4A00A00156512 /* Localizable.strings in Resources */,
 				847DA75A1E44976500F66B61 /* Assets.xcassets in Resources */,
 				847DA7551E44976500F66B61 /* Main.storyboard in Resources */,
 			);
@@ -401,10 +409,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		354E30041EB4A00A00156512 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				354E30031EB4A00A00156512 /* Base */,
+				354E30071EB4A0F500156512 /* ru */,
+				354E30081EB4A16400156512 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		847DA7531E44976500F66B61 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				847DA7541E44976500F66B61 /* Base */,
+				354E30061EB4A0F500156512 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -424,6 +443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -474,6 +494,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

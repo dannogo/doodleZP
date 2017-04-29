@@ -16,7 +16,7 @@ class ToolsPanelButton: UIButton {
     let action: (() -> ())? = nil
     
     enum ActionType: String {
-        case placeholder, undo, redo, trash, vector, raster
+        case placeholder, undo, redo, trash, vector, raster, pasteImage
     }
     
     
@@ -43,29 +43,31 @@ class ToolsPanelButton: UIButton {
         
         switch type {
         case .undo:
-            hint = "Undo"
+            hint = NSLocalizedString("Undo", comment: "Undo hint")
             enableKeyOptional = NotificationCenterKeys.historyBackButtonStateEnabled
             disableKeyOptional = NotificationCenterKeys.historyBackButtonStateDisabled
         case .redo:
-            hint = "Redo"
+            hint = NSLocalizedString("Redo", comment: "Redo hint")
             enableKeyOptional = NotificationCenterKeys.historyForwardButtonStateEnabled
             disableKeyOptional = NotificationCenterKeys.historyForwardButtonStateDisabled
         case .trash:
-            hint = "Clear Canvas and History"
+            hint = NSLocalizedString("Clear Canvas and History", comment: "Clear Canvas and History hint")
             enableKeyOptional = NotificationCenterKeys.trashButtonStateEnabled
             disableKeyOptional = NotificationCenterKeys.trashButtonStateDisabled
         case .vector:
-            hint = "Draw Vector Line"
+            hint = NSLocalizedString("Draw Vector Line", comment: "Draw Vector Line hint")
             enableKeyOptional = NotificationCenterKeys.vectorButtonEnabled
             disableKeyOptional = NotificationCenterKeys.vectorButtonDisabled
             selectedKeyOptional = NotificationCenterKeys.vectorButtonSelected
             deselectedKeyOptional = NotificationCenterKeys.vectorButtonDeselected
         case .raster:
-            hint = "Draw Raster Line"
+            hint = NSLocalizedString("Draw Raster Line", comment: "Draw Raster Line hint")
             enableKeyOptional = NotificationCenterKeys.rasterButtonEnabled
             disableKeyOptional = NotificationCenterKeys.rasterButtonDisabled
             selectedKeyOptional = NotificationCenterKeys.rasterButtonSelected
             deselectedKeyOptional = NotificationCenterKeys.rasterButtonDeselected
+        case .pasteImage:
+            hint = NSLocalizedString("Paste Image", comment: "Paste Image hint")
         default:
             break
         }
