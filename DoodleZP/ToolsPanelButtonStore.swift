@@ -31,15 +31,22 @@ class ToolsPanelButtonStore {
             ToolsPanelButton(frame: CGRect.zero, type: .undo, state: .disabled),
             ToolsPanelButton(frame: CGRect.zero, type: .redo, state: .disabled),
             ToolsPanelButton(frame: CGRect.zero, type: .trash, state: .disabled),
+            ToolsPanelButton(frame: CGRect.zero, type: .pasteImage, state: .normal),
             ToolsPanelButton(frame: CGRect.zero, type: .vector, state: .selected),
-            ToolsPanelButton(frame: CGRect.zero, type: .raster, state: .normal)
+            ToolsPanelButton(frame: CGRect.zero, type: .raster, state: .normal),
+            ToolsPanelButton(frame: CGRect.zero, type: .thickness, state: .normal),
+            ToolsPanelButton(frame: CGRect.zero, type: .palette, state: .normal),
+            ToolsPanelButton(frame: CGRect.zero, type: .grid, state: .normal),
         ]
     }
     
-    func getCommonOptions() -> [ToolsPanelButton] {
+    func getCommonOptions(initial: Bool = true) -> [ToolsPanelButton] {
         
         commonButtons.append(contentsOf: getCommonButtons())
         allButtons.append(contentsOf: commonButtons)
+        if initial {
+            allButtons.append(contentsOf: getVectorOptions())
+        }
         
         return allButtons
     }
@@ -55,9 +62,6 @@ class ToolsPanelButtonStore {
     func getRasterOptions() -> [ToolsPanelButton] {
         
         return [
-            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
-            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
-            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
             ToolsPanelButton(frame: CGRect.zero, type: .eraser),
             ToolsPanelButton(frame: CGRect.zero, type: .eraser),
             ToolsPanelButton(frame: CGRect.zero, type: .eraser),

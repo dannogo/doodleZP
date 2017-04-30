@@ -17,7 +17,9 @@ class ToolsPanelButton: UIButton {
     var animateAppear: Bool = false
     
     enum ActionType: String {
-        case placeholder, undo, redo, trash, vector, raster, pasteImage, eraser, fixedAngles, editingPoints, glue
+        case placeholder, undo, redo, trash, pasteImage, palette, thickness, grid,
+        vector, fixedAngles, editingPoints, glue,
+        raster, eraser
     }
     
     
@@ -58,6 +60,12 @@ class ToolsPanelButton: UIButton {
             hint = NSLocalizedString("Draw Raster Line", comment: "Draw Raster Line hint")
         case .pasteImage:
             hint = NSLocalizedString("Paste Image", comment: "Paste Image hint")
+        case .thickness:
+            hint = NSLocalizedString("Line Thickness", comment: "Line Thickness hint") // picker, uimenu, https://developer.apple.com/ios/human-interface-guidelines/extensions/home-screen-actions/
+        case .palette:
+            hint = NSLocalizedString("Palette", comment: "Palette hint")
+        case .grid:
+            hint = NSLocalizedString("Grid", comment: "Grid hint")
         case .fixedAngles:
             hint = NSLocalizedString("Fixed angles", comment: "Fixed angles hint")
         case .editingPoints:

@@ -245,7 +245,7 @@ class ToolsPanel: UIView {
             for elementIndex in startPosition..<endPosition {
                 
                 guard elementIndex < givenArray.count else {
-//                    let btn = ToolsPanelButton(random: true)
+//                    let btn = ToolsPanelButton(frame: CGRect.zero, type: .placeholder, state: .disabled)
 //                    newRow.append(btn)
                     continue
                 }
