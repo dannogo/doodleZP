@@ -14,6 +14,8 @@ class ToolsPanelButtonStore {
     
     static let sharedInstance: ToolsPanelButtonStore = ToolsPanelButtonStore()
     
+    var commonButtons = [ToolsPanelButton]()
+    
     var allButtons = [ToolsPanelButton]()
     
 //    enum State {
@@ -34,25 +36,51 @@ class ToolsPanelButtonStore {
         ]
     }
     
-    func getAvailableOptions(state: State) -> [ToolsPanelButton] {
-            allButtons.append(contentsOf: getCommonButtons())
+    func getCommonOptions() -> [ToolsPanelButton] {
         
-            return allButtons
-        }
+        commonButtons.append(contentsOf: getCommonButtons())
+        allButtons.append(contentsOf: commonButtons)
+        
+        return allButtons
+    }
     
     func getVectorOptions() -> [ToolsPanelButton] {
-        
-        return [ToolsPanelButton]()
+        return [
+            ToolsPanelButton(frame: CGRect.zero, type: .editingPoints),
+            ToolsPanelButton(frame: CGRect.zero, type: .fixedAngles),
+            ToolsPanelButton(frame: CGRect.zero, type: .glue)
+        ]
     }
     
     func getRasterOptions() -> [ToolsPanelButton] {
         
-        return [ToolsPanelButton]()
+        return [
+            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
+            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
+            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
+            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
+            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
+            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
+            ToolsPanelButton(frame: CGRect.zero, type: .eraser),
+        ]
     }
     
-    func updateAvailableOptions() -> [ToolsPanelButton] {
+    
+    func updateAvailableOptions(action: ToolsPanelButton.ActionType) -> [ToolsPanelButton] {
+        allButtons.removeAll()
+        allButtons.append(contentsOf: commonButtons)
         
+        switch action {
+        case .vector:
+            allButtons.append(contentsOf: getVectorOptions())
+            print("update case \(action.rawValue)")
+        case .raster:
+            allButtons.append(contentsOf: getRasterOptions())
+            print("update case \(action.rawValue)")
+        default:
+            break
+        }
         
-        return [ToolsPanelButton]()
+        return allButtons
     }
 }

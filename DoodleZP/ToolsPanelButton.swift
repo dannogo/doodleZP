@@ -17,7 +17,7 @@ class ToolsPanelButton: UIButton {
     var animateAppear: Bool = false
     
     enum ActionType: String {
-        case placeholder, undo, redo, trash, vector, raster, pasteImage, eraser
+        case placeholder, undo, redo, trash, vector, raster, pasteImage, eraser, fixedAngles, editingPoints, glue
     }
     
     
@@ -58,8 +58,14 @@ class ToolsPanelButton: UIButton {
             hint = NSLocalizedString("Draw Raster Line", comment: "Draw Raster Line hint")
         case .pasteImage:
             hint = NSLocalizedString("Paste Image", comment: "Paste Image hint")
+        case .fixedAngles:
+            hint = NSLocalizedString("Fixed angles", comment: "Fixed angles hint")
+        case .editingPoints:
+            hint = NSLocalizedString("Points Editing", comment: "Points Editing hint")
         case .eraser:
-            break
+            hint = NSLocalizedString("Eraser", comment: "Eraser hint")
+        case .glue:
+            hint = NSLocalizedString("Glue", comment: "Glue hint")
         default:
             break
         }

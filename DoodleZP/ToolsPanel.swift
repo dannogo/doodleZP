@@ -42,7 +42,7 @@ class ToolsPanel: UIView {
         showHideToolsPanelButton!.setup(with: self)
         doodleView.addSubview(showHideToolsPanelButton!)
         showHideToolsPanelButton!.addTarget(self, action: #selector(self.showHideBtnTap), for: .touchUpInside)
-        buildPanelViewHierarchy()
+        getButtons()
     }
     
     func showHideBtnTap (_ sender: ShowHideToolsPanelButton) {
@@ -88,9 +88,16 @@ class ToolsPanel: UIView {
         case .vector:
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.vector.rawValue + NotificationCenterKeys.selected), object: self)
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.raster.rawValue + NotificationCenterKeys.deselected), object: self)
+            buttons.removeAll()
+            getButtons(action: sender.type)
+            print(sender.type.rawValue)
+            
         case .raster:
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.raster.rawValue + NotificationCenterKeys.selected), object: self)
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.vector.rawValue + NotificationCenterKeys.deselected), object: self)
+            buttons.removeAll()
+            getButtons(action: sender.type)
+            print(sender.type.rawValue)
         default:
             print("btnTap default")
         }
@@ -122,6 +129,17 @@ class ToolsPanel: UIView {
         }
     }
     
+    func getButtons(action: ToolsPanelButton.ActionType? = nil) {
+        let store = ToolsPanelButtonStore.sharedInstance
+        if let actionUnwrapped = action {
+            buttons = store.updateAvailableOptions(action: actionUnwrapped)
+        } else {
+            buttons = store.getCommonOptions()
+        }
+        self.subviews.forEach({ $0.removeFromSuperview() })
+        buildPanelViewHierarchy()
+    }
+    
     func buildPanelViewHierarchy() {
     
         let windowFrame = UIApplication.shared.delegate!.window!!.frame
@@ -129,8 +147,7 @@ class ToolsPanel: UIView {
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
         print("\(buttonsInRow) size: \(buttonSize)")
         
-        let store = ToolsPanelButtonStore.sharedInstance
-        buttons = store.getAvailableOptions(state: .anyAction)
+        print("buttons count: \(buttons.count)")
         
         for btn in buttons {
             btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
