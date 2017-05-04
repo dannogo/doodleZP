@@ -98,12 +98,17 @@ class ToolsPanel: UIView {
             buttons.removeAll()
             getButtons(action: sender.type)
             print(sender.type.rawValue)
+        case .palette:
+//            showPopupMenu(sender: sender)
+            (self.parentViewController as! DoodleController).showPopover(base: sender)
         default:
             print("btnTap default")
         }
         
         doodleView.setNeedsDisplay()
     }
+    
+    
     
     func toggleToolsPanel() {
         ToolsPanel.isShown ? hideToolsPanel() : showToolsPanel()

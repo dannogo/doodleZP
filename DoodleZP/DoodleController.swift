@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class DoodleController: UIViewController {
+class DoodleController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     /*
      orientation - in Separated ViewController
@@ -59,9 +59,43 @@ class DoodleController: UIViewController {
             singleLinePicked, multipleLinesPicked, linePointsEditing, regularPanning
     }
     
-//    func btnTap() {
-//        toolsPanel.toggleToolsPanel()
+//    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+//        return UIModalPresentationStyle.none
 //    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // return UIModalPresentationStyle.FullScreen
+        return UIModalPresentationStyle.none
+    }
+    
+    func showPopover(base: UIView)
+    {
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "popover") as? PopOverViewController {
+            
+            
+            viewController.modalPresentationStyle = .popover
+            if let pctrl = viewController.popoverPresentationController {
+                pctrl.delegate = self
+                
+                pctrl.sourceView = base
+                pctrl.sourceRect = base.bounds
+                
+                self.present(viewController, animated: true, completion: nil)
+            }
+            
+//            let navController = UINavigationController(rootViewController: viewController)
+//            navController.modalPresentationStyle = .popover
+//            
+//            if let pctrl = navController.popoverPresentationController {
+//                pctrl.delegate = self
+//                
+//                pctrl.sourceView = base
+//                pctrl.sourceRect = base.bounds
+//                
+//                self.present(navController, animated: true, completion: nil)
+//            }
+        }
+    }
 
     // MARK: - Override Methods
     override func viewDidLoad() {
@@ -107,6 +141,5 @@ class DoodleController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .all
     }
-    
     
 }
