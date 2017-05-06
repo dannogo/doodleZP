@@ -68,10 +68,11 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
         return UIModalPresentationStyle.none
     }
     
-    func showPopover(base: UIView)
+    func showPopover(base: ToolsPanelButton)
     {
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "popover") as? PopOverViewController {
             
+            viewController.type = base.type
             
             viewController.modalPresentationStyle = .popover
             if let popupController = viewController.popoverPresentationController {

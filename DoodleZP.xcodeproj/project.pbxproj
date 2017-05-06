@@ -11,6 +11,7 @@
 		354E2FFF1EAE1AE600156512 /* ShowHideToolsPanelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E2FFE1EAE1AE600156512 /* ShowHideToolsPanelButton.swift */; };
 		354E30021EB4A00A00156512 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 354E30041EB4A00A00156512 /* Localizable.strings */; };
 		354E30101EBB67C600156512 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E300F1EBB67C600156512 /* PopOverViewController.swift */; };
+		35A7F0111EBE2B4400ACA7C6 /* PopupMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7F0101EBE2B4400ACA7C6 /* PopupMenuButton.swift */; };
 		841997961E9169B600D3B435 /* HistoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841997951E9169B600D3B435 /* HistoryHandler.swift */; };
 		84619E281E4B48E000AE4465 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84619E271E4B48E000AE4465 /* Utils.swift */; };
 		847DA7501E44976500F66B61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DA74F1E44976500F66B61 /* AppDelegate.swift */; };
@@ -59,6 +60,7 @@
 		354E30071EB4A0F500156512 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		354E30081EB4A16400156512 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		354E300F1EBB67C600156512 /* PopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
+		35A7F0101EBE2B4400ACA7C6 /* PopupMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupMenuButton.swift; sourceTree = "<group>"; };
 		841997951E9169B600D3B435 /* HistoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryHandler.swift; sourceTree = "<group>"; };
 		84619E271E4B48E000AE4465 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		847DA74C1E44976500F66B61 /* DoodleZP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoodleZP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,8 +192,9 @@
 		847DA7AC1E45328D00F66B61 /* ToolsPanel files */ = {
 			isa = PBXGroup;
 			children = (
-				847DA7851E44B60000F66B61 /* ToolsPanel.swift */,
+				35A7F0101EBE2B4400ACA7C6 /* PopupMenuButton.swift */,
 				354E300F1EBB67C600156512 /* PopOverViewController.swift */,
+				847DA7851E44B60000F66B61 /* ToolsPanel.swift */,
 				847DA7A81E45305F00F66B61 /* ToolsPanelButton.swift */,
 				354E30041EB4A00A00156512 /* Localizable.strings */,
 				847DA7AA1E45328000F66B61 /* ToolsPanelButtonStore.swift */,
@@ -371,6 +374,7 @@
 				847DA7861E44B60000F66B61 /* ToolsPanel.swift in Sources */,
 				84ADFD011E49F7CD00C91215 /* Line.swift in Sources */,
 				847DA7831E449A7A00F66B61 /* DoodleView.swift in Sources */,
+				35A7F0111EBE2B4400ACA7C6 /* PopupMenuButton.swift in Sources */,
 				84ADFD051E4A068F00C91215 /* Point.swift in Sources */,
 				847DA7811E4497F500F66B61 /* DoodleController.swift in Sources */,
 				84ADFCFF1E49F4F600C91215 /* Vector.swift in Sources */,
