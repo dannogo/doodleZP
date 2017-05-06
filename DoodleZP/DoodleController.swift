@@ -74,11 +74,15 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
             
             
             viewController.modalPresentationStyle = .popover
-            if let pctrl = viewController.popoverPresentationController {
-                pctrl.delegate = self
+            if let popupController = viewController.popoverPresentationController {
+                popupController.permittedArrowDirections = .down
                 
-                pctrl.sourceView = base
-                pctrl.sourceRect = base.bounds
+                
+                popupController.delegate = self
+                
+                popupController.sourceView = base
+                popupController.sourceRect = base.bounds
+//                popupController.sourceRect = CGRect(x: 0, y: 0, width: base.bounds.width, height: base.bounds.height)
                 
                 self.present(viewController, animated: true, completion: nil)
             }

@@ -101,6 +101,8 @@ class ToolsPanel: UIView {
         case .palette:
 //            showPopupMenu(sender: sender)
             (self.parentViewController as! DoodleController).showPopover(base: sender)
+        case .thickness:
+            (self.parentViewController as! DoodleController).showPopover(base: sender)
         default:
             print("btnTap default")
         }
