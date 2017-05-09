@@ -21,7 +21,7 @@ class PopupMenuButton: UIButton {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     
-    init(type: ToolsPanelButton.ActionType, color: UIColor = UIColor.darkGray, thickness: CGFloat = 1.0) {
+    init(type: ToolsPanelButton.ActionType, color: UIColor = UIColor.darkGray, thickness: CGFloat = 3.0) {
         self.type = type
         self.color = color
         self.thickness = thickness
@@ -45,6 +45,16 @@ class PopupMenuButton: UIButton {
         return path
     }
     
+    private func pathForLine() -> UIBezierPath {
+        let path = UIBezierPath()
+        let inset: CGFloat = 5.0
+        path.move(to: CGPoint(x: inset, y: bounds.midY))
+        path.addLine(to: CGPoint(x: bounds.width-inset, y: bounds.midY))
+        path.lineWidth = thickness
+        
+        return path
+    }
+    
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -54,7 +64,7 @@ class PopupMenuButton: UIButton {
         case .palette:
             pathForCircleCenteredAtPoint(midPoint: buttonCenter, withRadius: 5.0).stroke()
         case .thickness:
-            break
+            pathForLine().stroke()
         default:
             break
         }
