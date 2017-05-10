@@ -57,10 +57,30 @@ class PopOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let width = PopOverViewController.buttonSize
+        let height: Double
+        let buttons: [PopupMenuButton]
         
-        self.preferredContentSize = CGSize(width: 46.875, height: 46.875 * 10)
+//        let height = type! == .palette ? width * Double(PopOverViewController.colorButtons.count) : width * Double(PopOverViewController.thicknessButtons.count)
         
-        createButtons()
+        switch type! {
+        case .palette:
+            height = width * Double(PopOverViewController.colorButtons.count)
+            buttons = PopOverViewController.colorButtons
+        case .thickness:
+            height = width * Double(PopOverViewController.thicknessButtons.count)
+            buttons = PopOverViewController.thicknessButtons
+        default:
+            height = width * Double(PopOverViewController.colorButtons.count)
+            buttons = PopOverViewController.colorButtons
+            break
+        }
+        
+        
+        self.preferredContentSize = CGSize(width: width, height: height)
+        
+//        createButtons()
+        setupButtons(buttons)
     
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismiss(sender:)))
         // Do any additional setup after loading the view.
@@ -75,6 +95,42 @@ class PopOverViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    private func setupButtons(_ buttons: [PopupMenuButton]) {
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(container)
+        
+        NSLayoutConstraint.activate([
+            container.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            container.topAnchor.constraint(equalTo: self.view.topAnchor),
+            container.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+        
+        
+        for (index, button) in buttons.enumerated() {
+            
+            container.addSubview(button)
+            
+            var bottomConstraint: NSLayoutConstraint
+            
+            if index == 0 {
+                bottomConstraint = button.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+            } else {
+                bottomConstraint = button.bottomAnchor.constraint(equalTo: container.subviews[index-1].topAnchor)
+            }
+            
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalToConstant: CGFloat(PopOverViewController.buttonSize)),
+                button.heightAnchor.constraint(equalToConstant: CGFloat(PopOverViewController.buttonSize)),
+                button.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+                bottomConstraint
+                ])
+            
+        }
+    }
+    
+    @available(*, deprecated)
     private func createButtons () {
         print("subviews.count before: \(self.view.subviews.count)")
         var buttons = [PopupMenuButton]()
