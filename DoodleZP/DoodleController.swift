@@ -77,7 +77,7 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
             viewController.modalPresentationStyle = .popover
             if let popupController = viewController.popoverPresentationController {
                 popupController.permittedArrowDirections = .down
-                
+                popupController.popoverBackgroundViewClass = 
                 
                 popupController.delegate = self
                 

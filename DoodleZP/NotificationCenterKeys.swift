@@ -33,4 +33,6 @@ class NotificationCenterKeys{
     static let disabled = "Disabled"
     static let selected = "Selected"
     static let deselected = "Deselected"
+    
+    static let optionString = "Option" 
 }

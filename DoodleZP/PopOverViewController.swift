@@ -41,10 +41,15 @@ class PopOverViewController: UIViewController {
         
         var result = [CGFloat]()
         var i: CGFloat = 1
-        for _ in 0..<10 {
-            i *= 1.25
+//        for _ in 0..<8 {
+//            i *= 1.35
+//            result.append(i)
+//        }
+        
+        repeat {
             result.append(i)
-        }
+            i += 2
+        } while (i < 13)
         
         return result
     }()
