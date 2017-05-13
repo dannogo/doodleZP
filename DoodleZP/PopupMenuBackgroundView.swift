@@ -59,35 +59,37 @@ class PopupMenuBackgroundView: UIPopoverBackgroundView {
     }
     
     override static func arrowHeight() -> CGFloat {
-        return 50
+        return 20
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         let arrowSize = CGSize(width: type(of: self).arrowBase(), height: type(of: self).arrowHeight())
-        self.arrowImageView.image = self.drawArrowImage(size: arrowSize)
+        self.arrowImageView.image = drawArrow(size: arrowSize)
         self.arrowImageView.frame = CGRect(x: self.bounds.width-arrowSize.width, y: self.bounds.height-arrowSize.height, width: arrowSize.width, height: arrowSize.height)
         
         print(#function)
     }
     
-    private func drawArrowImage(size: CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size , false, 0)
-        let ctx = UIGraphicsGetCurrentContext()
-        UIColor.clear.setFill()
-        ctx!.fill(CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
+    private func drawArrow(size: CGSize) -> UIImage {
         
-        let arrowPath = CGMutablePath()
-        arrowPath.move(to: CGPoint(x: bounds.minX, y: bounds.minY))
-        arrowPath.addLine(to: CGPoint(x: bounds.maxX, y: bounds.minY))
-        arrowPath.addLine(to: CGPoint(x: bounds.midX, y: bounds.maxY))
-        arrowPath.closeSubpath()
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: 0, y: 0))
+        bezierPath.addLine(to: CGPoint(x: size.width, y: 0))
+        bezierPath.addLine(to: CGPoint(x: size.width/2, y: size.height))
+        bezierPath.addLine(to: CGPoint(x: 0, y: 0))
+        bezierPath.lineWidth = 0.25
         
-        ctx!.setFillColor(UIColor.normalState().cgColor)
-        ctx!.drawPath(using: .fill)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()
+        bezierPath.stroke()
+        UIColor.normalState().setFill()
+        bezierPath.fill()
+        context!.setFillColor(UIColor.normalState().cgColor)
+        
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        print(#function)
+        
         return image!
     }
     

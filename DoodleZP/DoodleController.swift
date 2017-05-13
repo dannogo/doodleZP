@@ -59,12 +59,7 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
             singleLinePicked, multipleLinesPicked, linePointsEditing, regularPanning
     }
     
-//    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-//        return UIModalPresentationStyle.none
-//    }
-    
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // return UIModalPresentationStyle.FullScreen
         return UIModalPresentationStyle.none
     }
     
@@ -83,22 +78,9 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
                 
                 popupController.sourceView = base
                 popupController.sourceRect = base.bounds
-//                popupController.sourceRect = CGRect(x: 0, y: 0, width: base.bounds.width, height: base.bounds.height)
                 
                 self.present(viewController, animated: true, completion: nil)
             }
-            
-//            let navController = UINavigationController(rootViewController: viewController)
-//            navController.modalPresentationStyle = .popover
-//            
-//            if let pctrl = navController.popoverPresentationController {
-//                pctrl.delegate = self
-//                
-//                pctrl.sourceView = base
-//                pctrl.sourceRect = base.bounds
-//                
-//                self.present(navController, animated: true, completion: nil)
-//            }
         }
     }
 

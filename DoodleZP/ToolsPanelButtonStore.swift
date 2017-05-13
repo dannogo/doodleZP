@@ -32,10 +32,10 @@ class ToolsPanelButtonStore {
             ToolsPanelButton(frame: CGRect.zero, type: .redo, state: .disabled),
             ToolsPanelButton(frame: CGRect.zero, type: .trash, state: .disabled),
             ToolsPanelButton(frame: CGRect.zero, type: .pasteImage, state: .normal),
-            ToolsPanelButton(frame: CGRect.zero, type: .vector, state: .selected),
-            ToolsPanelButton(frame: CGRect.zero, type: .raster, state: .normal),
             ToolsPanelButton(frame: CGRect.zero, type: .thickness, state: .normal),
             ToolsPanelButton(frame: CGRect.zero, type: .palette, state: .normal),
+            ToolsPanelButton(frame: CGRect.zero, type: .vector, state: .selected),
+            ToolsPanelButton(frame: CGRect.zero, type: .raster, state: .normal),
             ToolsPanelButton(frame: CGRect.zero, type: .grid, state: .normal),
         ]
     }
