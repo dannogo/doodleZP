@@ -120,8 +120,8 @@
 		350E5BCC1EC3B00900D33FE5 /* PopupMenu files */ = {
 			isa = PBXGroup;
 			children = (
-				35A7F0101EBE2B4400ACA7C6 /* PopupMenuButton.swift */,
 				354E300F1EBB67C600156512 /* PopOverViewController.swift */,
+				35A7F0101EBE2B4400ACA7C6 /* PopupMenuButton.swift */,
 				350E5BCA1EC3AFF300D33FE5 /* PopupMenuBackgroundView.swift */,
 			);
 			name = "PopupMenu files";

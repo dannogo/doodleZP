@@ -27,6 +27,11 @@ class PopOverViewController: UIViewController {
         return result
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.superview?.layer.cornerRadius = 0
+    }
+    
     private static var colors = [
         UIColor.black,
         UIColor.blue,
