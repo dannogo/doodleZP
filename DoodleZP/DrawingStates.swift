@@ -10,30 +10,65 @@ import UIKit
 
 class DrawingStates {
 
-    static let shared = DrawingStates()
-    private static let setup = SingletonSetupHelper()
+    private init() {}
+    static let sharedInstance: History = History()
     
-    class func setup(param: String){
-        DrawingStates.setup.param = param
-    }
-    
-    private init() {
-        let param = DrawingStates.setup.param
-        guard param != nil else {
-            fatalError("Error - you must call setup before accessing DrawingStates.shared")
+    private var grateIndex = 0 {
+        didSet {
+            // change line status view
+            // change selected grate in popup
+            // handle in doodle view
+            // add dismiss grate
         }
     }
-    
-//    var availableGratingFrequencies: [Int]
-//    var availableColors: [UIColor]
-//    var availableThicknesses: [CGFloat]
-//    
-//    var isPointEditingMode: Bool
-//    var isFixedAnglesMode: Bool
-//    var isGlueMode: Bool
-//    var isEraserMode: Bool
-}
-
-private class SingletonSetupHelper {
-    var param: String?
+    private var colorIndex = 0 {
+        didSet {
+            // change line status view
+            // change selected color in popup
+            // handle in doodle view
+        }
+    }
+    private var thicknessIndex = 0  {
+        didSet {
+            // change line status view
+            // change selected thickness in popup
+            // handle in doodle view
+        }
+    }
+    private var isVectorMode = true  {
+        didSet {
+            // move toolspanel changes here
+            // handle in doodle view
+        }
+    }
+    private var isRasterMode = false  {
+        didSet {
+            // move toolspanel changes here
+            // handle in doodle view
+        }
+    }
+    private var isPointEditingMode = false  {
+        didSet {
+            // select icon on toolspanel
+            // handle in doodle view
+        }
+    }
+    private var isFixedAnglesMode = false  {
+        didSet {
+            // select icon on toolspanel
+            // handle in doodle view
+        }
+    }
+    private var isGlueMode = false  {
+        didSet {
+            // select icon on toolspanel
+            // handle in doodle view
+        }
+    }
+    private var isEraserMode = false  {
+        didSet {
+            // select icon on toolspanel
+            // handle in doodle view
+        }
+    }
 }
