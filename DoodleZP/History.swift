@@ -11,6 +11,7 @@ import Foundation
 class History {
     
     private init() {}
+    static let sharedInstance: History = History()
     
     func ableToAdvance() {
         var notificationKey = ToolsPanelButton.ActionType.redo.rawValue + NotificationCenterKeys.enabled
@@ -28,7 +29,7 @@ class History {
         NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self)
     }
     
-    static let sharedInstance: History = History()
+    
     var lastAction = LastAction.none
     
     enum LastAction {

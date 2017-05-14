@@ -10,6 +10,8 @@ import UIKit
 
 class PopupMenuBackgroundView: UIPopoverBackgroundView {
     
+    static var width: CGFloat = 46.875
+    
     override var arrowDirection: UIPopoverArrowDirection {
         get {
             return .down
@@ -55,11 +57,12 @@ class PopupMenuBackgroundView: UIPopoverBackgroundView {
     }
     
     override static func arrowBase() -> CGFloat {
-        return 46.875
+//        return type(of: self).width
+        return PopupMenuBackgroundView.width
     }
     
     override static func arrowHeight() -> CGFloat {
-        return 20
+        return PopupMenuBackgroundView.width / 2.4
     }
     
     override func layoutSubviews() {
@@ -67,8 +70,6 @@ class PopupMenuBackgroundView: UIPopoverBackgroundView {
         let arrowSize = CGSize(width: type(of: self).arrowBase(), height: type(of: self).arrowHeight())
         self.arrowImageView.image = drawArrow(size: arrowSize)
         self.arrowImageView.frame = CGRect(x: self.bounds.width-arrowSize.width, y: self.bounds.height-arrowSize.height, width: arrowSize.width, height: arrowSize.height)
-        
-        print(#function)
     }
     
     private func drawArrow(size: CGSize) -> UIImage {

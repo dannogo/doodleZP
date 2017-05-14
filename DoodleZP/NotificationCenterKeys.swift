@@ -12,27 +12,12 @@ import UIKit
 // add button for vector drawing in selected state
 
 class NotificationCenterKeys{
-//    static let historyBackButtonStateEnabled = "com.doodleZP.historyBackButtonStateEnabled"
-//    static let historyBackButtonStateDisabled = "com.doodleZP.historyBackButtonStateDisabled"
-//    static let historyForwardButtonStateEnabled = "com.doodleZP.historyForwardButtonStateEnabled"
-//    static let historyForwardButtonStateDisabled = "com.doodleZP.historyForwardButtonStateDisabled"
-//    
-//    static let trashButtonStateEnabled = "com.doodleZP.trashCanvasStateEnabled"
-//    static let trashButtonStateDisabled = "com.doodleZP.trashCanvasStateDisabled"
-//    
-//    static let vectorButtonSelected = "com.doodleZP.vectorButtonSelected"
-//    static let vectorButtonDeselected = "com.doodleZP.vectorButtonDeselected"
-//    static let vectorButtonEnabled = "com.doodleZP.vectorButtonEnabled"
-//    static let vectorButtonDisabled = "com.doodleZP.vectorButtonDisabled"
-//    static let rasterButtonSelected = "com.doodleZP.rasterButtonSelected"
-//    static let rasterButtonDeselected = "com.doodleZP.rasterButtonDeselected"
-//    static let rasterButtonEnabled = "com.doodleZP.rasterButtonEnabled"
-//    static let rasterButtonDisabled = "com.doodleZP.rasterButtonDisabled"
     
     static let enabled = "Enabled"
     static let disabled = "Disabled"
     static let selected = "Selected"
     static let deselected = "Deselected"
     
-    static let optionString = "Option" 
+    static let optionString = "Option"
+    static let changed = "Changed"
 }

@@ -90,16 +90,13 @@ class ToolsPanel: UIView {
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.raster.rawValue + NotificationCenterKeys.deselected), object: self)
             buttons.removeAll()
             getButtons(action: sender.type)
-            print(sender.type.rawValue)
             
         case .raster:
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.raster.rawValue + NotificationCenterKeys.selected), object: self)
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.vector.rawValue + NotificationCenterKeys.deselected), object: self)
             buttons.removeAll()
             getButtons(action: sender.type)
-            print(sender.type.rawValue)
         case .palette:
-//            showPopupMenu(sender: sender)
             (self.parentViewController as! DoodleController).showPopover(base: sender)
         case .thickness:
             (self.parentViewController as! DoodleController).showPopover(base: sender)
@@ -152,19 +149,14 @@ class ToolsPanel: UIView {
         let windowFrame = UIApplication.shared.delegate!.window!!.frame
         let screenSideSize = orientation.isPortrait ? windowFrame.width : windowFrame.height
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
-        print("\(buttonsInRow) size: \(buttonSize)")
-        
-        print("buttons count: \(buttons.count)")
+        PopupMenuBackgroundView.width = buttonSize
         
         for btn in buttons {
             btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
-//            buttons.append(btn)
         }
         
         let rows = splitButtonsArray(givenArray: buttons, buttonsInRow: buttonsInRow)
         var rowContainer: UIView
-        
-        print("rows: \(rows.count)")
         
         for (i, row) in rows.reversed().enumerated() {
         
@@ -208,8 +200,6 @@ class ToolsPanel: UIView {
                 
             }
             
-            print("buttons: \(buttons.count)")
-            
             if i == rows.count-1 {
                 NSLayoutConstraint.activate([
                     self.topAnchor.constraint(equalTo: rowContainer.topAnchor)
@@ -217,8 +207,6 @@ class ToolsPanel: UIView {
             }
         }
         
-        print("rows.count: \(self.subviews.count)")
-        print("elements in first row: \(self.subviews.first!.subviews.count)")
 //        self.sizeToFit()
         setNeedsLayout()
         layoutIfNeeded()
@@ -237,8 +225,6 @@ class ToolsPanel: UIView {
         
         var result = [[ToolsPanelButton]]()
         let rowsNumber = Int(ceil(Double(givenArray.count) / Double(buttonsInRow)))
-        
-        print("rows: \(rowsNumber)")
         
         guard rowsNumber > 0 else {
             return result

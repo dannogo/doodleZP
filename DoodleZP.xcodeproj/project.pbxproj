@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3502D2961EA79AD200350727 /* NotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3502D2951EA79AD200350727 /* NotificationCenterKeys.swift */; };
 		350E5BCB1EC3AFF300D33FE5 /* PopupMenuBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E5BCA1EC3AFF300D33FE5 /* PopupMenuBackgroundView.swift */; };
+		352948431EC8992700F1CA94 /* LineStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352948421EC8992700F1CA94 /* LineStateView.swift */; };
+		352948451EC89DB400F1CA94 /* DrawingStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352948441EC89DB400F1CA94 /* DrawingStates.swift */; };
+		352948481EC8F3C900F1CA94 /* DoodleZP in Resources */ = {isa = PBXBuildFile; fileRef = 352948471EC8F3C900F1CA94 /* DoodleZP */; };
 		354E2FFF1EAE1AE600156512 /* ShowHideToolsPanelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E2FFE1EAE1AE600156512 /* ShowHideToolsPanelButton.swift */; };
 		354E30021EB4A00A00156512 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 354E30041EB4A00A00156512 /* Localizable.strings */; };
 		354E30101EBB67C600156512 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E300F1EBB67C600156512 /* PopOverViewController.swift */; };
@@ -56,6 +59,9 @@
 /* Begin PBXFileReference section */
 		3502D2951EA79AD200350727 /* NotificationCenterKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterKeys.swift; sourceTree = "<group>"; };
 		350E5BCA1EC3AFF300D33FE5 /* PopupMenuBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupMenuBackgroundView.swift; sourceTree = "<group>"; };
+		352948421EC8992700F1CA94 /* LineStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineStateView.swift; sourceTree = "<group>"; };
+		352948441EC89DB400F1CA94 /* DrawingStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingStates.swift; sourceTree = "<group>"; };
+		352948471EC8F3C900F1CA94 /* DoodleZP */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DoodleZP; sourceTree = "<group>"; };
 		354E2FFE1EAE1AE600156512 /* ShowHideToolsPanelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHideToolsPanelButton.swift; sourceTree = "<group>"; };
 		354E30031EB4A00A00156512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		354E30061EB4A0F500156512 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
@@ -127,6 +133,17 @@
 			name = "PopupMenu files";
 			sourceTree = "<group>";
 		};
+		352948461EC89DD100F1CA94 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				352948441EC89DB400F1CA94 /* DrawingStates.swift */,
+				352948471EC8F3C900F1CA94 /* DoodleZP */,
+				352948421EC8992700F1CA94 /* LineStateView.swift */,
+				847DA7821E449A7A00F66B61 /* DoodleView.swift */,
+			);
+			name = Drawing;
+			sourceTree = "<group>";
+		};
 		847DA7431E44976500F66B61 = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +171,6 @@
 				847DA7871E44B60E00F66B61 /* Doodle */,
 				847DA74F1E44976500F66B61 /* AppDelegate.swift */,
 				3502D2951EA79AD200350727 /* NotificationCenterKeys.swift */,
-				847DA7821E449A7A00F66B61 /* DoodleView.swift */,
 				84619E271E4B48E000AE4465 /* Utils.swift */,
 				847DA7531E44976500F66B61 /* Main.storyboard */,
 			);
@@ -194,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				847DA7801E4497F500F66B61 /* DoodleController.swift */,
+				352948461EC89DD100F1CA94 /* Drawing */,
 				84ADFCFD1E49F4D700C91215 /* Elements */,
 				847DA7B11E455E5200F66B61 /* History */,
 				847DA7AC1E45328D00F66B61 /* ToolsPanel files */,
@@ -345,6 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				352948481EC8F3C900F1CA94 /* DoodleZP in Resources */,
 				847DA75D1E44976500F66B61 /* LaunchScreen.storyboard in Resources */,
 				354E30021EB4A00A00156512 /* Localizable.strings in Resources */,
 				847DA75A1E44976500F66B61 /* Assets.xcassets in Resources */,
@@ -377,10 +395,12 @@
 				354E2FFF1EAE1AE600156512 /* ShowHideToolsPanelButton.swift in Sources */,
 				847DA7AB1E45328000F66B61 /* ToolsPanelButtonStore.swift in Sources */,
 				847DA7581E44976500F66B61 /* DoodleZP.xcdatamodeld in Sources */,
+				352948431EC8992700F1CA94 /* LineStateView.swift in Sources */,
 				847DA7B01E455E4600F66B61 /* ChainLink.swift in Sources */,
 				847DA7AE1E455E2B00F66B61 /* History.swift in Sources */,
 				84619E281E4B48E000AE4465 /* Utils.swift in Sources */,
 				350E5BCB1EC3AFF300D33FE5 /* PopupMenuBackgroundView.swift in Sources */,
+				352948451EC89DB400F1CA94 /* DrawingStates.swift in Sources */,
 				84ADFCFA1E49F14100C91215 /* Element.swift in Sources */,
 				847DA7A91E45305F00F66B61 /* ToolsPanelButton.swift in Sources */,
 				847DA7861E44B60000F66B61 /* ToolsPanel.swift in Sources */,
