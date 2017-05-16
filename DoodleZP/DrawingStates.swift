@@ -11,7 +11,30 @@ import UIKit
 class DrawingStates {
 
     private init() {}
-    static let sharedInstance: History = History()
+    static let sharedInstance: DrawingStates = DrawingStates()
+    
+    static var colors = [
+        UIColor.black,
+        UIColor.blue,
+        UIColor.brown,
+        UIColor.cyan,
+        UIColor.darkGray,
+        UIColor.green,
+        UIColor.magenta
+    ]
+    
+    static var thicknesses: [CGFloat] = {
+        
+        var result = [CGFloat]()
+        var i: CGFloat = 1
+        
+        repeat {
+            result.append(i)
+            i += 2
+        } while (i < 13)
+        
+        return result
+    }()
     
     private var grateIndex = 0 {
         didSet {
@@ -21,14 +44,14 @@ class DrawingStates {
             // add dismiss grate
         }
     }
-    private var colorIndex = 0 {
+    var colorIndex = 0 {
         didSet {
             // change line status view
             // change selected color in popup
             // handle in doodle view
         }
     }
-    private var thicknessIndex = 0  {
+    var thicknessIndex = 0  {
         didSet {
             // change line status view
             // change selected thickness in popup

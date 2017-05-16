@@ -207,7 +207,6 @@ class ToolsPanel: UIView {
             }
         }
         
-//        self.sizeToFit()
         setNeedsLayout()
         layoutIfNeeded()
     }

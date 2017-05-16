@@ -12,57 +12,55 @@ class PopOverViewController: UIViewController {
     
     static let colorButtons: [PopupMenuButton] = {
         var result = [PopupMenuButton]()
-        for color in colors {
-            result.append(PopupMenuButton(type: .palette, color: color))
+        for color in DrawingStates.colors {
+            let colorButton = PopupMenuButton(type: .palette, color: color)
+            colorButton.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
+            result.append(colorButton)
         }
         return result
     }()
     
     static let thicknessButtons: [PopupMenuButton] = {
         var result = [PopupMenuButton]()
-        for thickness in thicknesses {
-            result.append(PopupMenuButton(type: .thickness, thickness: thickness))
+        for thickness in DrawingStates.thicknesses {
+            let thicknessButton = PopupMenuButton(type: .thickness, thickness: thickness)
+            thicknessButton.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
+            result.append(thicknessButton)
         }
         
         return result
     }()
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.superview?.layer.cornerRadius = 0
     }
     
-    private static var colors = [
-        UIColor.black,
-        UIColor.blue,
-        UIColor.brown,
-        UIColor.cyan,
-        UIColor.darkGray,
-        UIColor.green,
-        UIColor.magenta
-    ]
-    
-    private static var thicknesses: [CGFloat] = {
-        
-        var result = [CGFloat]()
-        var i: CGFloat = 1
-//        for _ in 0..<8 {
-//            i *= 1.35
-//            result.append(i)
-//        }
-        
-        repeat {
-            result.append(i)
-            i += 2
-        } while (i < 13)
-        
-        return result
-    }()
-    
     static var buttonSize = 46.875
     
     var type: ToolsPanelButton.ActionType?
     
+    
+    func btnTap (_ sender: PopupMenuButton) {
+        // select this button
+        // deselect previously selected one
+        // make sure line status view and drawing mode have changed in DrawingStates
+        let drawingStates = DrawingStates.sharedInstance
+        switch sender.type {
+        case .palette:
+            // Remember somewhere in DrawingStates. Or handle it right there
+            colorButtons[drawingStates.colorIndex].setDeselectedState()
+            drawingStates.colorIndex = colorButtons.index(of:sender)
+        case .thickness:
+            // Remember somewhere in DrawingStates
+            thicknessButtons[drawingStates.thicknessIndex].setDeselectedState()
+            drawingStates.thicknessIndex = thicknessButtons.index(of:sender)
+        default:
+            break
+        }
+        sender.setSelectedState()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,12 +144,12 @@ class PopOverViewController: UIViewController {
         var buttons = [PopupMenuButton]()
         switch type! {
         case .palette:
-            for color in PopOverViewController.colors {
+            for color in DrawingStates.colors {
                 buttons.append(PopupMenuButton(type: type!, color: color))
                 print("colors button count: \(buttons.count)")
             }
         case .thickness:
-            for thickness in PopOverViewController.thicknesses {
+            for thickness in DrawingStates.thicknesses {
                 buttons.append(PopupMenuButton(type: type!, thickness: thickness))
                 print("thickness button count: \(buttons.count)")
             }
