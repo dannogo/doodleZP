@@ -93,6 +93,7 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
         let lineStateView = LineStateView(superview: self.view)
         let drawingStates = DrawingStates.sharedInstance
         drawingStates.lineStateView = lineStateView
+        drawingStates.doodleView = self.view as? DoodleView
         
         
     }

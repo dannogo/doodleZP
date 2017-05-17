@@ -10,6 +10,9 @@ import UIKit
 
 class DrawingStates {
 
+    
+    // if selected lines mode, unselect color and thickness buttons
+    
     private init() {}
     static let sharedInstance: DrawingStates = DrawingStates()
     
@@ -19,6 +22,14 @@ class DrawingStates {
             newValue?.color = DrawingStates.colors[self.colorIndex]
         }
     }
+    
+    var doodleView: DoodleView? {
+        willSet {
+            newValue?.currentColor = DrawingStates.colors[self.colorIndex]
+            newValue?.currentThickness = DrawingStates.thicknesses[self.thicknessIndex]
+        }
+    }
+    
     
     static var colors = [
         UIColor.black,
@@ -53,24 +64,18 @@ class DrawingStates {
             // add dismiss grate
         }
     }
-    var colorIndex = 5 {
-        didSet {
-            // change line status view
-            // change selected color in popup
-            // handle in doodle view
-        }
+    var colorIndex = 8 {
         willSet {
-            lineStateView?.color = DrawingStates.colors[newValue]
+            let newColor = DrawingStates.colors[newValue]
+            lineStateView?.color = newColor
+            doodleView?.currentColor = newColor
         }
     }
     var thicknessIndex = 3  {
-        didSet {
-            // change line status view
-            // change selected thickness in popup
-            // handle in doodle view
-        }
         willSet {
-            lineStateView?.thickness = DrawingStates.thicknesses[newValue]
+            let newThickness = DrawingStates.thicknesses[newValue]
+            lineStateView?.thickness = newThickness
+            doodleView?.currentThickness = newThickness
         }
     }
     private var isVectorMode = true  {

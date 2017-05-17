@@ -31,8 +31,16 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     }
     var selectedPoint: Point? // not sure
     
-    var temporaryColor: UIColor = UIColor.blue
-    var temporaryThickness: CGFloat = 8
+    var currentColor: UIColor = UIColor.blue {
+        willSet {
+            print("new color: \(newValue)")
+        }
+    }
+    var currentThickness: CGFloat = 8 {
+        willSet {
+            print("new thickness: \(newValue)")
+        }
+    }
     
     var moveRecognizer: UIPanGestureRecognizer!
     
@@ -250,7 +258,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             let newShape = Vector(id: UUID())
-            newShape.createLine(id: UUID(), start: Point(location, id: UUID()), end: Point(location, id: UUID()), color: temporaryColor, thickness: temporaryThickness)
+            newShape.createLine(id: UUID(), start: Point(location, id: UUID()), end: Point(location, id: UUID()), color: currentColor, thickness: currentThickness)
             
             let key = NSValue(nonretainedObject: touch)
             currentStrokes[key] = newShape
