@@ -23,9 +23,7 @@ class LineStateView: UIButton {
         }
     }
     
-    init(superview: UIView, thickness: CGFloat, color: UIColor) {
-        self.thickness = thickness
-        self.color = color
+    init(superview: UIView) {
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         superview.addSubview(self)
@@ -54,14 +52,16 @@ class LineStateView: UIButton {
         let inset: CGFloat = 8.0
         path.move(to: CGPoint(x: inset, y: bounds.midY))
         path.addLine(to: CGPoint(x: bounds.width-inset, y: bounds.midY))
-        path.lineWidth = thickness
+        path.lineWidth = thickness!
         
         return path
     }
     
     override func draw(_ rect: CGRect) {
-        color.setStroke()
-        drawStatusLine().stroke()
+        if thickness != nil, let colorUnwrapped = color {
+            colorUnwrapped.setStroke()
+            drawStatusLine().stroke()
+        }
     }
     
 

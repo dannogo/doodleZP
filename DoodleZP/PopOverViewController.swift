@@ -12,9 +12,12 @@ class PopOverViewController: UIViewController {
     
     static let colorButtons: [PopupMenuButton] = {
         var result = [PopupMenuButton]()
-        for color in DrawingStates.colors {
+        for (index, color) in DrawingStates.colors.enumerated() {
             let colorButton = PopupMenuButton(type: .palette, color: color)
             colorButton.addTarget(self, action: #selector(PopOverViewController.btnTap), for: .touchUpInside)
+            if index == DrawingStates.sharedInstance.colorIndex{
+                colorButton.setSelectedState()
+            }
             result.append(colorButton)
         }
         return result
@@ -22,9 +25,12 @@ class PopOverViewController: UIViewController {
     
     static let thicknessButtons: [PopupMenuButton] = {
         var result = [PopupMenuButton]()
-        for thickness in DrawingStates.thicknesses {
+        for (index, thickness) in DrawingStates.thicknesses.enumerated() {
             let thicknessButton = PopupMenuButton(type: .thickness, thickness: thickness)
             thicknessButton.addTarget(self, action: #selector(PopOverViewController.btnTap), for: .touchUpInside)
+            if index == DrawingStates.sharedInstance.thicknessIndex{
+                thicknessButton.setSelectedState()
+            }
             result.append(thicknessButton)
         }
     
@@ -45,10 +51,14 @@ class PopOverViewController: UIViewController {
         switch sender.type {
         case .palette:
             PopOverViewController.colorButtons[drawingStates.colorIndex].setDeselectedState()
-            drawingStates.colorIndex = PopOverViewController.colorButtons.index(of:sender)!
+            let index = PopOverViewController.colorButtons.index(of:sender)!
+            print("colorButton index: \(index)")
+            drawingStates.colorIndex = index
         case .thickness:
             PopOverViewController.thicknessButtons[drawingStates.thicknessIndex].setDeselectedState()
-            drawingStates.thicknessIndex = PopOverViewController.thicknessButtons.index(of:sender)!
+            let index = PopOverViewController.thicknessButtons.index(of:sender)!
+            print("thickness button index: \(index)")
+            drawingStates.thicknessIndex = index
         default:
             break
         }
