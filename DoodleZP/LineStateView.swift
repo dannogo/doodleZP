@@ -10,30 +10,53 @@ import UIKit
 
 class LineStateView: UIView {
     
-    private var thickness: CGFloat
-    private var color: UIColor
+    static var size: CGFloat = 46.875
     
-    init(thickness: CGFloat, color: UIColor) {
+    var thickness: CGFloat {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    var color: UIColor {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    init(superview: UIView, thickness: CGFloat, color: UIColor) {
         self.thickness = thickness
         self.color = color
         super.init(frame: CGRect.zero)
+        setupConstraints(superview: superview)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    private func drawStatusPath() -> UIBezierPath {
-     
-        return UIBezierPath()
+    
+    private func setupConstraints(superview: UIView) {
+        NSLayoutConstraint.activate([
+            self.widthAnchor.constraint(equalToConstant: type(of: self).size),
+            self.heightAnchor.constraint(equalToConstant: type(of: self).size),
+            self.topAnchor.constraint(equalTo: superview.topAnchor, constant: 5),
+            self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 5)
+            ])
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    private func drawStatusLine() -> UIBezierPath {
+        let path = UIBezierPath()
+        let inset: CGFloat = 8.0
+        path.move(to: CGPoint(x: inset, y: bounds.midY))
+        path.addLine(to: CGPoint(x: bounds.width-inset, y: bounds.midY))
+        path.lineWidth = thickness
+        
+        return path
     }
-    */
+    
+    override func draw(_ rect: CGRect) {
+        color.set()
+        drawStatusLine().stroke()
+    }
+    
 
 }

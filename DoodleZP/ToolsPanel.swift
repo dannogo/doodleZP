@@ -150,6 +150,7 @@ class ToolsPanel: UIView {
         let screenSideSize = orientation.isPortrait ? windowFrame.width : windowFrame.height
         let (buttonsInRow, buttonSize) = calculateButtonsParameters(screenSideSize: screenSideSize)
         PopupMenuBackgroundView.width = buttonSize
+        LineStateView.size = buttonSize
         
         for btn in buttons {
             btn.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)

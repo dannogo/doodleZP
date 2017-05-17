@@ -90,7 +90,10 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
         toolsPanel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
-                
+        let drawingStates = DrawingStates.sharedInstance
+        let lineStateView = LineStateView(superview: self.view,
+                                          thickness: DrawingStates.thicknesses[drawingStates.thicknessIndex],
+                                          color: DrawingStates.colors[drawingStates.colorIndex])
     }
 
     override func didReceiveMemoryWarning() {

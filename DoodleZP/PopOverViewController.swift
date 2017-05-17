@@ -14,7 +14,7 @@ class PopOverViewController: UIViewController {
         var result = [PopupMenuButton]()
         for color in DrawingStates.colors {
             let colorButton = PopupMenuButton(type: .palette, color: color)
-            colorButton.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
+            colorButton.addTarget(self, action: #selector(PopOverViewController.btnTap), for: .touchUpInside)
             result.append(colorButton)
         }
         return result
@@ -24,42 +24,39 @@ class PopOverViewController: UIViewController {
         var result = [PopupMenuButton]()
         for thickness in DrawingStates.thicknesses {
             let thicknessButton = PopupMenuButton(type: .thickness, thickness: thickness)
-            thicknessButton.addTarget(self, action: #selector(self.btnTap), for: .touchUpInside)
+            thicknessButton.addTarget(self, action: #selector(PopOverViewController.btnTap), for: .touchUpInside)
             result.append(thicknessButton)
         }
-        
+    
         return result
     }()
     
+    static var buttonSize = 46.875
+    
+    var type: ToolsPanelButton.ActionType?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.superview?.layer.cornerRadius = 0
     }
     
-    static var buttonSize = 46.875
-    
-    var type: ToolsPanelButton.ActionType?
-    
-    
     func btnTap (_ sender: PopupMenuButton) {
-        // select this button
-        // deselect previously selected one
-        // make sure line status view and drawing mode have changed in DrawingStates
         let drawingStates = DrawingStates.sharedInstance
         switch sender.type {
         case .palette:
-            // Remember somewhere in DrawingStates. Or handle it right there
-            colorButtons[drawingStates.colorIndex].setDeselectedState()
-            drawingStates.colorIndex = colorButtons.index(of:sender)
+            PopOverViewController.colorButtons[drawingStates.colorIndex].setDeselectedState()
+            drawingStates.colorIndex = PopOverViewController.colorButtons.index(of:sender)!
         case .thickness:
-            // Remember somewhere in DrawingStates
-            thicknessButtons[drawingStates.thicknessIndex].setDeselectedState()
-            drawingStates.thicknessIndex = thicknessButtons.index(of:sender)
+            PopOverViewController.thicknessButtons[drawingStates.thicknessIndex].setDeselectedState()
+            drawingStates.thicknessIndex = PopOverViewController.thicknessButtons.index(of:sender)!
         default:
             break
         }
         sender.setSelectedState()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -68,8 +65,6 @@ class PopOverViewController: UIViewController {
         let width = PopOverViewController.buttonSize
         let height: Double
         let buttons: [PopupMenuButton]
-        
-//        let height = type! == .palette ? width * Double(PopOverViewController.colorButtons.count) : width * Double(PopOverViewController.thicknessButtons.count)
         
         switch type! {
         case .palette:
@@ -84,19 +79,12 @@ class PopOverViewController: UIViewController {
             break
         }
         
-        
         self.preferredContentSize = CGSize(width: width, height: height)
-        
-//        createButtons()
         setupButtons(buttons)
-    
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismiss(sender:)))
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func dismiss(sender: AnyObject) {
@@ -119,7 +107,6 @@ class PopOverViewController: UIViewController {
         for (index, button) in buttons.enumerated() {
             
             container.addSubview(button)
-            
             var bottomConstraint: NSLayoutConstraint
             
             if index == 0 {
@@ -194,20 +181,13 @@ class PopOverViewController: UIViewController {
     
     func listSubviewsOfView(view:UIView){
         
-        // Get the subviews of the view
         let subviews = view.subviews
-        
-        // Return if there are no subviews
         if subviews.count == 0 {
             return
         }
         
         for subview : AnyObject in subviews{
-            
-            // Do what you want to do with the subview
             print(subview)
-            
-            // List the subviews of subview
             listSubviewsOfView(view: subview as! UIView)
         }
     }

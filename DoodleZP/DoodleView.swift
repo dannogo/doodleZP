@@ -46,16 +46,10 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     required init?(coder aDecored: NSCoder) {
         super.init(coder: aDecored)
         applyGestureRecognizers()
-        
-//        self.backgroundColor = UIColor.yellow
     }
     
     func historyStep(backward: Bool) {
-        //        historyHandler?.handleHistoryStep(backward: backward)
         historyHandler?.step(backward: backward)
-        
-        
-        
     }
     
     func applyGestureRecognizers() {

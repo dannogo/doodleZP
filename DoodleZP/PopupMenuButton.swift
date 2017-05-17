@@ -10,7 +10,7 @@ import UIKit
 
 class PopupMenuButton: UIButton {
 
-    private let type: ToolsPanelButton.ActionType
+    let type: ToolsPanelButton.ActionType
     private let color: UIColor
     private let thickness: CGFloat
     private let radius: CGFloat = 8.0
