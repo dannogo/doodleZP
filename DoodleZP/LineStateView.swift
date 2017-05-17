@@ -8,16 +8,16 @@
 
 import UIKit
 
-class LineStateView: UIView {
+class LineStateView: UIButton {
     
     static var size: CGFloat = 46.875
     
-    var thickness: CGFloat {
+    var thickness: CGFloat? {
         didSet {
             setNeedsDisplay()
         }
     }
-    var color: UIColor {
+    var color: UIColor? {
         didSet {
             setNeedsDisplay()
         }
@@ -27,7 +27,13 @@ class LineStateView: UIView {
         self.thickness = thickness
         self.color = color
         super.init(frame: CGRect.zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        superview.addSubview(self)
         setupConstraints(superview: superview)
+        self.layer.borderWidth = 0.25
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.cornerRadius = 6
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,8 +44,8 @@ class LineStateView: UIView {
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: type(of: self).size),
             self.heightAnchor.constraint(equalToConstant: type(of: self).size),
-            self.topAnchor.constraint(equalTo: superview.topAnchor, constant: 5),
-            self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 5)
+            self.topAnchor.constraint(equalTo: (superview.parentViewController?.topLayoutGuide.bottomAnchor)! , constant: 5),
+            self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -5)
             ])
     }
     
@@ -54,7 +60,7 @@ class LineStateView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        color.set()
+        color.setStroke()
         drawStatusLine().stroke()
     }
     

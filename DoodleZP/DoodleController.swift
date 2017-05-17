@@ -94,6 +94,7 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
         let lineStateView = LineStateView(superview: self.view,
                                           thickness: DrawingStates.thicknesses[drawingStates.thicknessIndex],
                                           color: DrawingStates.colors[drawingStates.colorIndex])
+        
     }
 
     override func didReceiveMemoryWarning() {

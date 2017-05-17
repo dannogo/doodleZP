@@ -13,6 +13,8 @@ class DrawingStates {
     private init() {}
     static let sharedInstance: DrawingStates = DrawingStates()
     
+    let lineStateView: UIButton?
+    
     static var colors = [
         UIColor.black,
         UIColor.blue,
@@ -44,14 +46,14 @@ class DrawingStates {
             // add dismiss grate
         }
     }
-    var colorIndex = 0 {
+    var colorIndex = 5 {
         didSet {
             // change line status view
             // change selected color in popup
             // handle in doodle view
         }
     }
-    var thicknessIndex = 0  {
+    var thicknessIndex = 3  {
         didSet {
             // change line status view
             // change selected thickness in popup
