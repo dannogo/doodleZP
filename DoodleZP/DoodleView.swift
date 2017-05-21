@@ -24,6 +24,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
                 let menu = UIMenuController.shared
                 menu.setMenuVisible(false, animated: true)
                 preventNewLine = false
+                resignFirstResponder()
             } else {
                 preventNewLine = true
             }
@@ -31,16 +32,8 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     }
     var selectedPoint: Point? // not sure
     
-    var currentColor: UIColor = UIColor.blue {
-        willSet {
-            print("new color: \(newValue)")
-        }
-    }
-    var currentThickness: CGFloat = 8 {
-        willSet {
-            print("new thickness: \(newValue)")
-        }
-    }
+    var currentColor: UIColor = UIColor.blue
+    var currentThickness: CGFloat = 8
     
     var moveRecognizer: UIPanGestureRecognizer!
     

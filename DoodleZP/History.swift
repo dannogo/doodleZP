@@ -39,7 +39,6 @@ class History {
     private var currentIndex: Int? = nil
     private var history = [ChainLink]() {
         didSet {
-            print("history count didSet: \(history.count)")
             var trashNotificationKey = ToolsPanelButton.ActionType.trash.rawValue + NotificationCenterKeys.enabled
             if history.count == 0 {
                 trashNotificationKey = ToolsPanelButton.ActionType.trash.rawValue + NotificationCenterKeys.disabled

@@ -78,7 +78,7 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
                 
                 popupController.sourceView = base
                 popupController.sourceRect = base.bounds
-                
+            
                 self.present(viewController, animated: true, completion: nil)
             }
         }

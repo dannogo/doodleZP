@@ -47,17 +47,16 @@ class PopOverViewController: UIViewController {
     }
     
     func btnTap (_ sender: PopupMenuButton) {
+        print(#function)
         let drawingStates = DrawingStates.sharedInstance
         switch sender.type {
         case .palette:
             PopOverViewController.colorButtons[drawingStates.colorIndex].setDeselectedState()
             let index = PopOverViewController.colorButtons.index(of:sender)!
-            print("colorButton index: \(index)")
             drawingStates.colorIndex = index
         case .thickness:
             PopOverViewController.thicknessButtons[drawingStates.thicknessIndex].setDeselectedState()
             let index = PopOverViewController.thicknessButtons.index(of:sender)!
-            print("thickness button index: \(index)")
             drawingStates.thicknessIndex = index
         default:
             break
@@ -92,7 +91,7 @@ class PopOverViewController: UIViewController {
         self.preferredContentSize = CGSize(width: width, height: height)
         setupButtons(buttons)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
