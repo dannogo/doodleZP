@@ -18,6 +18,8 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     // for raster only
     var lastRasterPoint = CGPoint.zero
     var swiped = false
+    let tempImageView = UIImageView()
+    let mainImageView = UIImageView()
     
     var currentStrokes = [NSValue:Element]()
     var finishedStrokes = [Element]()
@@ -244,8 +246,7 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         
     }
     
-    // MARK: - Touches events
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    private func touchesBeganVector(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         guard !preventNewLine else {
             return
@@ -262,8 +263,24 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         setNeedsDisplay()
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+    private func touchesBeganRaster(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swiped = false
+        if let touch = touches.first {
+            lastRasterPoint = touch.location(in: self)
+        }
+    }
+    
+    
+    // MARK: - Touches events
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if DrawingStates.shared.isVectorMode {
+            touchesBeganVector(touches, with: event)
+        } else {
+            touchesBeganRaster(touches, with: event)
+        }
+    }
+    
+    private func touchesMovedVector(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
             if let shape = currentStrokes[key] as? Vector {
@@ -273,7 +290,46 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         setNeedsDisplay()
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    private func touchesMovedRaster(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swiped = true
+        if let touch = touches.first {
+            let currentPoint = touch.location(in: self)
+            drawRasterLine(from: lastRasterPoint, to: currentPoint)
+            
+            lastRasterPoint = currentPoint
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if DrawingStates.shared.isVectorMode {
+            touchesMovedVector(touches, with: event)
+        } else {
+            touchesMovedRaster(touches, with: event)
+        }
+        
+    }
+    
+    private func drawRasterLine(from origin: CGPoint, to destination: CGPoint) {
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()
+        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
+        
+        context?.move(to: origin)
+        context?.addLine(to: destination)
+        
+        context?.setLineCap(.round)
+        context?.setLineWidth(currentThickness)
+        context?.setStrokeColor(currentColor.cgColor)
+        context?.setBlendMode(.normal)
+        
+        context?.strokePath()
+        
+        tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        //        tempImageView.alpha = opacity
+        UIGraphicsEndImageContext()
+    }
+    
+    private func touchesEndedVector(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
             if let shape = currentStrokes[key] as? Vector {
@@ -290,6 +346,34 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
             }
         }
         setNeedsDisplay()
+    }
+    
+    private func touchesEndedRaster(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !swiped {
+            drawRasterLine(from: lastRasterPoint, to: lastRasterPoint)
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0.0)
+        mainImageView.image?.draw(in:
+            CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+            , blendMode: .normal
+            , alpha: 1.0)
+        tempImageView.image?.draw(in:
+            CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+            , blendMode: .normal
+            , alpha: 1.0) // veriable opacity instead of 1.0
+        mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        tempImageView.image = nil
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if DrawingStates.shared.isVectorMode {
+            touchesEndedVector(touches, with: event)
+        } else {
+            touchesEndedRaster(touches, with: event)
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -14,7 +14,7 @@ class DrawingStates {
     // if selected lines mode, unselect color and thickness buttons
     
     private init() {}
-    static let sharedInstance: DrawingStates = DrawingStates()
+    static let shared: DrawingStates = DrawingStates()
     
     var lineStateView: LineStateView? {
         willSet {

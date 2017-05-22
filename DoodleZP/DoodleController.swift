@@ -91,7 +91,7 @@ class DoodleController: UIViewController, UIPopoverPresentationControllerDelegat
         self.view.addSubview(toolsPanel)
         toolsPanel.orientation = .portrait
         let lineStateView = LineStateView(superview: self.view)
-        let drawingStates = DrawingStates.sharedInstance
+        let drawingStates = DrawingStates.shared
         drawingStates.lineStateView = lineStateView
         drawingStates.doodleView = self.view as? DoodleView
         

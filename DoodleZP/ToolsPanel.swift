@@ -58,7 +58,7 @@ class ToolsPanel: UIView {
     func btnTap (_ sender: ToolsPanelButton) {
         
         let doodleView = self.superview as! DoodleView
-        let states = DrawingStates.sharedInstance
+        let states = DrawingStates.shared
         if doodleView.historyHandler == nil {
             doodleView.historyHandler = HistoryHandler(doodleView: doodleView)
         }

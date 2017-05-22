@@ -15,7 +15,7 @@ class PopOverViewController: UIViewController {
         for (index, color) in DrawingStates.colors.enumerated() {
             let colorButton = PopupMenuButton(type: .palette, color: color)
             colorButton.addTarget(self, action: #selector(PopOverViewController.btnTap), for: .touchUpInside)
-            if index == DrawingStates.sharedInstance.colorIndex{
+            if index == DrawingStates.shared.colorIndex{
                 colorButton.setSelectedState()
             }
             result.append(colorButton)
@@ -28,7 +28,7 @@ class PopOverViewController: UIViewController {
         for (index, thickness) in DrawingStates.thicknesses.enumerated() {
             let thicknessButton = PopupMenuButton(type: .thickness, thickness: thickness)
             thicknessButton.addTarget(self, action: #selector(PopOverViewController.btnTap), for: .touchUpInside)
-            if index == DrawingStates.sharedInstance.thicknessIndex{
+            if index == DrawingStates.shared.thicknessIndex{
                 thicknessButton.setSelectedState()
             }
             result.append(thicknessButton)
@@ -48,7 +48,7 @@ class PopOverViewController: UIViewController {
     
     func btnTap (_ sender: PopupMenuButton) {
         print(#function)
-        let drawingStates = DrawingStates.sharedInstance
+        let drawingStates = DrawingStates.shared
         switch sender.type {
         case .palette:
             PopOverViewController.colorButtons[drawingStates.colorIndex].setDeselectedState()
