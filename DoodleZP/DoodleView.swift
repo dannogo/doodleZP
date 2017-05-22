@@ -15,6 +15,9 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
     var historyHandler: HistoryHandler?
     var preventNewLine = false
     var transitions = [Transition]()
+    // for raster only
+    var lastRasterPoint = CGPoint.zero
+    var swiped = false
     
     var currentStrokes = [NSValue:Element]()
     var finishedStrokes = [Element]()

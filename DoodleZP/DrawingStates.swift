@@ -78,18 +78,8 @@ class DrawingStates {
             doodleView?.currentThickness = newThickness
         }
     }
-    private var isVectorMode = true  {
-        didSet {
-            // move toolspanel changes here
-            // handle in doodle view
-        }
-    }
-    private var isRasterMode = false  {
-        didSet {
-            // move toolspanel changes here
-            // handle in doodle view
-        }
-    }
+    var isVectorMode = true
+    
     private var isPointEditingMode = false  {
         didSet {
             // select icon on toolspanel

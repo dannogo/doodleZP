@@ -58,6 +58,7 @@ class ToolsPanel: UIView {
     func btnTap (_ sender: ToolsPanelButton) {
         
         let doodleView = self.superview as! DoodleView
+        let states = DrawingStates.sharedInstance
         if doodleView.historyHandler == nil {
             doodleView.historyHandler = HistoryHandler(doodleView: doodleView)
         }
@@ -90,12 +91,13 @@ class ToolsPanel: UIView {
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.raster.rawValue + NotificationCenterKeys.deselected), object: self)
             buttons.removeAll()
             getButtons(action: sender.type)
-            
+            states.isVectorMode = true
         case .raster:
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.raster.rawValue + NotificationCenterKeys.selected), object: self)
             NotificationCenter.default.post(name: Notification.Name(rawValue: ToolsPanelButton.ActionType.vector.rawValue + NotificationCenterKeys.deselected), object: self)
             buttons.removeAll()
             getButtons(action: sender.type)
+            states.isVectorMode = false
         case .palette:
             (self.parentViewController as! DoodleController).showPopover(base: sender)
         case .thickness:
