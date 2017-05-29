@@ -71,7 +71,7 @@ class DrawingStates {
             doodleView?.currentColor = newColor
         }
     }
-    var thicknessIndex = 3  {
+    var thicknessIndex = 3 {
         willSet {
             let newThickness = DrawingStates.thicknesses[newValue]
             lineStateView?.thickness = newThickness

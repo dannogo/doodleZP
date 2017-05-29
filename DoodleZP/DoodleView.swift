@@ -54,6 +54,18 @@ class DoodleView: UIView, UIGestureRecognizerDelegate {
         applyGestureRecognizers()
     }
     
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        mainImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(mainImageView)
+        NSLayoutConstraint.activate([
+                mainImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                mainImageView.topAnchor.constraint(equalTo: self.topAnchor),
+                mainImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                mainImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            ])
+    }
+    
     func historyStep(backward: Bool) {
         historyHandler?.step(backward: backward)
     }
